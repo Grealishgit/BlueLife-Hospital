@@ -10,12 +10,22 @@
     </h1>
     <p class="md:text-lg text-md text-center text-white">
         Your health is our priority. We provide the best medical services.
+    
     </p> 
+
+    <div class="flex md:flex-row flex-col w-full gap-3 justify-center mt-5 items-center">
+        <img src="/storage/uploads/group.png" alt="BlueLife Hospital" class="w-20 h-auto rounded-lg shadow-md" />
+        <p class="text-white font-semibold text-center">Simply  navigate through our extensive list of trusted doctors, <br>
+            schedule your appointment hassle-free.</p>
+    </div>
+
+  
+
     <div class="mt-6 flex md:flex-row flex-col gap-4">
-        <a href="#" class="bg-white text-blue-500 px-6 py-3 rounded-lg shadow-md hover:bg-gray-100 transition duration-300">
+        <a href="#" class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-100 transition duration-300">
             Get Started
         </a>
-         <a href="#" class="bg-white text-blue-500 px-6 py-3 rounded-lg shadow-md hover:bg-gray-100 transition duration-300">
+         <a href="#" class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-100 transition duration-300">
             Book Appointment
         </a>
     </div>
