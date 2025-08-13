@@ -2,16 +2,16 @@
 >
 <!-- style="background-image: url('/storage/uploads/bg1.jpg'); background-size: cover; background-position: center;" -->
 
- <div class=" rounded-md flex  mt-5 bg-blue-500 w-full">
+ <div class="rounded-md flex md:flex-row flex-col mt-5 bg-blue-500 w-full">
     <!-- Heading to the left -->
     <div class="flex-1 items-center justify-center flex flex-col">
-        <h1 class="text-6xl font-bold text-center text-white  my-8">
+        <h1 class="md:text-6xl text-4xl font-bold text-center text-white  my-8">
         Welcome to BlueLife Hospital
     </h1>
-    <p class="text-lg text-white">
+    <p class="md:text-lg text-md text-center text-white">
         Your health is our priority. We provide the best medical services.
     </p> 
-    <div class="mt-6 flex space-x-4">
+    <div class="mt-6 flex md:flex-row flex-col gap-4">
         <a href="#" class="bg-white text-blue-500 px-6 py-3 rounded-lg shadow-md hover:bg-gray-100 transition duration-300">
             Get Started
         </a>
