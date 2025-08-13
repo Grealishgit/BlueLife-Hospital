@@ -11,6 +11,7 @@
 <body>
     <?php include 'app/Views/navbar.php'; ?>
     <?php include 'app/Views/hero.php'; ?>
+    <?php include 'app/Views/footer.php'; ?>
 </body>
 
 
