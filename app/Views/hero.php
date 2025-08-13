@@ -36,5 +36,45 @@
         <img src="/storage/uploads/header.png" alt="BlueLife Hospital" class="w-full max-w-xl" />
     </div>
  </div>
+
+ <div class="mt-10 flex flex-col items-center">
+    <p class="text-3xl font-semibold">Find by Speciality</p>
+    <p class="text-center text-gray-800  text-lg">
+        Simply browse through our extensive list of trusted doctors, schedule your appointment hassle free.
+    </p>
+
+    <div class="flex flex-wrap cursor-pointer mt-8 space-x-4 gap-6">
+
+        <div class="flex flex-col cursor-pointer  items-center">
+        <img src="/storage/uploads/icon1.png" alt="Physician" class="w-20 h-20" >
+        <p class="text-center mt-2 text-sm">General Physician</p>
+    </div>
+
+    <div class="flex flex-col cursor-pointer  items-center">
+        <img src="/storage/uploads/icon2.png" alt="Cardiologist" class="w-20 h-20" >
+        <p class="text-center mt-2 text-sm">Cardiologist</p>
+    </div>
+
+    <div class="flex flex-col cursor-pointer items-center">
+        <img src="/storage/uploads/icon3.png" alt="Dermatologist" class="w-20 h-20" >
+        <p class="text-center mt-2 text-sm">Dermatologist</p>
+    </div>
+
+      <div class="flex flex-col cursor-pointer  items-center">
+        <img src="/storage/uploads/icon4.png" alt="Neurologist" class="w-20 h-20" >
+        <p class="text-center mt-2 text-sm">Neurologist</p>
+    </div> 
+    
+    <div class="flex flex-col cursor-pointer  items-center">
+        <img src="/storage/uploads/icon5.png" alt="Pediatrician" class="w-20 h-20" >
+        <p class="text-center mt-2 text-sm">Pediatrician</p>
+    </div> 
+
+       <div class="flex flex-col cursor-pointer  items-center">
+        <img src="/storage/uploads/icon6.png" alt="Gastrologist" class="w-20 h-20" >
+        <p class="text-center mt-2 text-sm">Gastrologist</p>
+    </div>
+   
+ </div>
    
 </div>
