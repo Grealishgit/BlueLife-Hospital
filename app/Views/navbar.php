@@ -1,4 +1,3 @@
-
 <nav class="bg-white fixed top-0 w-full text-white p-4 shadow-sm shadow-gray-600 flex items-center justify-between">
     <div class="flex items-center space-x-2">
         <span class="font-bold cursor-pointer  text-blue-500 text-2xl">Blue<span class="text-black">Life</span> </span>
@@ -10,7 +9,7 @@
         <li><a href="#" class="text-blue-500 font-semibold hover:text-blue-200">Contact</a></li>
     </ul>
     <div class="flex items-center space-x-4">
-        <a href="#" class="text-blue-500 font-semibold hover:text-blue-200">Login</a>
+        <a href="#" onclick="openModal()" class="text-blue-500 font-semibold hover:text-blue-200">Login</a>
         <a href="#" class="text-blue-500 font-semibold hover:text-blue-200">Forgot Password?</a>
     </div>
 </nav>
