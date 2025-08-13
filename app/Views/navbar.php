@@ -1,5 +1,5 @@
 
-<nav class="bg-white text-white p-4 shadow-md shadow-gray-200 flex items-center justify-between">
+<nav class="bg-white fixed top-0 w-full text-white p-4 shadow-sm shadow-gray-600 flex items-center justify-between">
     <div class="flex items-center space-x-2">
         <span class="font-bold cursor-pointer  text-blue-500 text-2xl">Blue<span class="text-black">Life</span> </span>
     </div>
