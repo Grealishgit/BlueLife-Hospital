@@ -47,7 +47,7 @@
             Simply browse through our extensive list of trusted doctors, schedule your appointment hassle free.
         </p>
 
-        <div class="flex flex-wrap cursor-pointer mt-8 space-x-4 gap-6">
+        <div class="flex flex-wrap items-center justify-center cursor-pointer mt-8 space-x-4 gap-6">
 
             <div class="flex flex-col cursor-pointer  items-center">
                 <img src="/storage/uploads/icon1.png" alt="Physician" class="w-20 h-20">
