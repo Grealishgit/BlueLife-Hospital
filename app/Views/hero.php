@@ -42,7 +42,7 @@
     </div>
 
     <div class="mt-10 flex flex-col items-center">
-        <p class="text-3xl font-semibold">Find by Speciality</p>
+        <p class="text-3xl font-bold">Find by <span class="text-blue-500">Speciality</span></p>
         <p class="text-center text-gray-800  text-lg">
             Simply browse through our extensive list of trusted doctors, schedule your appointment hassle free.
         </p>
