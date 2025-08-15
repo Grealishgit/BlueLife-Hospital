@@ -23,9 +23,9 @@
 
 
 
-            <div class="mt-6 flex md:flex-row flex-col gap-4">
+            <div class="mt-6 flex md:flex-row items-center flex-col gap-4">
                 <a href="#"
-                    class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-100 transition duration-300">
+                    class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-200 transition duration-300">
                     Get Started
                 </a>
                 <a href="#"
