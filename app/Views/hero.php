@@ -1,4 +1,4 @@
-<div class="flex flex-col bg-gray-100 items-center p-10 mt-10 w-full min-h-screen">
+<div class="flex flex-col bg-gray-100 items-center md:p-10 p-4 mt-10 w-full min-h-screen">
     <!-- style="background-image: url('/storage/uploads/bg1.jpg'); background-size: cover; background-position: center;" -->
 
     <div class="rounded-md flex md:flex-row flex-col mt-5 bg-blue-500 w-full">
@@ -14,8 +14,9 @@
 
             <div class="flex md:flex-row flex-col w-full gap-3 justify-center mt-5 items-center">
                 <img src="/storage/uploads/group.png" alt="BlueLife Hospital"
-                    class="w-20 h-auto rounded-lg shadow-md" />
-                <p class="text-white font-semibold text-center">Simply navigate through our extensive list of trusted
+                    class="w-20 h-auto ml-5 rounded-lg shadow-md" />
+                <p class="text-white font-semibold text-center">
+                    Simply navigate through our extensive list of trusted
                     doctors, <br>
                     schedule your appointment hassle-free.</p>
             </div>
