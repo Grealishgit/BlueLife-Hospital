@@ -9,7 +9,8 @@
         <li><a href="contact.php" class="text-blue-500 font-semibold hover:text-blue-200">Contact</a></li>
     </ul>
     <div class="flex items-center space-x-4">
-        <a href="#" onclick="openModal()" class="text-blue-500 font-semibold hover:text-blue-200">Login</a>
+        <a href="#" onclick="openModal()"
+            class="text-blue-500 px-6 py-2 text-white rounded-md bg-blue-500 font-semibold hover:text-blue-200">Login</a>
         <!-- <a href="#" class="text-blue-500 font-semibold hover:text-blue-200">Forgot Password?</a> -->
         <a href="/profile.php">
             <img src="/storage/uploads/doctor1.png" alt=""
@@ -17,4 +18,4 @@
         </a>
 
     </div>
-</nav>
+</nav>x
