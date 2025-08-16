@@ -76,7 +76,16 @@
 
     </div>
 
+    <div class="mt-5 flex flex-col items-center">
+        <a href="all-doctors.php">
+            <button
+                class="mt-4 bg-blue-500 cursor-pointer rounded-md hover:border
+             border-blue-500 hover:bg-white text-white font-bold  px-6 py-2 hover:text-blue-500 rounded hover:bg-blue-600">
+                View More
+            </button>
+        </a>
 
+    </div>
 </div>
 
 <script>
