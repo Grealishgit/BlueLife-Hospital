@@ -81,7 +81,8 @@
                     </div>
                     <!-- Schedule -->
                     <div>
-                        <h2 class="text-2xl mt-2 font-semibold text-blue-500 text-center text-gray-800 mb-3">Schedule
+                        <h2 class="text-2xl mt-8 font-semibold text-blue-500 text-center  mb-3">
+                            Schedule
                         </h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                             <?php foreach ($doctor['schedule'] as $schedule): ?>
