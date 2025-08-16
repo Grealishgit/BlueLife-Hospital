@@ -146,7 +146,7 @@
         <!-- Back to Doctors Button -->
         <div class="text-center mt-8">
             <a href="index.php"
-                class="inline-block bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors">
+                class="inline-block cursor-pointer bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors">
                 Back to Doctors
             </a>
         </div>
