@@ -22,7 +22,7 @@
                 'name' => 'Dr. Jane Smith',
                 'specialty' => 'Cardiologist',
                 'experience' => '10+ years',
-                'image' => '/images/doctor1.jpg',
+                'image' => '/storage/uploads/doctor1.png',
                 'education' => 'MD from Harvard Medical School',
                 'bio' => 'Dr. Jane Smith is a board-certified cardiologist with over 10 years of experience in treating cardiovascular diseases. She specializes in preventive cardiology and heart disease management.',
                 'qualifications' => ['MD - Harvard Medical School', 'Residency - Johns Hopkins Hospital', 'Fellowship - Mayo Clinic'],
@@ -35,7 +35,7 @@
                 'name' => 'Dr. John Doe',
                 'specialty' => 'Neurologist',
                 'experience' => '8+ years',
-                'image' => '/images/doctor2.jpg',
+                'image' => '/storage/uploads/doctor2.png',
                 'education' => 'MD from Stanford University',
                 'bio' => 'Dr. John Doe is a skilled neurologist specializing in brain and nervous system disorders. He has extensive experience in treating stroke, epilepsy, and neurodegenerative diseases.',
                 'qualifications' => ['MD - Stanford University', 'Residency - UCSF Medical Center', 'Fellowship - Cleveland Clinic'],
@@ -48,7 +48,7 @@
                 'name' => 'Dr. Emily Lee',
                 'specialty' => 'Pediatrician',
                 'experience' => '5+ years',
-                'image' => '/images/doctor3.jpg',
+                'image' => '/storage/uploads/doctor3.png',
                 'education' => 'MD from UCLA School of Medicine',
                 'bio' => 'Dr. Emily Lee is a compassionate pediatrician dedicated to providing comprehensive healthcare for children from infancy through adolescence.',
                 'qualifications' => ['MD - UCLA School of Medicine', 'Residency - Children\'s Hospital Los Angeles', 'Board Certified Pediatrician'],
@@ -62,7 +62,7 @@
         $doctor = isset($doctors[$doctorId]) ? $doctors[$doctorId] : $doctors[1];
         ?>
 
-        <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8 max-w-6xl mx-auto">
             <div class="flex flex-col md:flex-row gap-8">
                 <!-- Doctor Image and Basic Info -->
                 <div class="md:w-1/3">
@@ -77,6 +77,16 @@
                                 class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
                                 Book Appointment
                             </button>
+                        </div>
+                    </div>
+                    <!-- Schedule -->
+                    <div>
+                        <h2 class="text-2xl mt-2 font-semibold text-blue-500 text-center text-gray-800 mb-3">Schedule
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <?php foreach ($doctor['schedule'] as $schedule): ?>
+                            <div class="bg-gray-50 p-2 rounded text-gray-700"><?php echo $schedule; ?></div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -117,15 +127,7 @@
                             </div>
                         </div>
 
-                        <!-- Schedule -->
-                        <div>
-                            <h2 class="text-2xl font-semibold text-gray-800 mb-3">Schedule</h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                <?php foreach ($doctor['schedule'] as $schedule): ?>
-                                <div class="bg-gray-50 p-2 rounded text-gray-700"><?php echo $schedule; ?></div>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+
 
                         <!-- Contact -->
                         <div>
