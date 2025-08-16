@@ -8,7 +8,8 @@
         <!-- Doctor Card 1 -->
         <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center cursor-pointer hover:shadow-lg transition-shadow"
             onclick="openDoctorProfile(1)">
-            <img src="/images/doctor1.jpg" alt="Dr. Jane Smith" class="w-24 h-24 rounded-full mb-4 object-cover" />
+            <img src="/storage/uploads/doctor1.png" alt="Dr. Jane Smith"
+                class="w-24 h-24 rounded-full mb-4 object-cover" />
             <h3 class="text-xl font-bold text-blue-500">Dr. Jane Smith</h3>
             <p class="text-gray-700">Cardiologist</p>
             <p class="text-sm text-gray-500 mb-2">10+ years experience</p>
@@ -18,7 +19,8 @@
         <!-- Doctor Card 2 -->
         <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center cursor-pointer hover:shadow-lg transition-shadow"
             onclick="openDoctorProfile(2)">
-            <img src="/images/doctor2.jpg" alt="Dr. John Doe" class="w-24 h-24 rounded-full mb-4 object-cover" />
+            <img src="/storage/uploads/doctor2.png" alt="Dr. John Doe"
+                class="w-24 h-24 rounded-full mb-4 object-cover" />
             <h3 class="text-xl font-bold text-blue-500">Dr. John Doe</h3>
             <p class="text-gray-700">Neurologist</p>
             <p class="text-sm text-gray-500 mb-2">8+ years experience</p>
@@ -28,7 +30,8 @@
         <!-- Doctor Card 3 -->
         <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center cursor-pointer hover:shadow-lg transition-shadow"
             onclick="openDoctorProfile(3)">
-            <img src="/images/doctor3.jpg" alt="Dr. Emily Lee" class="w-24 h-24 rounded-full mb-4 object-cover" />
+            <img src="/storage/uploads/doctor3.png" alt="Dr. Emily Lee"
+                class="w-24 h-24 rounded-full mb-4 object-cover" />
             <h3 class="text-xl font-bold text-blue-500">Dr. Emily Lee</h3>
             <p class="text-gray-700">Pediatrician</p>
             <p class="text-sm text-gray-500 mb-2">5+ years experience</p>
