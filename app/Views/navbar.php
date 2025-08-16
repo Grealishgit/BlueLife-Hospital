@@ -10,6 +10,11 @@
     </ul>
     <div class="flex items-center space-x-4">
         <a href="#" onclick="openModal()" class="text-blue-500 font-semibold hover:text-blue-200">Login</a>
-        <a href="#" class="text-blue-500 font-semibold hover:text-blue-200">Forgot Password?</a>
+        <!-- <a href="#" class="text-blue-500 font-semibold hover:text-blue-200">Forgot Password?</a> -->
+        <a href="/profile.php">
+            <img src="/storage/uploads/doctor1.png" alt=""
+                class="w-8 h-8 border border-blue-500 cursor-pointer rounded-full object-cover">
+        </a>
+
     </div>
 </nav>
