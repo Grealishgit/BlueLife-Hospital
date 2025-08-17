@@ -29,7 +29,7 @@
         <!-- About Section Card -->
         <div class="flex md:flex-row flex-col px-5 gap-8 mt-12 w-full">
             <div class="border md:flex-1 rounded-lg shadow-lg p-6 mx-auto max-w-4xl">
-                <p class="text-sm text-gray-600 mb-4">
+                <p class="text-sm font-semibold text-gray-800 mb-4">
                     Welcome to BlueLife, your trusted partner in managing your
                     healthcare needs conveniently and efficiently. At BlueLife, we
                     understand the challenges individuals face when it comes to scheduling
