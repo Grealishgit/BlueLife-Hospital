@@ -27,50 +27,54 @@
         </div>
 
         <!-- About Section Card -->
-        <div class="my-10">
-            <div class="border rounded-lg shadow-lg p-6 mx-auto max-w-4xl">
+        <div class="flex md:flex-row flex-col px-5 gap-8 mt-12 w-full">
+            <div class="border md:flex-1 rounded-lg shadow-lg p-6 mx-auto max-w-4xl">
                 <p class="text-sm text-gray-600 mb-4">
                     Welcome to BlueLife, your trusted partner in managing your
                     healthcare needs conveniently and efficiently. At BlueLife, we
                     understand the challenges individuals face when it comes to scheduling
                     doctor appointments and managing their health records. BlueLife is committed to excellence in
                     healthcare technology. We continuously strive to enhance our platform, integrating the latest
-                    advancements to improve user experience and deliver superior service. Whether you're booking your
-                    first appointment or managing ongoing care, BlueLife is here to support you every step of the way.
+                    advancements to improve user experience and deliver superior service. Whether you're booking
+                    your
+                    first appointment or managing ongoing care, BlueLife is here to support you every step of the
+                    way.
                     <span
                         class="text-blue-600 font-semibold  hover:text-green-600  transition-all duration-300 cursor-pointer">We
                         offer health services in the following fields.</span>
                 </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- Sub Cards for Specialties -->
-                    <div
-                        class="border rounded-lg shadow-lg p-4  hover:bg-blue-500 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
-                        <b>General Physician</b>
-                    </div>
-                    <div
-                        class="border rounded-lg shadow-lg p-4 hover:bg-green-600 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
-                        <b>Gynecologist</b>
-                    </div>
-                    <div
-                        class="border rounded-lg shadow-lg p-4  hover:bg-red-600 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
-                        <b>Dermatologist</b>
-                    </div>
-                    <div
-                        class="border rounded-lg shadow-lg p-4  hover:bg-blue-500 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
-                        <b>Pediatrician</b>
-                    </div>
-                    <div
-                        class="border rounded-lg shadow-lg p-4  hover:bg-green-600 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
-                        <b>Neurologist</b>
-                    </div>
-                    <div
-                        class="border rounded-lg shadow-lg p-4  hover:bg-red-600 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
-                        <b>Gastroenterologist</b>
-                    </div>
+
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Sub Cards for Specialties -->
+                <div
+                    class="border rounded-lg shadow-lg p-4  hover:bg-blue-500 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
+                    <b>General Physician</b>
+                </div>
+                <div
+                    class="border rounded-lg shadow-lg p-4 hover:bg-green-600 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
+                    <b>Gynecologist</b>
+                </div>
+                <div
+                    class="border rounded-lg shadow-lg p-4  hover:bg-red-600 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
+                    <b>Dermatologist</b>
+                </div>
+                <div
+                    class="border rounded-lg shadow-lg p-4  hover:bg-blue-500 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
+                    <b>Pediatrician</b>
+                </div>
+                <div
+                    class="border rounded-lg shadow-lg p-4  hover:bg-green-600 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
+                    <b>Neurologist</b>
+                </div>
+                <div
+                    class="border rounded-lg shadow-lg p-4  hover:bg-red-600 hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
+                    <b>Gastroenterologist</b>
                 </div>
             </div>
         </div>
+
 
         <div class="text-xl my-4 text-center">
             <p>WHY <span class="text-blue-700 font-semibold">CHOOSE US</span></p>
