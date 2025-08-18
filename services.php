@@ -40,6 +40,7 @@
 
 <body class="bg-gray-50">
     <?php include 'app/Views/navbar.php'; ?>
+    <?php include 'app/Views/bookingModal.php'; ?>
 
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-20 mt-10">
@@ -69,7 +70,8 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Emergency Care -->
-                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl">
+                <div
+                    class="service-card bg-white rounded-xl cursor-pointer shadow-lg hover:shadow-red-300 p-8 hover:shadow-2xl">
                     <div class="service-icon bg-red-100 text-red-600">🚨</div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Emergency Care</h3>
                     <p class="text-gray-600 mb-6 text-center">24/7 emergency medical services with rapid response team
@@ -80,14 +82,15 @@
                         <li>• Ambulance services</li>
                         <li>• Emergency diagnostics</li>
                     </ul>
-                    <button onclick="bookService('emergency')"
+                    <button onclick="openBookingModal('emergency')"
                         class="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition-colors">
                         Emergency Contact
                     </button>
                 </div>
 
                 <!-- Cardiology -->
-                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl">
+                <div
+                    class="service-card bg-white rounded-xl shadow-lg cursor-pointer p-8 hover:shadow-blue-400 hover:shadow-2xl">
                     <div class="service-icon bg-blue-100 text-blue-600">❤️</div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Cardiology</h3>
                     <p class="text-gray-600 mb-6 text-center">Comprehensive heart care with advanced cardiac procedures
@@ -98,14 +101,15 @@
                         <li>• Heart surgery</li>
                         <li>• Preventive cardiology</li>
                     </ul>
-                    <button onclick="bookService('cardiology')"
+                    <button onclick="openBookingModal('cardiology')"
                         class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
                         Book Consultation
                     </button>
                 </div>
 
                 <!-- Neurology -->
-                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl">
+                <div
+                    class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-purple-500 cursor-pointer hover:shadow-2xl">
                     <div class="service-icon bg-purple-100 text-purple-600">🧠</div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Neurology</h3>
                     <p class="text-gray-600 mb-6 text-center">Expert neurological care for brain, spine, and nervous
@@ -116,14 +120,15 @@
                         <li>• Epilepsy management</li>
                         <li>• Neurosurgery</li>
                     </ul>
-                    <button onclick="bookService('neurology')"
+                    <button onclick="openBookingModal('neurology')"
                         class="w-full bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 transition-colors">
                         Book Consultation
                     </button>
                 </div>
 
                 <!-- Pediatrics -->
-                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl">
+                <div
+                    class="service-card bg-white rounded-xl hover:shadow-green-300 cursor-pointer  shadow-lg p-8 hover:shadow-2xl">
                     <div class="service-icon bg-green-100 text-green-600">👶</div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Pediatrics</h3>
                     <p class="text-gray-600 mb-6 text-center">Specialized healthcare for infants, children, and
@@ -134,14 +139,15 @@
                         <li>• Growth monitoring</li>
                         <li>• Pediatric surgery</li>
                     </ul>
-                    <button onclick="bookService('pediatrics')"
+                    <button onclick="openBookingModal('pediatrics')"
                         class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors">
                         Book Consultation
                     </button>
                 </div>
 
                 <!-- Orthopedics -->
-                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl">
+                <div
+                    class="service-card bg-white rounded-xl hover:shadow-orange-300 cursor-pointer  shadow-lg p-8 hover:shadow-2xl">
                     <div class="service-icon bg-orange-100 text-orange-600">🦴</div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Orthopedics</h3>
                     <p class="text-gray-600 mb-6 text-center">Complete bone, joint, and muscle care including sports
@@ -152,14 +158,15 @@
                         <li>• Fracture treatment</li>
                         <li>• Physical therapy</li>
                     </ul>
-                    <button onclick="bookService('orthopedics')"
+                    <button onclick="openBookingModal('orthopedics')"
                         class="w-full bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 transition-colors">
                         Book Consultation
                     </button>
                 </div>
 
                 <!-- Obstetrics & Gynecology -->
-                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl">
+                <div
+                    class="service-card bg-white rounded-xl hover:shadow-pink-300 cursor-pointer  shadow-lg p-8 hover:shadow-2xl">
                     <div class="service-icon bg-pink-100 text-pink-600">👩‍⚕️</div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">OB/GYN</h3>
                     <p class="text-gray-600 mb-6 text-center">Women's health services including pregnancy care and
@@ -170,7 +177,7 @@
                         <li>• Gynecological exams</li>
                         <li>• Family planning</li>
                     </ul>
-                    <button onclick="bookService('obgyn')"
+                    <button onclick="openBookingModal('obgyn')"
                         class="w-full bg-pink-500 text-white py-3 rounded-lg hover:bg-pink-600 transition-colors">
                         Book Consultation
                     </button>
@@ -270,11 +277,11 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <button onclick="openModal()"
-                    class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    class="bg-white text-blue-600 cursor-pointer px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
                     Book Appointment
                 </button>
                 <button onclick="contactUs()"
-                    class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                    class="border-2 border-white cursor-pointer text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors">
                     Contact Us
                 </button>
             </div>
