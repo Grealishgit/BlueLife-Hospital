@@ -159,7 +159,8 @@
                 <div class="mt-6">
                     <p class="text-white mb-3 font-semibold">Filter by Specialty:</p>
                     <div class="flex flex-wrap gap-3">
-                        <button class="filter-button active rounded-full px-4 py-2 text-white" data-specialty="all">All
+                        <button class="filter-button active rounded-full px-4 py-2 text-white" data-specialty="all">
+                            All
                             Specialists</button>
                         <button class="filter-button rounded-full px-4 py-2 text-white"
                             data-specialty="cardiology">Cardiology</button>
