@@ -253,9 +253,9 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="/images/hospital-facility.jpg" alt="Hospital Facility"
+                    <img src="/storage/uploads/bg (3).jpg" alt="Hospital Facility"
                         class="rounded-lg shadow-lg w-full" />
-                    <div class="absolute inset-0 bg-blue-600 bg-opacity-20 rounded-lg"></div>
+                    <div class="absolute inset-0  rounded-lg"></div>
                 </div>
             </div>
         </div>
