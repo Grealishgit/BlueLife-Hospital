@@ -55,6 +55,15 @@
 
                 <input type="number" placeholder="Phone Number"
                     class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
+                <select name="gender" id="gender" class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
+                    <option value="">Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <!-- DOB -->
+                <input type="date" placeholder="Date of Birth"
+                    class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
                 <input type="email" placeholder="Your Email"
                     class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
                 <input type="password" placeholder="Your Password"
@@ -76,23 +85,23 @@
 </div>
 
 <script>
-function openModal() {
-    document.getElementById('loginModal').classList.remove('hidden');
-}
+    function openModal() {
+        document.getElementById('loginModal').classList.remove('hidden');
+    }
 
-function closeModal() {
-    document.getElementById('loginModal').classList.add('hidden');
-}
-document.getElementById('showLogin').onclick = function() {
-    document.getElementById('loginForm').classList.remove('hidden');
-    document.getElementById('signupForm').classList.add('hidden');
-    this.classList.add('text-blue-500', 'border-b-2', 'border-blue-500');
-    document.getElementById('showSignup').classList.remove('text-blue-500', 'border-b-2', 'border-blue-500');
-};
-document.getElementById('showSignup').onclick = function() {
-    document.getElementById('signupForm').classList.remove('hidden');
-    document.getElementById('loginForm').classList.add('hidden');
-    this.classList.add('text-blue-500', 'border-b-2', 'border-blue-500');
-    document.getElementById('showLogin').classList.remove('text-blue-500', 'border-b-2', 'border-blue-500');
-};
+    function closeModal() {
+        document.getElementById('loginModal').classList.add('hidden');
+    }
+    document.getElementById('showLogin').onclick = function() {
+        document.getElementById('loginForm').classList.remove('hidden');
+        document.getElementById('signupForm').classList.add('hidden');
+        this.classList.add('text-blue-500', 'border-b-2', 'border-blue-500');
+        document.getElementById('showSignup').classList.remove('text-blue-500', 'border-b-2', 'border-blue-500');
+    };
+    document.getElementById('showSignup').onclick = function() {
+        document.getElementById('signupForm').classList.remove('hidden');
+        document.getElementById('loginForm').classList.add('hidden');
+        this.classList.add('text-blue-500', 'border-b-2', 'border-blue-500');
+        document.getElementById('showLogin').classList.remove('text-blue-500', 'border-b-2', 'border-blue-500');
+    };
 </script>
