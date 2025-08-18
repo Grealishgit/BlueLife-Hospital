@@ -7,36 +7,36 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>About Us - BlueLife Hospital</title>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-    body {
-        font-family: 'Inter', sans-serif;
-    }
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
 
-    .about-card {
-        transition: all 0.3s ease;
-    }
+        .about-card {
+            transition: all 0.3s ease;
+        }
 
-    .about-card:hover {
-        transform: translateY(-5px);
-    }
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
 
-    .gradient-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
 
-    .specialty-card {
-        transition: all 0.3s ease;
-    }
+        .specialty-card {
+            transition: all 0.3s ease;
+        }
 
-    .specialty-card:hover {
-        transform: scale(1.05);
-    }
+        .specialty-card:hover {
+            transform: scale(1.05);
+        }
 
-    .stats-counter {
-        font-size: 3rem;
-        font-weight: bold;
-    }
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -44,7 +44,7 @@
     <?php include 'app/Views/navbar.php'; ?>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-20 mt-16">
+    <section class="gradient-bg text-white py-20 mt-10">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-5xl font-bold mb-6">About BlueLife Hospital</h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto">
@@ -292,71 +292,71 @@
     <?php include 'app/Views/footer.php'; ?>
 
     <script>
-    function scrollToStory() {
-        document.getElementById('story').scrollIntoView({
-            behavior: 'smooth'
+        function scrollToStory() {
+            document.getElementById('story').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function contactUs() {
+            window.location.href = 'contact.php';
+        }
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards for animation
+        document.querySelectorAll('.about-card, .specialty-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
         });
-    }
 
-    function contactUs() {
-        window.location.href = 'contact.php';
-    }
+        // Animate stats counters
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + (target >= 1000 ? '+' : '');
+            }, 20);
+        }
 
-    // Add scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stats-counter');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.textContent);
+                        animateCounter(counter, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
         });
-    }, observerOptions);
 
-    // Observe cards for animation
-    document.querySelectorAll('.about-card, .specialty-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-
-    // Animate stats counters
-    function animateCounter(element, target) {
-        let current = 0;
-        const increment = target / 100;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            element.textContent = Math.floor(current) + (target >= 1000 ? '+' : '');
-        }, 20);
-    }
-
-    // Trigger counter animation when stats section is visible
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counters = entry.target.querySelectorAll('.stats-counter');
-                counters.forEach(counter => {
-                    const target = parseInt(counter.textContent);
-                    animateCounter(counter, target);
-                });
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    });
-
-    const statsSection = document.querySelector('.stats-counter').closest('section');
-    if (statsSection) {
-        statsObserver.observe(statsSection);
-    }
+        const statsSection = document.querySelector('.stats-counter').closest('section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
     </script>
 
 
