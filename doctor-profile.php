@@ -79,17 +79,7 @@
                             </button>
                         </div>
                     </div>
-                    <!-- Schedule -->
-                    <div>
-                        <h2 class="text-2xl mt-8 font-semibold text-blue-500 text-center  mb-3">
-                            Schedule
-                        </h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                            <?php foreach ($doctor['schedule'] as $schedule): ?>
-                            <div class="bg-gray-50 p-2 rounded text-gray-700"><?php echo $schedule; ?></div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
+
                 </div>
 
                 <!-- Doctor Details -->
@@ -101,20 +91,22 @@
                             <p class="text-gray-700 leading-relaxed"><?php echo $doctor['bio']; ?></p>
                         </div>
 
-                        <!-- Education -->
-                        <div>
-                            <h2 class="text-2xl font-semibold text-gray-800 mb-3">Education</h2>
-                            <p class="text-gray-700"><?php echo $doctor['education']; ?></p>
-                        </div>
+                        <div class="flex md:flex-row flex-col gap-6">
+                            <div>
+                                <h2 class="text-2xl font-semibold text-gray-800 mb-3">Education</h2>
+                                <p class="text-gray-700"><?php echo $doctor['education']; ?></p>
+                            </div>
 
-                        <!-- Qualifications -->
-                        <div>
-                            <h2 class="text-2xl font-semibold text-gray-800 mb-3">Qualifications</h2>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <?php foreach ($doctor['qualifications'] as $qualification): ?>
-                                <li><?php echo $qualification; ?></li>
-                                <?php endforeach; ?>
-                            </ul>
+                            <!-- Qualifications -->
+                            <div>
+                                <h2 class="text-2xl font-semibold text-gray-800 mb-3">Qualifications</h2>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                    <?php foreach ($doctor['qualifications'] as $qualification): ?>
+                                        <li><?php echo $qualification; ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                            <!-- Education -->
                         </div>
 
                         <!-- Specializations -->
@@ -122,8 +114,8 @@
                             <h2 class="text-2xl font-semibold text-gray-800 mb-3">Specializations</h2>
                             <div class="flex flex-wrap gap-2">
                                 <?php foreach ($doctor['specializations'] as $specialization): ?>
-                                <span
-                                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"><?php echo $specialization; ?></span>
+                                    <span
+                                        class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"><?php echo $specialization; ?></span>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -138,29 +130,39 @@
                                 <p class="text-gray-700"><strong>Email:</strong> <?php echo $doctor['email']; ?></p>
                             </div>
                         </div>
+                        <!-- Schedule -->
+                        <div>
+                            <h2 class="text-2xl mt-8 font-semibold text-blue-500 text-center  mb-3">
+                                Schedule
+                            </h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <?php foreach ($doctor['schedule'] as $schedule): ?>
+                                    <div class="bg-gray-50 p-2 rounded text-gray-700"><?php echo $schedule; ?></div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Back to Doctors Button -->
+            <div class="text-center mt-8">
+                <a href="index.php"
+                    class="inline-block cursor-pointer bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors">
+                    Back to Doctors
+                </a>
+            </div>
         </div>
 
-        <!-- Back to Doctors Button -->
-        <div class="text-center mt-8">
-            <a href="index.php"
-                class="inline-block cursor-pointer bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors">
-                Back to Doctors
-            </a>
-        </div>
-    </div>
+        <?php include 'app/Views/footer.php'; ?>
 
-    <?php include 'app/Views/footer.php'; ?>
-
-    <script>
-    function bookAppointment(doctorId) {
-        alert(`Booking appointment with doctor ID: ${doctorId}`);
-        // You can redirect to appointment booking page or open a modal
-        // window.location.href = `book-appointment.php?doctor_id=${doctorId}`;
-    }
-    </script>
+        <script>
+            function bookAppointment(doctorId) {
+                alert(`Booking appointment with doctor ID: ${doctorId}`);
+                // You can redirect to appointment booking page or open a modal
+                // window.location.href = `book-appointment.php?doctor_id=${doctorId}`;
+            }
+        </script>
 </body>
 
 </html>
