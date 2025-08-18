@@ -13,6 +13,10 @@
             font-family: 'Quicksand', sans-serif;
         }
 
+        .font-value {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
         .about-card {
             transition: all 0.3s ease;
         }
@@ -63,7 +67,7 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
                 <div class="about-card p-6">
-                    <div class="stats-counter text-blue-600 mb-2">25+</div>
+                    <p class="stats-counter font-value text-blue-600 mb-2">25+</p>
                     <h3 class="text-lg font-semibold text-gray-800">Years of Excellence</h3>
                     <p class="text-gray-600 text-sm">Serving our community</p>
                 </div>

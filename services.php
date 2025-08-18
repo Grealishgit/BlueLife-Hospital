@@ -83,7 +83,7 @@
                         <li>• Emergency diagnostics</li>
                     </ul>
                     <button onclick="openBookingModal('emergency')"
-                        class="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition-colors">
+                        class="w-full bg-red-500 cursor-pointer text-white py-3 rounded-lg hover:bg-red-600 transition-colors">
                         Emergency Contact
                     </button>
                 </div>
@@ -102,7 +102,7 @@
                         <li>• Preventive cardiology</li>
                     </ul>
                     <button onclick="openBookingModal('cardiology')"
-                        class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                        class="w-full bg-blue-500 cursor-pointer text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
                         Book Consultation
                     </button>
                 </div>
@@ -121,7 +121,7 @@
                         <li>• Neurosurgery</li>
                     </ul>
                     <button onclick="openBookingModal('neurology')"
-                        class="w-full bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 transition-colors">
+                        class="w-full bg-purple-500 cursor-pointer text-white py-3 rounded-lg hover:bg-purple-600 transition-colors">
                         Book Consultation
                     </button>
                 </div>
@@ -140,7 +140,7 @@
                         <li>• Pediatric surgery</li>
                     </ul>
                     <button onclick="openBookingModal('pediatrics')"
-                        class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors">
+                        class="w-full bg-green-500 cursor-pointer text-white py-3 rounded-lg hover:bg-green-600 transition-colors">
                         Book Consultation
                     </button>
                 </div>
@@ -149,7 +149,7 @@
                 <div
                     class="service-card bg-white rounded-xl hover:shadow-orange-300 cursor-pointer  shadow-lg p-8 hover:shadow-2xl">
                     <div class="service-icon bg-orange-100 text-orange-600">🦴</div>
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Orthopedics</h3>
+                    <h3 class="text-2xl font-semibold  text-gray-800 mb-4 text-center">Orthopedics</h3>
                     <p class="text-gray-600 mb-6 text-center">Complete bone, joint, and muscle care including sports
                         medicine and rehabilitation.</p>
                     <ul class="text-sm text-gray-700 mb-6 space-y-2">
@@ -159,7 +159,7 @@
                         <li>• Physical therapy</li>
                     </ul>
                     <button onclick="openBookingModal('orthopedics')"
-                        class="w-full bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 transition-colors">
+                        class="w-full bg-orange-500 cursor-pointer text-white py-3 rounded-lg hover:bg-orange-600 transition-colors">
                         Book Consultation
                     </button>
                 </div>
@@ -178,7 +178,7 @@
                         <li>• Family planning</li>
                     </ul>
                     <button onclick="openBookingModal('obgyn')"
-                        class="w-full bg-pink-500 text-white py-3 rounded-lg hover:bg-pink-600 transition-colors">
+                        class="w-full bg-pink-500 cursor-pointer text-white py-3 rounded-lg hover:bg-pink-600 transition-colors">
                         Book Consultation
                     </button>
                 </div>
@@ -197,22 +197,22 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div class="text-center p-6 bg-gray-50 cursor-pointer rounded-lg hover:bg-gray-100 transition-colors">
                     <div class="text-4xl mb-4">🔬</div>
                     <h4 class="font-semibold text-gray-800 mb-2">Laboratory Tests</h4>
                     <p class="text-sm text-gray-600">Blood tests, urine analysis, and genetic testing</p>
                 </div>
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div class="text-center p-6 bg-gray-50 cursor-pointer rounded-lg hover:bg-gray-100 transition-colors">
                     <div class="text-4xl mb-4">📷</div>
                     <h4 class="font-semibold text-gray-800 mb-2">Medical Imaging</h4>
                     <p class="text-sm text-gray-600">MRI, CT scans, X-rays, and ultrasound</p>
                 </div>
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div class="text-center p-6 bg-gray-50 cursor-pointer rounded-lg hover:bg-gray-100 transition-colors">
                     <div class="text-4xl mb-4">📈</div>
                     <h4 class="font-semibold text-gray-800 mb-2">Cardiac Testing</h4>
                     <p class="text-sm text-gray-600">ECG, stress tests, and echocardiography</p>
                 </div>
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div class="text-center p-6 bg-gray-50 cursor-pointer rounded-lg hover:bg-gray-100 transition-colors">
                     <div class="text-4xl mb-4">🩺</div>
                     <h4 class="font-semibold text-gray-800 mb-2">Health Screenings</h4>
                     <p class="text-sm text-gray-600">Preventive health checkups and cancer screening</p>
