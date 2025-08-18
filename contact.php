@@ -7,32 +7,32 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Contact Us - BlueLife Hospital</title>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-    body {
-        font-family: 'Inter', sans-serif;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
-    .contact-card {
-        transition: all 0.3s ease;
-    }
+        .contact-card {
+            transition: all 0.3s ease;
+        }
 
-    .contact-card:hover {
-        transform: translateY(-5px);
-    }
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
 
-    .gradient-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
 
-    .map-container {
-        filter: grayscale(30%);
-        transition: filter 0.3s ease;
-    }
+        .map-container {
+            filter: grayscale(30%);
+            transition: filter 0.3s ease;
+        }
 
-    .map-container:hover {
-        filter: grayscale(0%);
-    }
+        .map-container:hover {
+            filter: grayscale(0%);
+        }
     </style>
 </head>
 
@@ -48,7 +48,7 @@
                 inquiries, or emergency assistance.
             </p>
             <button onclick="scrollToContact()"
-                class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                class="bg-white text-blue-600 px-8 py-3 cursor-pointer rounded-full font-semibold hover:bg-gray-100 transition-colors">
                 Get In Touch
             </button>
         </div>
@@ -76,7 +76,8 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                 <!-- Phone -->
-                <div class="contact-card bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl">
+                <div
+                    class="contact-card bg-white rounded-xl border-l-4 cursor-pointer border-blue-500 shadow-lg hover:shadow-blue-400 p-8 text-center hover:shadow-2xl">
                     <div
                         class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
                         📞</div>
@@ -88,7 +89,8 @@
                 </div>
 
                 <!-- Email -->
-                <div class="contact-card bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl">
+                <div
+                    class="contact-card bg-white rounded-xl border-b-4 border-red-500 cursor-pointer shadow-lg hover:shadow-red-400 p-8 text-center hover:shadow-2xl">
                     <div
                         class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
                         📧</div>
@@ -100,7 +102,8 @@
                 </div>
 
                 <!-- Location -->
-                <div class="contact-card bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl">
+                <div
+                    class="contact-card bg-white rounded-xl shadow-lg hover:shadow-green-400 border-t-4 cursor-pointer border-green-500 p-8 text-center hover:shadow-2xl">
                     <div
                         class="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
                         📍</div>
@@ -116,7 +119,7 @@
 
                 <!-- Emergency -->
                 <div
-                    class="contact-card bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-2xl border-l-4 border-red-500">
+                    class="contact-card bg-white cursor-pointer rounded-xl cursor-pointer shadow-lg hover:shadow-red-400 p-8 text-center hover:shadow-2xl border-r-4 border-red-500">
                     <div
                         class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
                         🚨</div>
@@ -317,61 +320,61 @@
     <?php include 'app/Views/footer.php'; ?>
 
     <script>
-    function scrollToContact() {
-        document.getElementById('contact').scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
-
-    function callHospital() {
-        window.location.href = 'tel:+15551234567';
-    }
-
-    function toggleFAQ(faqNumber) {
-        const faqContent = document.getElementById(`faq${faqNumber}`);
-        const faqIcon = document.getElementById(`faq${faqNumber}-icon`);
-
-        if (faqContent.classList.contains('hidden')) {
-            faqContent.classList.remove('hidden');
-            faqIcon.textContent = '-';
-        } else {
-            faqContent.classList.add('hidden');
-            faqIcon.textContent = '+';
-        }
-    }
-
-    // Handle contact form submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Get form data
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-
-        // Simple validation
-        if (!data.firstName || !data.lastName || !data.email || !data.subject || !data.message) {
-            alert('Please fill in all required fields.');
-            return;
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth'
+            });
         }
 
-        // Simulate form submission
-        alert('Thank you for your message! We will get back to you within 24 hours.');
-        this.reset();
-    });
+        function callHospital() {
+            window.location.href = 'tel:+15551234567';
+        }
 
-    // Add form field animations
-    const formInputs = document.querySelectorAll('input, select, textarea');
-    formInputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-        });
+        function toggleFAQ(faqNumber) {
+            const faqContent = document.getElementById(`faq${faqNumber}`);
+            const faqIcon = document.getElementById(`faq${faqNumber}-icon`);
 
-        input.addEventListener('blur', function() {
-            if (this.value === '') {
-                this.parentElement.classList.remove('focused');
+            if (faqContent.classList.contains('hidden')) {
+                faqContent.classList.remove('hidden');
+                faqIcon.textContent = '-';
+            } else {
+                faqContent.classList.add('hidden');
+                faqIcon.textContent = '+';
             }
+        }
+
+        // Handle contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            // Simple validation
+            if (!data.firstName || !data.lastName || !data.email || !data.subject || !data.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Simulate form submission
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            this.reset();
         });
-    });
+
+        // Add form field animations
+        const formInputs = document.querySelectorAll('input, select, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+
+            input.addEventListener('blur', function() {
+                if (this.value === '') {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
+        });
     </script>
 </body>
 
