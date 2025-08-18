@@ -208,7 +208,7 @@
             specialtyDisplay: "Cardiologist",
             experience: 15,
             rating: 4.9,
-            image: "/images/doctor1.jpg",
+            image: "/storage/uploads/doctor1.png",
             education: "Harvard Medical School",
             languages: ["English", "Spanish"],
             availability: "Mon-Fri",
@@ -222,7 +222,7 @@
             specialtyDisplay: "Neurologist",
             experience: 12,
             rating: 4.8,
-            image: "/images/doctor2.jpg",
+            image: "/storage/uploads/doctor2.png",
             education: "Stanford University",
             languages: ["English", "Mandarin"],
             availability: "Mon-Thu",
@@ -236,7 +236,7 @@
             specialtyDisplay: "Pediatrician",
             experience: 8,
             rating: 4.9,
-            image: "/images/doctor3.jpg",
+            image: "/storage/uploads/doctor3.png",
             education: "UCLA School of Medicine",
             languages: ["English", "Spanish"],
             availability: "Tue-Sat",
@@ -250,7 +250,7 @@
             specialtyDisplay: "Orthopedic Surgeon",
             experience: 20,
             rating: 4.7,
-            image: "/images/doctor4.jpg",
+            image: "/storage/uploads/doctor2.png",
             education: "Johns Hopkins University",
             languages: ["English"],
             availability: "Mon-Wed, Fri",
@@ -264,7 +264,7 @@
             specialtyDisplay: "Dermatologist",
             experience: 10,
             rating: 4.8,
-            image: "/images/doctor5.jpg",
+            image: "/images/doctor1.jpg",
             education: "University of Pennsylvania",
             languages: ["English", "French"],
             availability: "Mon-Fri",
@@ -278,7 +278,7 @@
             specialtyDisplay: "Psychiatrist",
             experience: 14,
             rating: 4.6,
-            image: "/images/doctor6.jpg",
+            image: "/storage/uploads/doctor3.png",
             education: "Yale School of Medicine",
             languages: ["English", "Hindi"],
             availability: "Tue-Thu",
@@ -292,7 +292,7 @@
             specialtyDisplay: "Interventional Cardiologist",
             experience: 18,
             rating: 4.9,
-            image: "/images/doctor7.jpg",
+            image: "/storage/uploads/doctor1.png",
             education: "Mayo Clinic",
             languages: ["English", "Spanish"],
             availability: "Mon-Fri",
@@ -306,7 +306,7 @@
             specialtyDisplay: "Neurosurgeon",
             experience: 16,
             rating: 4.8,
-            image: "/images/doctor8.jpg",
+            image: "/storage/uploads/doctor2.png",
             education: "Cleveland Clinic",
             languages: ["English", "Korean"],
             availability: "Mon-Wed",
@@ -351,7 +351,7 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span>💰 Consultation:</span>
-                            <span class="font-medium text-blue-600">$${doctor.consultationFee}</span>
+                            <span class="font-medium text-blue-600"> <span>Ksh</span>  ${doctor.consultationFee}</span>
                         </div>
                     </div>
                     
@@ -466,13 +466,15 @@
     function openDoctorModal(doctorId) {
         const doctor = doctors.find(d => d.id === doctorId);
         alert(
-            `Opening profile for ${doctor.name}\n\nSpecialty: ${doctor.specialtyDisplay}\nExperience: ${doctor.experience} years\nRating: ${doctor.rating}⭐\n\n${doctor.about}`);
+            `Opening profile for ${doctor.name}\n\nSpecialty: ${doctor.specialtyDisplay}\nExperience: ${doctor.experience} years\nRating: ${doctor.rating}⭐\n\n${doctor.about}`
+        );
     }
 
     function bookAppointment(doctorId) {
         const doctor = doctors.find(d => d.id === doctorId);
         alert(
-            `Booking appointment with ${doctor.name}\nConsultation Fee: $${doctor.consultationFee}\n\nRedirecting to booking form...`);
+            `Booking appointment with ${doctor.name}\nConsultation Fee: $Ksh${doctor.consultationFee}\n\nRedirecting to booking form...`
+        );
         // Here you can open the booking modal or redirect to booking page
     }
 
