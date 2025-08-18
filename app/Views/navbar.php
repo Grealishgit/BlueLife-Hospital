@@ -65,6 +65,7 @@
 .nav-tab:hover {
     color: #6366f1;
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.18);
+    border-radius: 8px;
     background: linear-gradient(90deg, #e0e7ff 0%, #dbeafe 100%);
     animation: tabPulse 0.7s;
 }
@@ -73,9 +74,13 @@
     transform: translateX(-50%) scaleX(1);
 }
 
-@keyframes tabPulse {
+/* @keyframes tabPulse {
     0% {
         box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.18);
+    }
+
+    25% {
+        box-shadow: 0 0 0 0 rgba(161, 185, 224, 0.18);
     }
 
     70% {
@@ -85,5 +90,5 @@
     100% {
         box-shadow: 0 8px 24px rgba(59, 130, 246, 0.18);
     }
-}
+} */
 </style>
