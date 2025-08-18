@@ -7,10 +7,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Contact Us - BlueLife Hospital</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Quicksand', sans-serif;
         }
 
         .contact-card {
@@ -40,7 +40,7 @@
     <?php include 'app/Views/navbar.php'; ?>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-20 mt-16">
+    <section class="gradient-bg text-white py-20 mt-10">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-5xl font-bold mb-6">Contact BlueLife Hospital</h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto">
@@ -211,23 +211,23 @@
 
                     <!-- Hospital Information -->
                     <div class="bg-gray-50 rounded-lg p-6 mb-6">
-                        <h3 class="font-semibold text-gray-800 mb-4">Hospital Information</h3>
+                        <h3 class="font-bold text-gray-800 mb-4">Hospital Information</h3>
                         <div class="space-y-3 text-sm">
                             <div class="flex items-center">
                                 <span class="w-6 text-blue-600">🏥</span>
-                                <span class="ml-2">BlueLife Hospital - Main Campus</span>
+                                <span class="ml-2 font-semibold">BlueLife Hospital - Main Campus</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="w-6 text-blue-600">🚗</span>
-                                <span class="ml-2">Free parking - 500+ spaces</span>
+                                <span class="ml-2 font-semibold">Free parking - 500+ spaces</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="w-6 text-blue-600">🚌</span>
-                                <span class="ml-2">Public transport: Bus lines 12, 45, 67</span>
+                                <span class="ml-2 font-semibold">Public transport: Bus lines 12, 45, 67</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="w-6 text-blue-600">♿</span>
-                                <span class="ml-2">Wheelchair accessible</span>
+                                <span class="ml-2 font-semibold">Wheelchair accessible</span>
                             </div>
                         </div>
                     </div>
@@ -235,11 +235,11 @@
                     <!-- Quick Actions -->
                     <div class="space-y-3">
                         <button onclick="openModal()"
-                            class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                            class="w-full bg-green-600 cursor-pointer text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors">
                             Book Appointment Online
                         </button>
                         <button onclick="callHospital()"
-                            class="w-full border-2 border-blue-600 text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
+                            class="w-full border-2 border-blue-600 cursor-pointer text-blue-600 py-3 px-6 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
                             Call Hospital
                         </button>
                     </div>
