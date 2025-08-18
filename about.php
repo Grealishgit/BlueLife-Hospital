@@ -22,7 +22,7 @@
         }
 
         .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4f63bdff 0%, #6c8aefff 100%);
         }
 
         .specialty-card {
