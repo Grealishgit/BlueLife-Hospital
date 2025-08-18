@@ -41,6 +41,7 @@
 <body class="bg-gray-50">
     <?php include 'app/Views/navbar.php'; ?>
     <?php include 'app/Views/bookingModal.php'; ?>
+    <?php include 'app/Views/loginModal.php'; ?>
 
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-20 mt-10">

@@ -10,6 +10,7 @@
 
 <body class="bg-gray-50">
     <?php include 'app/Views/navbar.php'; ?>
+    <?php include 'app/Views/loginModal.php'; ?>
 
     <div class="container mx-auto px-2 py-8 mt-20">
         <?php
