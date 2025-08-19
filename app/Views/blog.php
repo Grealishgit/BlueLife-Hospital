@@ -186,7 +186,7 @@
     }
 
     .text-gradient {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6, #059669);
+        background: linear-gradient(135deg, #010610ff, #e1448aff, #45685dff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -245,13 +245,13 @@
     </section>
 
     <!-- Floating Navigation Tabs -->
-    <div class="floating-tabs">
-        <div class="tab-container">
-            <button class="tab-btn active" data-category="all">All Stories</button>
-            <button class="tab-btn" data-category="health-tips">Wellness</button>
-            <button class="tab-btn" data-category="medical-news">Research</button>
-            <button class="tab-btn" data-category="nutrition">Nutrition</button>
-            <button class="tab-btn" data-category="technology">Innovation</button>
+    <div class="floating-tabs mt-5">
+        <div class="tab-container grid grid-cols-2 md:grid-cols-5 max-sm:rounded-8 ma-sm text-sm">
+            <button class="tab-btn active cursor-pointer" data-category="all">All Stories</button>
+            <button class="tab-btn cursor-pointer" data-category="health-tips">Wellness</button>
+            <button class="tab-btn cursor-pointer" data-category="medical-news">Research</button>
+            <button class="tab-btn cursor-pointer" data-category="nutrition">Nutrition</button>
+            <button class="tab-btn cursor-pointer" data-category="technology">Innovation</button>
         </div>
     </div>
 
@@ -290,7 +290,7 @@
             author: "Dr. Sarah Johnson",
             date: "2025-08-15",
             readTime: "8 min read",
-            image: "/storage/uploads/blog1.jpg",
+            image: "/storage/uploads/bg1.jpg",
             featured: true,
             height: "tall"
         },
@@ -304,7 +304,7 @@
             author: "Dr. Michael Chen",
             date: "2025-08-12",
             readTime: "4 min read",
-            image: "/storage/uploads/blog2.jpg",
+            image: "/storage/uploads/bg1.jpg",
             featured: true,
             height: "medium"
         },
@@ -318,7 +318,7 @@
             author: "Dr. Robert Kumar",
             date: "2025-08-10",
             readTime: "6 min read",
-            image: "/storage/uploads/blog3.jpg",
+            image: "/storage/uploads/bg1.jpg",
             featured: true,
             height: "short"
         },
@@ -332,7 +332,7 @@
             author: "Dr. Emily Rodriguez",
             date: "2025-08-08",
             readTime: "5 min read",
-            image: "/storage/uploads/blog4.jpg",
+            image: "/storage/uploads/bg1.jpg",
             featured: false,
             height: "medium"
         },
@@ -346,7 +346,7 @@
             author: "Dr. James Wilson",
             date: "2025-08-05",
             readTime: "10 min read",
-            image: "/storage/uploads/blog5.jpg",
+            image: "/storage/uploads/bg1.jpg",
             featured: false,
             height: "tall"
         },
@@ -360,7 +360,7 @@
             author: "Dr. Lisa Thompson",
             date: "2025-08-03",
             readTime: "3 min read",
-            image: "/storage/uploads/blog6.jpg",
+            image: "/storage/uploads/bg1.jpg",
             featured: false,
             height: "short"
         }
@@ -496,7 +496,8 @@
     function openBlogPost(postId) {
         const post = blogPosts.find(p => p.id === postId);
         alert(
-            `Opening: "${post.title}"\n\nCategory: ${post.categoryDisplay}\nAuthor: ${post.author}\n\nThis would navigate to the full article page.`);
+            `Opening: "${post.title}"\n\nCategory: ${post.categoryDisplay}\nAuthor: ${post.author}\n\nThis would navigate to the full article page.`
+        );
     }
 
     // Initialize on page load
