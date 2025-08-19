@@ -154,7 +154,7 @@ $allDoctors = DoctorsData::getAllDoctors();
 
                     <!-- Sort Dropdown -->
                     <select id="sortSelect"
-                        class="px-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-white/50">
+                        class="px-4 py-3 rounded-lg bg-sky-300 backdrop-blur-sm border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-white/50">
                         <option value="name">Sort by Name</option>
                         <option value="specialty">Sort by Specialty</option>
                         <option value="experience">Sort by Experience</option>
@@ -163,23 +163,24 @@ $allDoctors = DoctorsData::getAllDoctors();
                 </div>
 
                 <!-- Specialty Filters -->
-                <div class="mt-6">
+                <div class="mt-6 flex flex-col justify-center items-center">
                     <p class="text-white mb-3 font-semibold">Filter by Specialty:</p>
                     <div class="flex flex-wrap gap-3">
-                        <button class="filter-button active rounded-full px-4 py-2 text-white" data-specialty="all">
+                        <button class="filter-button active rounded-full cursor-pointer px-4 py-2 text-white"
+                            data-specialty="all">
                             All
                             Specialists</button>
-                        <button class="filter-button rounded-full px-4 py-2 text-white"
+                        <button class="filter-button rounded-full cursor-pointer px-4 py-2 text-white"
                             data-specialty="cardiology">Cardiology</button>
-                        <button class="filter-button rounded-full px-4 py-2 text-white"
+                        <button class="filter-button rounded-full cursor-pointer px-4 py-2 text-white"
                             data-specialty="neurology">Neurology</button>
-                        <button class="filter-button rounded-full px-4 py-2 text-white"
+                        <button class="filter-button rounded-full cursor-pointer px-4 py-2 text-white"
                             data-specialty="pediatrics">Pediatrics</button>
-                        <button class="filter-button rounded-full px-4 py-2 text-white"
+                        <button class="filter-button rounded-full cursor-pointer px-4 py-2 text-white"
                             data-specialty="orthopedics">Orthopedics</button>
-                        <button class="filter-button rounded-full px-4 py-2 text-white"
+                        <button class="filter-button rounded-full cursor-pointer px-4 py-2 text-white"
                             data-specialty="dermatology">Dermatology</button>
-                        <button class="filter-button rounded-full px-4 py-2 text-white"
+                        <button class="filter-button rounded-full cursor-pointer px-4 py-2 text-white"
                             data-specialty="psychiatry">Psychiatry</button>
                     </div>
                 </div>
@@ -218,9 +219,11 @@ $allDoctors = DoctorsData::getAllDoctors();
     // Generate doctor card HTML
     function createDoctorCard(doctor) {
         return `
-                <div class="doctor-card rounded-xl p-6 slide-in cursor-pointer" data-doctor-id="${doctor.id}" onclick="openDoctorModal(${doctor.id})">
+                <div class="doctor-card rounded-md border-2 hover:border-blue-500 hover:shadow-2xl shadow-white p-6 slide-in cursor-pointer"
+                 data-doctor-id="${doctor.id}" onclick="openDoctorModal(${doctor.id})">
                     <div class="relative mb-4">
-                        <img src="${doctor.image}" alt="${doctor.name}" class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-white shadow-lg">
+                        <img src="${doctor.image}" alt="${doctor.name}"
+                         class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-white shadow-lg">
                         <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                             <span class="specialty-badge">${doctor.specialtyDisplay}</span>
                         </div>
@@ -247,7 +250,7 @@ $allDoctors = DoctorsData::getAllDoctors();
                         </div>
                         <div class="flex items-center justify-between">
                             <span>💰 Consultation:</span>
-                            <span class="font-medium text-blue-600">$${doctor.consultation_fee}</span>
+                            <span class="font-medium text-blue-600"> <span>Ksh</span> ${doctor.consultation_fee}</span>
                         </div>
                     </div>
                     
