@@ -1,3 +1,10 @@
+<?php
+// Include the centralized doctors data
+require_once 'app/Data/doctors.php';
+
+// Get all doctors from centralized data
+$allDoctors = DoctorsData::getAllDoctors();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -201,120 +208,8 @@
     <?php include 'app/Views/footer.php'; ?>
 
     <script>
-    // Sample doctors data
-    const doctors = [{
-            id: 1,
-            name: "Dr. Sarah Johnson",
-            specialty: "cardiology",
-            specialtyDisplay: "Cardiologist",
-            experience: 15,
-            rating: 4.9,
-            image: "/storage/uploads/doctor1.png",
-            education: "Harvard Medical School",
-            languages: ["English", "Spanish"],
-            availability: "Mon-Fri",
-            consultationFee: 150,
-            about: "Specialized in preventive cardiology and heart disease management with over 15 years of experience."
-        },
-        {
-            id: 2,
-            name: "Dr. Michael Chen",
-            specialty: "neurology",
-            specialtyDisplay: "Neurologist",
-            experience: 12,
-            rating: 4.8,
-            image: "/storage/uploads/doctor2.png",
-            education: "Stanford University",
-            languages: ["English", "Mandarin"],
-            availability: "Mon-Thu",
-            consultationFee: 180,
-            about: "Expert in treating neurological disorders including stroke, epilepsy, and neurodegenerative diseases."
-        },
-        {
-            id: 3,
-            name: "Dr. Emily Rodriguez",
-            specialty: "pediatrics",
-            specialtyDisplay: "Pediatrician",
-            experience: 8,
-            rating: 4.9,
-            image: "/storage/uploads/doctor3.png",
-            education: "UCLA School of Medicine",
-            languages: ["English", "Spanish"],
-            availability: "Tue-Sat",
-            consultationFee: 120,
-            about: "Compassionate pediatric care for children from infancy through adolescence."
-        },
-        {
-            id: 4,
-            name: "Dr. James Wilson",
-            specialty: "orthopedics",
-            specialtyDisplay: "Orthopedic Surgeon",
-            experience: 20,
-            rating: 4.7,
-            image: "/storage/uploads/doctor2.png",
-            education: "Johns Hopkins University",
-            languages: ["English"],
-            availability: "Mon-Wed, Fri",
-            consultationFee: 200,
-            about: "Specializes in joint replacement surgery and sports medicine with two decades of experience."
-        },
-        {
-            id: 5,
-            name: "Dr. Lisa Thompson",
-            specialty: "dermatology",
-            specialtyDisplay: "Dermatologist",
-            experience: 10,
-            rating: 4.8,
-            image: "/images/doctor1.jpg",
-            education: "University of Pennsylvania",
-            languages: ["English", "French"],
-            availability: "Mon-Fri",
-            consultationFee: 140,
-            about: "Expert in medical and cosmetic dermatology, treating various skin conditions."
-        },
-        {
-            id: 6,
-            name: "Dr. Robert Kumar",
-            specialty: "psychiatry",
-            specialtyDisplay: "Psychiatrist",
-            experience: 14,
-            rating: 4.6,
-            image: "/storage/uploads/doctor3.png",
-            education: "Yale School of Medicine",
-            languages: ["English", "Hindi"],
-            availability: "Tue-Thu",
-            consultationFee: 160,
-            about: "Specialized in anxiety disorders, depression, and cognitive behavioral therapy."
-        },
-        {
-            id: 7,
-            name: "Dr. Maria Garcia",
-            specialty: "cardiology",
-            specialtyDisplay: "Interventional Cardiologist",
-            experience: 18,
-            rating: 4.9,
-            image: "/storage/uploads/doctor1.png",
-            education: "Mayo Clinic",
-            languages: ["English", "Spanish"],
-            availability: "Mon-Fri",
-            consultationFee: 220,
-            about: "Pioneer in minimally invasive cardiac procedures and heart catheterization."
-        },
-        {
-            id: 8,
-            name: "Dr. David Lee",
-            specialty: "neurology",
-            specialtyDisplay: "Neurosurgeon",
-            experience: 16,
-            rating: 4.8,
-            image: "/storage/uploads/doctor2.png",
-            education: "Cleveland Clinic",
-            languages: ["English", "Korean"],
-            availability: "Mon-Wed",
-            consultationFee: 250,
-            about: "Renowned neurosurgeon specializing in brain tumor removal and spinal surgery."
-        }
-    ];
+    // Get doctors data from PHP
+    const doctors = <?php echo json_encode(array_values($allDoctors)); ?>;
 
     let filteredDoctors = [...doctors];
     let currentFilter = 'all';
@@ -337,7 +232,7 @@
                         <div class="flex items-center justify-center mb-2">
                             <span class="text-yellow-500">⭐</span>
                             <span class="text-gray-700 ml-1 font-semibold">${doctor.rating}</span>
-                            <span class="text-gray-500 ml-2">${doctor.experience} years exp.</span>
+                            <span class="text-gray-500 ml-2">${doctor.experience_years} years exp.</span>
                         </div>
                     </div>
                     
@@ -352,11 +247,11 @@
                         </div>
                         <div class="flex items-center justify-between">
                             <span>💰 Consultation:</span>
-                            <span class="font-medium text-blue-600"> <span>Ksh</span>  ${doctor.consultationFee}</span>
+                            <span class="font-medium text-blue-600">$${doctor.consultation_fee}</span>
                         </div>
                     </div>
                     
-                    <p class="text-gray-700 text-sm mb-4 line-clamp-2">${doctor.about}</p>
+                    <p class="text-gray-700 text-sm mb-4 line-clamp-2">${doctor.bio}</p>
                     
                     <div class="flex gap-2">
                         <button onclick="event.stopPropagation(); bookAppointment(${doctor.id})" 
@@ -431,7 +326,7 @@
                 case 'specialty':
                     return a.specialtyDisplay.localeCompare(b.specialtyDisplay);
                 case 'experience':
-                    return b.experience - a.experience;
+                    return b.experience_years - a.experience_years;
                 case 'rating':
                     return b.rating - a.rating;
                 default:

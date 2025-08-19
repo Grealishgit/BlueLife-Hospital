@@ -2,7 +2,7 @@
 
     <div class="w-full flex p-10 flex-col md:flex-row justify-between gap-10">
 
-        <div class="flex w-1/2 md:max-w-100 flex-col">
+        <div class="flex md:w-1/2 w-full  flex-col">
             <!-- <img class="h-9"
                 src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoDark.svg"
                 alt="dummyLogoDark"> -->
@@ -15,6 +15,7 @@
         </div>
 
         <div class="flex md:w-1/2 w-full flex-col md:flex-row md:items-start items-center gap-10">
+
             <div class=" flex w-full items-start md:justify-end gap-20">
                 <div>
                     <h2 class="font-semibold mb-5 text-gray-800">Company</h2>
@@ -25,21 +26,22 @@
 
                     </ul>
                 </div>
+            </div>
 
-                <div>
-                    <h2 class="font-semibold text-gray-800 mb-5">Subscribe to our newsletter</h2>
-                    <div class="text-sm space-y-2">
-                        <p>The latest news, articles, and resources, sent to your inbox weekly.</p>
-                        <div class="flex md:flex-row flex-col items-center gap-2 pt-4">
-                            <input
-                                class="border border-gray-500/30 placeholder-gray-500 focus:ring-2 ring-blue-600 outline-none w-full max-w-64 h-9 rounded px-2"
-                                type="email" placeholder="Enter your email">
-                            <button
-                                class="bg-blue-500 hover:text-white hover:text-blue-600 cursor-pointer md:w-24 w-full h-9 text-white rounded">Subscribe</button>
-                        </div>
+            <div class="w-full">
+                <h2 class="font-semibold text-gray-800 mb-5">Subscribe to our newsletter</h2>
+                <div class="text-sm space-y-2">
+                    <p>The latest news, articles, and resources, sent to your inbox weekly.</p>
+                    <div class="flex md:flex-row flex-col items-center gap-2 pt-4">
+                        <input
+                            class="border border-gray-500/30 placeholder-gray-500 focus:ring-2 ring-blue-600 outline-none w-full md:max-w-64 h-9 rounded px-2"
+                            type="email" placeholder="Enter your email">
+                        <button
+                            class="bg-blue-500 hover:text-white hover:text-blue-600 cursor-pointer md:w-24 w-full h-9 text-white rounded">Subscribe</button>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

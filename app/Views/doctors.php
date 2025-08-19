@@ -1,79 +1,42 @@
+<?php
+// Include the centralized doctors data
+require_once dirname(__DIR__) . '/Data/doctors.php';
+
+// Get top 6 doctors for the home page
+$topDoctors = DoctorsData::getTopDoctors(6);
+?>
+
 <div class='flex flex-col w-full mt-10 items-center'>
     <p class="text-3xl font-bold">Top <span class="text-blue-500">Doctors</span> to Book</p>
     <p class="text-center font-semibold text-gray-800">
         Simply browse through our extensive list of trusted doctors.
     </p>
 
-
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 w-full max-w-6xl flex px-4">
-        <!-- Doctor Card 1 -->
-        <div class="bg-white rounded-md shadow-md  shadow-gray-300 p-2 hover:border border-blue-500
-         flex flex-col items-center cursor-pointer hover:shadow-lg transition-shadow" onclick="openDoctorProfile(1)">
-            <img src="/storage/uploads/doctor1.png" alt="Dr. Jane Smith"
+        <?php foreach ($topDoctors as $doctor): ?>
+        <!-- Doctor Card for <?php echo htmlspecialchars($doctor['name']); ?> -->
+        <div class="bg-white rounded-md shadow-md shadow-gray-300 p-2 hover:border border-blue-500
+         flex flex-col items-center cursor-pointer hover:shadow-lg transition-shadow"
+            onclick="openDoctorProfile(<?php echo $doctor['id']; ?>)">
+            <img src="<?php echo htmlspecialchars($doctor['image']); ?>"
+                alt="<?php echo htmlspecialchars($doctor['name']); ?>"
                 class="w-full h-30 object-contain border-b border-gray-200 mb-4" />
 
-            <h3 class="text-xl font-bold text-blue-500">Dr. Jane Smith</h3>
-            <p class="text-gray-700">Cardiologist</p>
-            <p class="text-sm text-gray-500 mb-2">10+ years experience</p>
-            <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                onclick="event.stopPropagation(); bookAppointment(1)">View Profile</button>
-        </div>
-        <!-- Doctor Card 2 -->
-        <div class="bg-white rounded-md shadow-md p-6 flex flex-col hover:border border-blue-500
-         items-center cursor-pointer hover:shadow-lg transition-shadow" onclick="openDoctorProfile(2)">
-            <img src="/storage/uploads/doctor2.png" alt="Dr. John Doe"
-                class="w-full h-30 object-contain border-b border-gray-200 mb-4" />
-            <h3 class="text-xl font-bold text-blue-500">Dr. John Doe</h3>
-            <p class="text-gray-700">Neurologist</p>
-            <p class="text-sm text-gray-500 mb-2">8+ years experience</p>
-            <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                onclick="event.stopPropagation(); bookAppointment(2)">View Profile</button>
-        </div>
-        <!-- Doctor Card 3 -->
-        <div class="bg-white rounded-md shadow-md p-6 flex flex-col hover:border border-blue-500
-         items-center cursor-pointer hover:shadow-lg transition-shadow" onclick="openDoctorProfile(3)">
-            <img src="/storage/uploads/doctor3.png" alt="Dr. Emily Lee"
-                class="w-full h-30 object-contain border-b border-gray-200 mb-4" />
-            <h3 class="text-xl font-bold text-blue-500">Dr. Emily Lee</h3>
-            <p class="text-gray-700">Pediatrician</p>
-            <p class="text-sm text-gray-500 mb-2">5+ years experience</p>
-            <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                onclick="event.stopPropagation(); bookAppointment(3)">View Profile</button>
-        </div>
+            <h3 class="text-xl font-bold text-blue-500"><?php echo htmlspecialchars($doctor['name']); ?></h3>
+            <p class="text-gray-700"><?php echo htmlspecialchars($doctor['specialtyDisplay']); ?></p>
+            <p class="text-sm text-gray-500 mb-2"><?php echo htmlspecialchars($doctor['experience']); ?> experience</p>
 
-        <div class="bg-white rounded-md shadow-md p-6 flex flex-col hover:border 
-        border-blue-500 items-center cursor-pointer hover:shadow-lg transition-shadow" onclick="openDoctorProfile(2)">
-            <img src="/storage/uploads/doctor2.png" alt="Dr. John Doe"
-                class="w-full h-30 object-contain border-b border-gray-200 mb-4" />
-            <h3 class="text-xl font-bold text-blue-500">Dr. John Doe</h3>
-            <p class="text-gray-700">Neurologist</p>
-            <p class="text-sm text-gray-500 mb-2">8+ years experience</p>
-            <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                onclick="event.stopPropagation(); bookAppointment(2)">View Profile</button>
-        </div>
+            <!-- Rating Display -->
+            <div class="flex items-center mb-2">
+                <span class="text-yellow-500">⭐</span>
+                <span class="text-gray-600 ml-1 text-sm"><?php echo $doctor['rating']; ?></span>
+                <span class="text-gray-500 ml-2 text-sm">(Ksh <?php echo $doctor['consultation_fee']; ?>)</span>
+            </div>
 
-        <div class="bg-white rounded-md shadow-md p-6 flex flex-col hover:border
-         border-blue-500 items-center cursor-pointer hover:shadow-lg transition-shadow" onclick="openDoctorProfile(2)">
-            <img src="/storage/uploads/doctor2.png" alt="Dr. John Doe"
-                class="w-full h-30 object-contain border-b border-gray-200 mb-4" />
-            <h3 class="text-xl font-bold text-blue-500">Dr. John Doe</h3>
-            <p class="text-gray-700">Neurologist</p>
-            <p class="text-sm text-gray-500 mb-2">8+ years experience</p>
-            <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                onclick="event.stopPropagation(); bookAppointment(2)">View Profile</button>
+            <button class="mt-2 bg-blue-500 text-white px-4 font-bold py-2 rounded hover:bg-blue-600"
+                onclick="event.stopPropagation(); bookAppointment(<?php echo $doctor['id']; ?>)">View Profile</button>
         </div>
-
-        <div class="bg-white rounded-md shadow-md p-6 flex flex-col hover:border border-blue-500
-         items-center cursor-pointer hover:shadow-lg transition-shadow" onclick="openDoctorProfile(2)">
-            <img src="/storage/uploads/doctor2.png" alt="Dr. John Doe"
-                class="w-full h-30 object-contain border-b border-gray-200 mb-4" />
-            <h3 class="text-xl font-bold text-blue-500">Dr. John Doe</h3>
-            <p class="text-gray-700">Neurologist</p>
-            <p class="text-sm text-gray-500 mb-2">8+ years experience</p>
-            <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                onclick="event.stopPropagation(); bookAppointment(2)">View Profile</button>
-        </div>
-
+        <?php endforeach; ?>
     </div>
 
     <div class="mt-5 flex flex-col items-center">

@@ -252,19 +252,22 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center">
-                    <img src="/images/ceo.jpg" alt="CEO" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                    <img src="/storage/uploads/doctor1.png" alt="CEO"
+                        class="w-32 h-32 rounded-full mx-auto border-4 border-purple-500 mb-4 object-cover" />
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Dr. Sarah Johnson</h3>
                     <p class="text-blue-600 font-medium mb-2">Chief Executive Officer</p>
                     <p class="text-gray-600 text-sm">25+ years in healthcare administration</p>
                 </div>
                 <div class="text-center">
-                    <img src="/images/cmo.jpg" alt="CMO" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                    <img src="/storage/uploads/doctor2.png" alt="CMO"
+                        class="w-32 h-32 rounded-full mx-auto border-4 border-purple-500 mb-4 object-cover" />
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Dr. Michael Chen</h3>
                     <p class="text-blue-600 font-medium mb-2">Chief Medical Officer</p>
                     <p class="text-gray-600 text-sm">Board-certified in Internal Medicine</p>
                 </div>
                 <div class="text-center">
-                    <img src="/images/cno.jpg" alt="CNO" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                    <img src="/storage/uploads/doctor3.png" alt="CNO"
+                        class="w-32 h-32 rounded-full mx-auto border-4 border-purple-500 mb-4 object-cover" />
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Nancy Williams, RN</h3>
                     <p class="text-blue-600 font-medium mb-2">Chief Nursing Officer</p>
                     <p class="text-gray-600 text-sm">Expert in patient care excellence</p>
