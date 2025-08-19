@@ -13,6 +13,7 @@
     <?php include 'app/Views/loginModal.php'; ?>
     <?php include 'app/Views/hero.php'; ?>
     <?php include 'app/Views/doctors.php'; ?>
+    <?php include 'app/Views/appointment.php'; ?>
     <?php include 'app/Views/footer.php'; ?>
 </body>
 <style>
