@@ -12,111 +12,165 @@ $specialties = DoctorsData::getSpecialties();
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Book Appointment - BlueLife Hospital</title>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-    }
-
-    .step-indicator {
-        transition: all 0.3s ease;
-    }
-
-    .step-indicator.active {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        transform: scale(1.1);
-    }
-
-    .step-indicator.completed {
-        background: linear-gradient(135deg, #10b981, #059669);
-    }
-
-    .form-step {
-        display: none;
-        animation: slideIn 0.3s ease-in-out;
-    }
-
-    .form-step.active {
-        display: block;
-    }
-
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateX(20px);
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
 
-        to {
-            opacity: 1;
-            transform: translateX(0);
+        .step-indicator {
+            transition: all 0.3s ease;
         }
-    }
 
-    .calendar-grid {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 0.5rem;
-    }
+        .step-indicator.active {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            transform: scale(1.1);
+        }
 
-    .calendar-day {
-        aspect-ratio: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
+        .step-indicator.completed {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
 
-    .calendar-day:hover {
-        background: rgba(59, 130, 246, 0.1);
-    }
+        .form-step {
+            display: none;
+            animation: slideIn 0.3s ease-in-out;
+        }
 
-    .calendar-day.available {
-        background: rgba(16, 185, 129, 0.1);
-        color: #059669;
-    }
+        .form-step.active {
+            display: block;
+        }
 
-    .calendar-day.selected {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        color: white;
-    }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
 
-    .time-slot {
-        transition: all 0.2s ease;
-        cursor: pointer;
-    }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
-    .time-slot:hover {
-        background: rgba(59, 130, 246, 0.1);
-        transform: translateY(-1px);
-    }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
 
-    .time-slot.selected {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        color: white;
-    }
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
 
-    .glass-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    }
+        .calendar-day:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
 
-    .doctor-card.selected {
-        border-color: #3b82f6;
-        background: rgba(59, 130, 246, 0.05);
-    }
+        .calendar-day.available {
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
 
-    .department-btn.selected {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        color: white;
-        border-color: transparent;
-    }
+        .calendar-day.selected {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+        }
+
+        .time-slot {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .time-slot:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .time-slot.selected {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .doctor-card.selected {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .department-btn.selected {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white !important;
+            }
+
+            /* Hide everything except the modal content when printing */
+            .min-h-screen,
+            nav,
+            footer,
+            .step-indicator,
+            .glass-card {
+                display: none !important;
+            }
+
+            /* Show only the success modal content */
+            #successModal {
+                position: static !important;
+                background: transparent !important;
+                display: block !important;
+            }
+
+            #successModal .bg-white {
+                border: none !important;
+                box-shadow: none !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 20px !important;
+            }
+
+            /* Optimize QR code for print */
+            #qrCodeContainer {
+                display: flex !important;
+                justify-content: center !important;
+                margin: 20px 0 !important;
+            }
+
+            /* Hide modal buttons in print */
+            #successModal button {
+                display: none !important;
+            }
+
+            /* Print-specific styles */
+            h3 {
+                font-size: 18px !important;
+                margin-bottom: 10px !important;
+            }
+
+            p {
+                font-size: 14px !important;
+                margin-bottom: 5px !important;
+            }
+        }
     </style>
 </head>
 
@@ -168,11 +222,11 @@ $specialties = DoctorsData::getSpecialties();
                                     <div class="text-sm font-medium">All Departments</div>
                                 </button>
                                 <?php foreach ($specialties as $specialty): ?>
-                                <button type="button"
-                                    class="department-btn cursor-pointer p-3 border border-gray-300 rounded-lg text-center hover:border-blue-500 transition-colors"
-                                    data-specialty="<?php echo strtolower($specialty); ?>">
-                                    <div class="text-2xl mb-1">
-                                        <?php
+                                    <button type="button"
+                                        class="department-btn cursor-pointer p-3 border border-gray-300 rounded-lg text-center hover:border-blue-500 transition-colors"
+                                        data-specialty="<?php echo strtolower($specialty); ?>">
+                                        <div class="text-2xl mb-1">
+                                            <?php
                                             $icons = [
                                                 'cardiology' => '❤️',
                                                 'neurology' => '🧠',
@@ -183,9 +237,9 @@ $specialties = DoctorsData::getSpecialties();
                                             ];
                                             echo $icons[strtolower($specialty)] ?? '🏥';
                                             ?>
-                                    </div>
-                                    <div class="text-sm font-medium"><?php echo $specialty; ?></div>
-                                </button>
+                                        </div>
+                                        <div class="text-sm font-medium"><?php echo $specialty; ?></div>
+                                    </button>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -195,24 +249,24 @@ $specialties = DoctorsData::getSpecialties();
                             <label class="block text-gray-700 font-medium mb-3">Select Doctor</label>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="doctorsList">
                                 <?php foreach ($doctors as $doctor): ?>
-                                <div class="doctor-card border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-blue-500 transition-colors"
-                                    data-doctor-id="<?php echo $doctor['id']; ?>"
-                                    data-specialty="<?php echo strtolower($doctor['specialty']); ?>">
-                                    <div class="flex items-center space-x-4">
-                                        <img src="<?php echo $doctor['image']; ?>" alt="<?php echo $doctor['name']; ?>"
-                                            class="w-16 h-16 rounded-full object-cover">
-                                        <div class="flex-1">
-                                            <h3 class="font-semibold text-gray-800"><?php echo $doctor['name']; ?></h3>
-                                            <p class="text-blue-600 font-medium"><?php echo $doctor['specialty']; ?></p>
-                                            <p class="text-gray-600 text-sm"><?php echo $doctor['experience']; ?></p>
-                                            <p class="text-green-600 font-medium">
-                                                Ksh <?php echo $doctor['consultation_fee']; ?></p>
-                                        </div>
-                                        <div class="text-yellow-500">
-                                            ⭐ <?php echo $doctor['rating']; ?>
+                                    <div class="doctor-card border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-blue-500 transition-colors"
+                                        data-doctor-id="<?php echo $doctor['id']; ?>"
+                                        data-specialty="<?php echo strtolower($doctor['specialty']); ?>">
+                                        <div class="flex items-center space-x-4">
+                                            <img src="<?php echo $doctor['image']; ?>" alt="<?php echo $doctor['name']; ?>"
+                                                class="w-16 h-16 rounded-full object-cover">
+                                            <div class="flex-1">
+                                                <h3 class="font-semibold text-gray-800"><?php echo $doctor['name']; ?></h3>
+                                                <p class="text-blue-600 font-medium"><?php echo $doctor['specialty']; ?></p>
+                                                <p class="text-gray-600 text-sm"><?php echo $doctor['experience']; ?></p>
+                                                <p class="text-green-600 font-medium">
+                                                    Ksh <?php echo $doctor['consultation_fee']; ?></p>
+                                            </div>
+                                            <div class="text-yellow-500">
+                                                ⭐ <?php echo $doctor['rating']; ?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -393,6 +447,13 @@ $specialties = DoctorsData::getSpecialties();
             <h3 class="text-2xl font-bold text-gray-800 mb-4">Appointment Confirmed!</h3>
             <p class="text-gray-600 mb-6">Your appointment has been successfully booked. You will receive a confirmation
                 email shortly.</p>
+
+            <!-- QR Code Section -->
+            <div class="flex flex-col items-center justify-center mb-6">
+                <div id="qrCodeContainer" class="mb-2"></div>
+                <p class="text-xs text-gray-500">Scan to view appointment details</p>
+            </div>
+
             <div class="space-y-2">
                 <button onclick="window.location.href='index.php'"
                     class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all">Return
@@ -405,255 +466,292 @@ $specialties = DoctorsData::getSpecialties();
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script>
-    // Appointment booking state
-    let appointmentData = {
-        doctor: null,
-        date: null,
-        time: null,
-        patient: {}
-    };
-
-    let currentStep = 1;
-    let selectedDate = null;
-    let selectedTime = null;
-    let selectedDoctor = null;
-
-    // Initialize calendar
-    let currentDate = new Date();
-
-    function initializeCalendar() {
-        updateCalendarDisplay();
-    }
-
-    function updateCalendarDisplay() {
-        const monthNames = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
-
-        document.getElementById('currentMonth').textContent =
-            `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
-
-        generateCalendarDays();
-    }
-
-    function generateCalendarDays() {
-        const calendarDays = document.getElementById('calendarDays');
-        calendarDays.innerHTML = '';
-
-        const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-        const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-        const today = new Date();
-
-        // Add empty cells for days before the first day of the month
-        for (let i = 0; i < firstDay.getDay(); i++) {
-            calendarDays.appendChild(document.createElement('div'));
-        }
-
-        // Add days of the month
-        for (let day = 1; day <= lastDay.getDate(); day++) {
-            const dayElement = document.createElement('div');
-            const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
-
-            dayElement.textContent = day;
-            dayElement.className = 'calendar-day';
-
-            // Disable past dates
-            if (date < today.setHours(0, 0, 0, 0)) {
-                dayElement.className += ' text-gray-300 cursor-not-allowed';
-            } else {
-                dayElement.className += ' available';
-                dayElement.addEventListener('click', () => selectDate(date));
-            }
-
-            calendarDays.appendChild(dayElement);
-        }
-    }
-
-    function selectDate(date) {
-        // Remove previous selection
-        document.querySelectorAll('.calendar-day.selected').forEach(el => {
-            el.classList.remove('selected');
-        });
-
-        // Add selection to clicked date
-        event.target.classList.add('selected');
-        selectedDate = date;
-
-        // Generate time slots for selected date
-        generateTimeSlots(date);
-
-        // Update step 2 next button
-        updateStep2NextButton();
-    }
-
-    function generateTimeSlots(date) {
-        const timeSlots = document.getElementById('timeSlots');
-        const slots = ['09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
-            '02:00 PM', '02:30 PM', '03:00 PM', '03:30 PM', '04:00 PM', '04:30 PM'
-        ];
-
-        timeSlots.innerHTML = '<h4 class="font-medium text-gray-800 mb-3">Morning</h4>';
-
-        // Morning slots
-        const morningSlots = slots.slice(0, 6);
-        morningSlots.forEach(time => {
-            const slotElement = document.createElement('div');
-            slotElement.className = 'time-slot p-3 border border-gray-200 rounded-lg text-center';
-            slotElement.textContent = time;
-            slotElement.addEventListener('click', () => selectTime(time, slotElement));
-            timeSlots.appendChild(slotElement);
-        });
-
-        // Afternoon header
-        const afternoonHeader = document.createElement('h4');
-        afternoonHeader.className = 'font-medium text-gray-800 mb-3 mt-6';
-        afternoonHeader.textContent = 'Afternoon';
-        timeSlots.appendChild(afternoonHeader);
-
-        // Afternoon slots
-        const afternoonSlots = slots.slice(6);
-        afternoonSlots.forEach(time => {
-            const slotElement = document.createElement('div');
-            slotElement.className = 'time-slot p-3 border border-gray-200 rounded-lg text-center';
-            slotElement.textContent = time;
-            slotElement.addEventListener('click', () => selectTime(time, slotElement));
-            timeSlots.appendChild(slotElement);
-        });
-    }
-
-    function selectTime(time, element) {
-        // Remove previous selection
-        document.querySelectorAll('.time-slot.selected').forEach(el => {
-            el.classList.remove('selected');
-        });
-
-        // Add selection to clicked time
-        element.classList.add('selected');
-        selectedTime = time;
-
-        // Update step 2 next button
-        updateStep2NextButton();
-    }
-
-    function updateStep2NextButton() {
-        const nextBtn = document.querySelector('[data-step="2"] .next-btn');
-        nextBtn.disabled = !(selectedDate && selectedTime);
-    }
-
-    // Department filtering
-    document.querySelectorAll('.department-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove previous selection
-            document.querySelectorAll('.department-btn.selected').forEach(el => {
-                el.classList.remove('selected');
-            });
-
-            // Add selection to clicked department
-            btn.classList.add('selected');
-
-            const specialty = btn.dataset.specialty;
-            filterDoctors(specialty);
-        });
-    });
-
-    function filterDoctors(specialty) {
-        const doctorCards = document.querySelectorAll('.doctor-card');
-
-        doctorCards.forEach(card => {
-            if (specialty === 'all' || card.dataset.specialty === specialty) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-
-    // Doctor selection
-    document.querySelectorAll('.doctor-card').forEach(card => {
-        card.addEventListener('click', () => {
-            // Remove previous selection
-            document.querySelectorAll('.doctor-card.selected').forEach(el => {
-                el.classList.remove('selected');
-            });
-
-            // Add selection to clicked doctor
-            card.classList.add('selected');
-            selectedDoctor = {
-                id: card.dataset.doctorId,
-                name: card.querySelector('h3').textContent,
-                specialty: card.querySelector('p').textContent,
-                image: card.querySelector('img').src
-            };
-
-            // Enable next button
-            document.querySelector('[data-step="1"] .next-btn').disabled = false;
-        });
-    });
-
-    // Step navigation
-    document.querySelectorAll('.next-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (currentStep < 4) {
-                goToStep(currentStep + 1);
-            }
-        });
-    });
-
-    document.querySelectorAll('.prev-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (currentStep > 1) {
-                goToStep(currentStep - 1);
-            }
-        });
-    });
-
-    function goToStep(step) {
-        // Hide current step
-        document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove('active');
-
-        // Show new step
-        document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
-
-        // Update step indicators
-        updateStepIndicators(step);
-
-        // Update current step
-        currentStep = step;
-
-        // Special handling for step 4 (summary)
-        if (step === 4) {
-            generateSummary();
-        }
-    }
-
-    function updateStepIndicators(activeStep) {
-        document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
-            const stepNumber = index + 1;
-            indicator.classList.remove('active', 'completed');
-
-            if (stepNumber < activeStep) {
-                indicator.classList.add('completed');
-            } else if (stepNumber === activeStep) {
-                indicator.classList.add('active');
-            }
-        });
-    }
-
-    function generateSummary() {
-        const formData = new FormData(document.getElementById('appointmentForm'));
-        const summary = document.getElementById('appointmentSummary');
-
-        const formatDate = (date) => {
-            return date.toLocaleDateString('en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
+        // Appointment booking state
+        let appointmentData = {
+            doctor: null,
+            date: null,
+            time: null,
+            patient: {}
         };
 
-        summary.innerHTML = `
+        let currentStep = 1;
+        let selectedDate = null;
+        let selectedTime = null;
+        let selectedDoctor = null;
+
+        // Show QR code in success modal
+        function showQRCode() {
+            // Gather appointment info
+            const form = document.getElementById('appointmentForm');
+            const formData = new FormData(form);
+            const info = {
+                doctor: selectedDoctor ? selectedDoctor.name : '',
+                specialty: selectedDoctor ? selectedDoctor.specialty : '',
+                date: selectedDate,
+                time: selectedTime,
+                name: formData.get('firstName') + ' ' + formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                insurance: formData.get('insurance'),
+                reason: formData.get('reason')
+            };
+            const qrText = JSON.stringify(info);
+            const qrContainer = document.getElementById('qrCodeContainer');
+            qrContainer.innerHTML = '';
+            new QRCode(qrContainer, {
+                text: qrText,
+                width: 128,
+                height: 128,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        // Form submission
+        document.getElementById('appointmentForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('successModal').classList.remove('hidden');
+            showQRCode();
+        });
+
+        // Initialize calendar
+        let currentDate = new Date();
+
+        function initializeCalendar() {
+            updateCalendarDisplay();
+        }
+
+        function updateCalendarDisplay() {
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            document.getElementById('currentMonth').textContent =
+                `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+
+            generateCalendarDays();
+        }
+
+        function generateCalendarDays() {
+            const calendarDays = document.getElementById('calendarDays');
+            calendarDays.innerHTML = '';
+
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const today = new Date();
+
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                calendarDays.appendChild(document.createElement('div'));
+            }
+
+            // Add days of the month
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const dayElement = document.createElement('div');
+                const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+
+                dayElement.textContent = day;
+                dayElement.className = 'calendar-day';
+
+                // Disable past dates
+                if (date < today.setHours(0, 0, 0, 0)) {
+                    dayElement.className += ' text-gray-300 cursor-not-allowed';
+                } else {
+                    dayElement.className += ' available';
+                    dayElement.addEventListener('click', () => selectDate(date));
+                }
+
+                calendarDays.appendChild(dayElement);
+            }
+        }
+
+        function selectDate(date) {
+            // Remove previous selection
+            document.querySelectorAll('.calendar-day.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+
+            // Add selection to clicked date
+            event.target.classList.add('selected');
+            selectedDate = date;
+
+            // Generate time slots for selected date
+            generateTimeSlots(date);
+
+            // Update step 2 next button
+            updateStep2NextButton();
+        }
+
+        function generateTimeSlots(date) {
+            const timeSlots = document.getElementById('timeSlots');
+            const slots = ['09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
+                '02:00 PM', '02:30 PM', '03:00 PM', '03:30 PM', '04:00 PM', '04:30 PM'
+            ];
+
+            timeSlots.innerHTML = '<h4 class="font-medium text-gray-800 mb-3">Morning</h4>';
+
+            // Morning slots
+            const morningSlots = slots.slice(0, 6);
+            morningSlots.forEach(time => {
+                const slotElement = document.createElement('div');
+                slotElement.className = 'time-slot p-3 border border-gray-200 rounded-lg text-center';
+                slotElement.textContent = time;
+                slotElement.addEventListener('click', () => selectTime(time, slotElement));
+                timeSlots.appendChild(slotElement);
+            });
+
+            // Afternoon header
+            const afternoonHeader = document.createElement('h4');
+            afternoonHeader.className = 'font-medium text-gray-800 mb-3 mt-6';
+            afternoonHeader.textContent = 'Afternoon';
+            timeSlots.appendChild(afternoonHeader);
+
+            // Afternoon slots
+            const afternoonSlots = slots.slice(6);
+            afternoonSlots.forEach(time => {
+                const slotElement = document.createElement('div');
+                slotElement.className = 'time-slot p-3 border border-gray-200 rounded-lg text-center';
+                slotElement.textContent = time;
+                slotElement.addEventListener('click', () => selectTime(time, slotElement));
+                timeSlots.appendChild(slotElement);
+            });
+        }
+
+        function selectTime(time, element) {
+            // Remove previous selection
+            document.querySelectorAll('.time-slot.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+
+            // Add selection to clicked time
+            element.classList.add('selected');
+            selectedTime = time;
+
+            // Update step 2 next button
+            updateStep2NextButton();
+        }
+
+        function updateStep2NextButton() {
+            const nextBtn = document.querySelector('[data-step="2"] .next-btn');
+            nextBtn.disabled = !(selectedDate && selectedTime);
+        }
+
+        // Department filtering
+        document.querySelectorAll('.department-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove previous selection
+                document.querySelectorAll('.department-btn.selected').forEach(el => {
+                    el.classList.remove('selected');
+                });
+
+                // Add selection to clicked department
+                btn.classList.add('selected');
+
+                const specialty = btn.dataset.specialty;
+                filterDoctors(specialty);
+            });
+        });
+
+        function filterDoctors(specialty) {
+            const doctorCards = document.querySelectorAll('.doctor-card');
+
+            doctorCards.forEach(card => {
+                if (specialty === 'all' || card.dataset.specialty === specialty) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Doctor selection
+        document.querySelectorAll('.doctor-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove previous selection
+                document.querySelectorAll('.doctor-card.selected').forEach(el => {
+                    el.classList.remove('selected');
+                });
+
+                // Add selection to clicked doctor
+                card.classList.add('selected');
+                selectedDoctor = {
+                    id: card.dataset.doctorId,
+                    name: card.querySelector('h3').textContent,
+                    specialty: card.querySelector('p').textContent,
+                    image: card.querySelector('img').src
+                };
+
+                // Enable next button
+                document.querySelector('[data-step="1"] .next-btn').disabled = false;
+            });
+        });
+
+        // Step navigation
+        document.querySelectorAll('.next-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentStep < 4) {
+                    goToStep(currentStep + 1);
+                }
+            });
+        });
+
+        document.querySelectorAll('.prev-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    goToStep(currentStep - 1);
+                }
+            });
+        });
+
+        function goToStep(step) {
+            // Hide current step
+            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove('active');
+
+            // Show new step
+            document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+
+            // Update step indicators
+            updateStepIndicators(step);
+
+            // Update current step
+            currentStep = step;
+
+            // Special handling for step 4 (summary)
+            if (step === 4) {
+                generateSummary();
+            }
+        }
+
+        function updateStepIndicators(activeStep) {
+            document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
+                const stepNumber = index + 1;
+                indicator.classList.remove('active', 'completed');
+
+                if (stepNumber < activeStep) {
+                    indicator.classList.add('completed');
+                } else if (stepNumber === activeStep) {
+                    indicator.classList.add('active');
+                }
+            });
+        }
+
+        function generateSummary() {
+            const formData = new FormData(document.getElementById('appointmentForm'));
+            const summary = document.getElementById('appointmentSummary');
+
+            const formatDate = (date) => {
+                return date.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            };
+
+            summary.innerHTML = `
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <h3 class="font-medium text-gray-800 mb-2">Doctor Information</h3>
@@ -686,34 +784,30 @@ $specialties = DoctorsData::getSpecialties();
                     </div>
                 </div>
             `;
-    }
+        }
 
-    // Form submission
-    document.getElementById('appointmentForm').addEventListener('submit', (e) => {
-        e.preventDefault();
+        // Calendar navigation
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            updateCalendarDisplay();
+        });
 
-        // Show success modal
-        document.getElementById('successModal').classList.remove('hidden');
-    });
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            updateCalendarDisplay();
+        });
 
-    // Calendar navigation
-    document.getElementById('prevMonth').addEventListener('click', () => {
-        currentDate.setMonth(currentDate.getMonth() - 1);
-        updateCalendarDisplay();
-    });
-
-    document.getElementById('nextMonth').addEventListener('click', () => {
-        currentDate.setMonth(currentDate.getMonth() + 1);
-        updateCalendarDisplay();
-    });
-
-    // Initialize page
-    document.addEventListener('DOMContentLoaded', () => {
-        initializeCalendar();
-    });
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeCalendar();
+        });
     </script>
 
     <?php include 'app/Views/footer.php'; ?>
+
+</body>
+
+</html>
 </body>
 
 </html>

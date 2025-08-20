@@ -408,11 +408,12 @@
     </div>
 
     <!-- Emergency Preparedness Modal -->
-    <div id="preparednessModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+    <div id="preparednessModal" class="fixed  inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-2xl p-8 max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-2xl font-bold text-gray-800">Emergency Preparedness Kit</h3>
-                <button onclick="closePreparednessModal()" class="text-gray-500 hover:text-gray-700">✕</button>
+                <button onclick="closePreparednessModal()"
+                    class="text-gray-500 cursor-pointer hover:text-gray-700">✕</button>
             </div>
             <div class="space-y-4">
                 <h4 class="font-semibold text-gray-800">Essential Items for Your Emergency Kit:</h4>
@@ -484,7 +485,7 @@
         const preparednessBtn = document.createElement('button');
         preparednessBtn.textContent = 'Emergency Preparedness Tips';
         preparednessBtn.className =
-            'fixed bottom-6 right-6 px-4 py-2 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 transition-colors z-40';
+            'fixed bottom-8 right-22 px-4 py-2 bg-red-600 text-white cursor-pointer rounded-full shadow-lg hover:bg-red-700 transition-colors z-40';
         preparednessBtn.onclick = openPreparednessModal;
         document.body.appendChild(preparednessBtn);
     });

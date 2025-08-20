@@ -35,12 +35,16 @@ if (!$doctor) {
                 <div class="flex flex-col md:flex-row gap-8">
                     <!-- Doctor Image and Basic Info -->
                     <div class="md:w-1/3">
-                        <img src="<?php echo htmlspecialchars($doctor['image']); ?>" alt="<?php echo htmlspecialchars($doctor['name']); ?>"
+                        <img src="<?php echo htmlspecialchars($doctor['image']); ?>"
+                            alt="<?php echo htmlspecialchars($doctor['name']); ?>"
                             class="w-full max-w-xs mx-auto rounded-lg shadow-md" />
                         <div class="mt-6 text-center md:text-left">
-                            <h1 class="text-3xl font-bold text-blue-600"><?php echo htmlspecialchars($doctor['name']); ?></h1>
-                            <p class="text-xl text-gray-700 mt-2"><?php echo htmlspecialchars($doctor['specialtyDisplay']); ?></p>
-                            <p class="text-gray-600 mt-1"><?php echo htmlspecialchars($doctor['experience']); ?> experience</p>
+                            <h1 class="text-3xl font-bold text-blue-600">
+                                <?php echo htmlspecialchars($doctor['name']); ?></h1>
+                            <p class="text-xl text-gray-700 mt-2">
+                                <?php echo htmlspecialchars($doctor['specialtyDisplay']); ?></p>
+                            <p class="text-gray-600 mt-1"><?php echo htmlspecialchars($doctor['experience']); ?>
+                                experience</p>
                             <div class="flex items-center justify-center md:justify-start mt-2">
                                 <span class="text-yellow-500 text-xl">⭐</span>
                                 <span class="text-gray-700 ml-1 font-semibold"><?php echo $doctor['rating']; ?></span>
@@ -49,7 +53,7 @@ if (!$doctor) {
                             <div class="mt-4">
                                 <button onclick="bookAppointment(<?php echo $doctorId; ?>)"
                                     class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
-                                    Book Appointment - $<?php echo $doctor['consultation_fee']; ?>
+                                    Book Appointment - Ksh<?php echo $doctor['consultation_fee']; ?>
                                 </button>
                             </div>
                         </div>

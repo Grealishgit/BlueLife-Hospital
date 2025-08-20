@@ -8,7 +8,7 @@
     <title>BlueLife Hospital</title>
 </head>
 
-<body>
+<body class="w-full">
     <?php include 'app/Views/navbar.php'; ?>
     <?php include 'app/Views/loginModal.php'; ?>
     <?php include 'app/Views/hero.php'; ?>
