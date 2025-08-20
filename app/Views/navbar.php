@@ -9,10 +9,11 @@ $tabs = [
 ];
 ?>
 
-<nav class="bg-white fixed top-0 w-full text-white z-50 p-4 shadow-sm shadow-gray-600 flex items-center justify-between"
-    style="font-family: 'Inter', sans-serif;">
+<nav
+    class="bg-white fixed top-0 w-full text-white z-50 p-4 shadow-sm shadow-gray-600 flex items-center justify-between">
     <div class="flex items-center space-x-2">
-        <span class="font-bold cursor-pointer text-blue-500 text-2xl">Blue<span class="text-black">Life</span></span>
+        <a href="index.php" class="font-bold cursor-pointer text-blue-500 text-2xl">Blue<span
+                class="text-black">Life</span></a>
     </div>
 
     <!-- Desktop Navigation -->
@@ -55,7 +56,7 @@ $tabs = [
 </nav>
 
 <!-- Mobile Menu Overlay -->
-<div id="mobileMenuOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm  z-1000 hidden">
+<div id="mobileMenuOverlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm  z-100 hidden">
     <div id="mobileMenu"
         class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out">
         <div class="p-6">
@@ -191,25 +192,24 @@ $tabs = [
         window.mobileMenuInitialized = true;
 
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Mobile menu initializing...');
 
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
             const mobileMenu = document.getElementById('mobileMenu');
             const closeMobileMenu = document.getElementById('closeMobileMenu');
 
-            // Check if all elements exist
-            if (!mobileMenuBtn || !mobileMenuOverlay || !mobileMenu || !closeMobileMenu) {
-                console.error('Mobile menu elements missing:', {
-                    btn: !!mobileMenuBtn,
-                    overlay: !!mobileMenuOverlay,
-                    menu: !!mobileMenu,
-                    close: !!closeMobileMenu
-                });
-                return;
-            }
+            // // Check if all elements exist
+            // if (!mobileMenuBtn || !mobileMenuOverlay || !mobileMenu || !closeMobileMenu) {
+            //     console.error('Mobile menu elements missing:', {
+            //         btn: !!mobileMenuBtn,
+            //         overlay: !!mobileMenuOverlay,
+            //         menu: !!mobileMenu,
+            //         close: !!closeMobileMenu
+            //     });
+            //     return;
+            // }
 
-            console.log('All mobile menu elements found successfully');
+            // console.log('All mobile menu elements found successfully');
             const hamburgerMenu = mobileMenuBtn.querySelector('.hamburger-menu');
 
             // Open mobile menu using event delegation to avoid conflicts
@@ -218,7 +218,7 @@ $tabs = [
                 if (e.target.closest('#mobileMenuBtn')) {
                     e.preventDefault();
                     e.stopPropagation();
-                    console.log('Mobile menu button clicked via delegation - opening menu...');
+                    //  console.log('Mobile menu button clicked via delegation - opening menu...');
 
                     // Show overlay
                     mobileMenuOverlay.classList.remove('hidden');
@@ -243,7 +243,7 @@ $tabs = [
             });
             // Close mobile menu function
             function closeMobileMenuFunction() {
-                console.log('Closing mobile menu...');
+                // console.log('Closing mobile menu...');
 
                 // Slide menu out
                 mobileMenu.classList.remove('translate-x-0');
@@ -253,13 +253,13 @@ $tabs = [
                 const hamburgerMenuNew = document.querySelector('#mobileMenuBtn .hamburger-menu');
                 if (hamburgerMenuNew) {
                     hamburgerMenuNew.classList.remove('active');
-                    console.log('Hamburger animation deactivated');
+                    // console.log('Hamburger animation deactivated');
                 }
 
                 // Hide overlay after animation completes
                 setTimeout(() => {
                     mobileMenuOverlay.classList.add('hidden');
-                    console.log('Mobile menu overlay hidden');
+                    // console.log('Mobile menu overlay hidden');
                 }, 300);
 
                 // Restore body scroll
@@ -270,25 +270,25 @@ $tabs = [
             closeMobileMenu.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('Close button clicked');
+                // console.log('Close button clicked');
                 closeMobileMenuFunction();
             });
 
             // Close when clicking on overlay
             mobileMenuOverlay.addEventListener('click', function(e) {
                 if (e.target === mobileMenuOverlay) {
-                    console.log('Overlay clicked - closing menu');
+                    // console.log('Overlay clicked - closing menu');
                     closeMobileMenuFunction();
                 }
             });
 
             // Close menu when clicking on navigation links
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-            console.log('Found mobile nav links:', mobileNavLinks.length);
+            // console.log('Found mobile nav links:', mobileNavLinks.length);
 
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    console.log('Mobile nav link clicked');
+                    // console.log('Mobile nav link clicked');
                     closeMobileMenuFunction();
                 });
             });
@@ -296,7 +296,7 @@ $tabs = [
             // Close menu with escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && !mobileMenuOverlay.classList.contains('hidden')) {
-                    console.log('Escape key pressed - closing menu');
+                    // console.log('Escape key pressed - closing menu');
                     closeMobileMenuFunction();
                 }
             });
@@ -304,12 +304,12 @@ $tabs = [
             // Handle window resize
             window.addEventListener('resize', function() {
                 if (window.innerWidth >= 768 && !mobileMenuOverlay.classList.contains('hidden')) {
-                    console.log('Window resized to desktop - closing menu');
+                    // console.log('Window resized to desktop - closing menu');
                     closeMobileMenuFunction();
                 }
             });
 
-            console.log('Mobile menu initialization complete');
+            // console.log('Mobile menu initialization complete');
         });
     }
 </script>
