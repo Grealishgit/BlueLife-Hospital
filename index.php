@@ -8,13 +8,12 @@
     <title>BlueLife Hospital</title>
 </head>
 
-<body class="w-full">
+<body>
     <?php include 'app/Views/navbar.php'; ?>
     <?php include 'app/Views/loginModal.php'; ?>
     <?php include 'app/Views/hero.php'; ?>
     <?php include 'app/Views/doctors.php'; ?>
     <?php include 'app/Views/emergency.php'; ?>
-    <?php include 'components/live-chat.php'; ?>
     <?php include 'app/Views/footer.php'; ?>
 </body>
 <style>

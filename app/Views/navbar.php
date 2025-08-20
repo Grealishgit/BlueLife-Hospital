@@ -46,6 +46,12 @@ $tabs = [
             <span class="hamburger-line"></span>
         </div>
     </button>
+    <!-- Nav Progress Loader -->
+    <div id="navProgressContainer"
+        class="absolute left-0 bottom-0 h-[3px] w-full pointer-events-none opacity-0 transition-opacity duration-150">
+        <div id="navProgressBar"
+            class="h-full w-0 bg-gradient-to-r from-blue-500 to-indigo-500 shadow-[0_0_6px_rgba(59,130,246,0.6)]"></div>
+    </div>
 </nav>
 
 <!-- Mobile Menu Overlay -->
@@ -306,4 +312,91 @@ $tabs = [
             console.log('Mobile menu initialization complete');
         });
     }
+</script>
+<script>
+    // Lightweight page navigation progress (full reload friendly)
+    (function() {
+        const sameHost = (url) => {
+            try {
+                return new URL(url, window.location.href).host === window.location.host;
+            } catch {
+                return false;
+            }
+        };
+
+        function initNavLoader() {
+            const container = document.getElementById('navProgressContainer');
+            const bar = document.getElementById('navProgressBar');
+            if (!container || !bar) return;
+
+            function reset() {
+                bar.style.transition = 'none';
+                bar.style.width = '0%';
+                requestAnimationFrame(() => {
+                    bar.style.transition = 'width .4s ease';
+                });
+                container.classList.remove('active');
+                container.style.opacity = '0';
+            }
+
+            function start() {
+                // If already animating, restart quickly
+                reset();
+                container.classList.add('active');
+                container.style.opacity = '1';
+                // staged progression to mimic loading
+                requestAnimationFrame(() => {
+                    bar.style.width = '55%';
+                });
+                setTimeout(() => {
+                    bar.style.width = '72%';
+                }, 400);
+                setTimeout(() => {
+                    bar.style.width = '84%';
+                }, 1100);
+                // Safety timeout to finish if navigation aborted
+                setTimeout(() => {
+                    if (document.visibilityState === 'visible') finish();
+                }, 4000);
+            }
+
+            function finish() {
+                bar.style.width = '100%';
+                setTimeout(() => {
+                    container.style.opacity = '0';
+                }, 150);
+                setTimeout(reset, 600);
+            }
+
+            // Start on internal link clicks (allow normal navigation)
+            document.addEventListener('click', (e) => {
+                const a = e.target.closest('a[href]');
+                if (!a) return;
+                const href = a.getAttribute('href');
+                if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:'))
+                    return;
+                if (a.hasAttribute('target') && a.getAttribute('target') !== '_self') return;
+                if (!sameHost(href)) return; // external
+                start();
+            }, true); // capture early
+
+            // Show loader if browser triggers unload (covers non-click navigations)
+            window.addEventListener('beforeunload', () => {
+                // Ensure bar visible at final moment
+                try {
+                    start();
+                } catch {}
+            });
+
+            // On load complete, finish (for back/forward cache or fast clicks)
+            window.addEventListener('load', () => {
+                finish();
+            });
+            document.addEventListener('pageshow', (evt) => {
+                if (evt.persisted) finish();
+            });
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initNavLoader);
+        else initNavLoader();
+    })();
 </script>
