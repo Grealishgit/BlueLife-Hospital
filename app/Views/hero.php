@@ -24,11 +24,11 @@
 
 
             <div class="mt-6 flex md:flex-row items-center flex-col gap-4">
-                <a href="#"
+                <a href="insurance.php"
                     class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-200 transition duration-300">
                     Get Started
                 </a>
-                <a href="#"
+                <a href="appointment.php"
                     class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-100 transition duration-300">
                     Book Appointment
                 </a>

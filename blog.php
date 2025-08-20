@@ -73,7 +73,7 @@
     .featured-main {
         grid-column: span 8;
         background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-        border-radius: 20px;
+        border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -117,7 +117,7 @@
         break-inside: avoid;
         margin-bottom: 2rem;
         background: rgba(255, 255, 255, 0.95);
-        border-radius: 16px;
+        border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         transition: all 0.4s ease;
@@ -224,7 +224,7 @@
 </head>
 
 <body>
-    <?php include 'navbar.php'; ?>
+    <?php include 'app/Views/navbar.php'; ?>
 
     <!-- Hero Section with Unique Design -->
     <section class="hero-gradient pt-24 pb-16 relative">
@@ -276,7 +276,7 @@
         </div>
     </section>
 
-    <?php include 'footer.php'; ?>
+    <?php include 'app/Views/footer.php'; ?>
 
     <script>
     // Enhanced blog posts data with varied content lengths
@@ -401,7 +401,7 @@
                     ${sidebar.map(post => `
                         <div class="sidebar-card" onclick="openBlogPost(${post.id})">
                             <div class="flex space-x-4">
-                                <img src="${post.image}" alt="${post.title}" class="w-20 h-20 object-cover rounded-lg flex-shrink-0">
+                                <img src="${post.image}" alt="${post.title}" class="w-20 h-20 object-cover rounded-md flex-shrink-0">
                                 <div class="flex-1">
                                     <h3 class="text-white font-semibold mb-2 line-clamp-2">${post.title}</h3>
                                     <p class="text-white/70 text-sm mb-2 line-clamp-2">${post.excerpt}</p>
@@ -430,7 +430,7 @@
                     <img src="${post.image}" alt="${post.title}" class="w-full ${heights[post.height] || 'h-48'} object-cover">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-full text-xs font-medium">
+                            <span class="px-3 py-1 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-md text-xs font-medium">
                                 ${post.categoryDisplay}
                             </span>
                             <span class="text-gray-400 text-xs">${formatDate(post.date)}</span>

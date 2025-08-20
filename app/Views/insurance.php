@@ -119,7 +119,8 @@
             <div class="text-center mb-12">
                 <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Insurance & Billing</h1>
                 <p class="text-white/90 text-lg max-w-3xl mx-auto">
-                    We accept most major insurance plans and offer flexible payment options to make healthcare accessible and affordable.
+                    We accept most major insurance plans and offer flexible payment options to make healthcare
+                    accessible and affordable.
                 </p>
             </div>
 
@@ -200,7 +201,8 @@
                             </select>
                         </div>
 
-                        <button onclick="calculateCost()" class="w-full bg-white text-blue-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors">
+                        <button onclick="calculateCost()"
+                            class="w-full bg-white text-blue-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors">
                             Calculate Estimate
                         </button>
 
@@ -264,7 +266,8 @@
                     </div>
 
                     <div class="mt-6 text-center">
-                        <button onclick="openPaymentPortal()" class="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105">
+                        <button onclick="openPaymentPortal()"
+                            class="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105">
                             Make a Payment
                         </button>
                     </div>
@@ -277,7 +280,8 @@
                     <div>
                         <h2 class="text-3xl font-bold mb-6">Financial Assistance Programs</h2>
                         <p class="text-white/90 mb-6">
-                            We believe everyone deserves quality healthcare. Our financial assistance programs can help reduce or eliminate your medical bills based on your financial situation.
+                            We believe everyone deserves quality healthcare. Our financial assistance programs can help
+                            reduce or eliminate your medical bills based on your financial situation.
                         </p>
 
                         <div class="space-y-4">
@@ -300,7 +304,8 @@
                         </div>
 
                         <div class="mt-6">
-                            <button onclick="openFinancialAssistance()" class="px-6 py-3 bg-white text-green-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                            <button onclick="openFinancialAssistance()"
+                                class="px-6 py-3 bg-white text-green-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">
                                 Apply for Financial Assistance
                             </button>
                         </div>
@@ -315,11 +320,13 @@
                             </div>
                             <div class="insurance-tier tier-silver">
                                 <div class="font-semibold text-gray-800">75% Assistance</div>
-                                <div class="text-sm text-gray-800">Household income 201-300% of Federal Poverty Level</div>
+                                <div class="text-sm text-gray-800">Household income 201-300% of Federal Poverty Level
+                                </div>
                             </div>
                             <div class="insurance-tier tier-bronze">
                                 <div class="font-semibold text-gray-800">50% Assistance</div>
-                                <div class="text-sm text-gray-800">Household income 301-400% of Federal Poverty Level</div>
+                                <div class="text-sm text-gray-800">Household income 301-400% of Federal Poverty Level
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -416,7 +423,8 @@
 
                     <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                         <h4 class="font-semibold text-blue-800 mb-2">Patient Rights</h4>
-                        <p class="text-blue-700 text-sm">You have the right to receive a detailed explanation of charges, request payment plans, and dispute billing errors.</p>
+                        <p class="text-blue-700 text-sm">You have the right to receive a detailed explanation of
+                            charges, request payment plans, and dispute billing errors.</p>
                     </div>
                 </div>
             </div>
@@ -434,8 +442,10 @@
             <div class="space-y-4">
                 <input type="text" placeholder="Account Number" class="w-full p-3 border border-gray-300 rounded-lg">
                 <input type="text" placeholder="Last Name" class="w-full p-3 border border-gray-300 rounded-lg">
-                <input type="text" placeholder="Date of Birth (MM/DD/YYYY)" class="w-full p-3 border border-gray-300 rounded-lg">
-                <button class="w-full px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all">
+                <input type="text" placeholder="Date of Birth (MM/DD/YYYY)"
+                    class="w-full p-3 border border-gray-300 rounded-lg">
+                <button
+                    class="w-full px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all">
                     Access My Account
                 </button>
                 <p class="text-gray-600 text-sm text-center">
@@ -457,14 +467,16 @@
             }
 
             const baseCost = parseInt(serviceType.selectedOptions[0].dataset.cost);
-            const coverage = insuranceType.value === 'none' ? 0 : parseFloat(insuranceType.selectedOptions[0].dataset.coverage || 0);
+            const coverage = insuranceType.value === 'none' ? 0 : parseFloat(insuranceType.selectedOptions[0].dataset
+                .coverage || 0);
 
             const insurancePays = baseCost * coverage;
             const yourCost = baseCost - insurancePays;
 
             document.getElementById('totalCost').textContent = `$${baseCost.toLocaleString()}`;
             document.getElementById('yourCost').textContent = `Your estimated cost: $${yourCost.toLocaleString()}`;
-            document.getElementById('insuranceCoverage').textContent = `Insurance covers: $${insurancePays.toLocaleString()}`;
+            document.getElementById('insuranceCoverage').textContent =
+                `Insurance covers: $${insurancePays.toLocaleString()}`;
 
             resultDiv.classList.remove('hidden');
         }
@@ -483,7 +495,8 @@
         }
 
         function openFinancialAssistance() {
-            alert('Financial Assistance Application\n\nYou will be redirected to our secure financial assistance application portal. Please have the following documents ready:\n\n• Recent tax returns\n• Pay stubs\n• Bank statements\n• Identification\n\nOur financial counselors are available to help you complete the application.');
+            alert(
+                'Financial Assistance Application\n\nYou will be redirected to our secure financial assistance application portal. Please have the following documents ready:\n\n• Recent tax returns\n• Pay stubs\n• Bank statements\n• Identification\n\nOur financial counselors are available to help you complete the application.');
         }
     </script>
 

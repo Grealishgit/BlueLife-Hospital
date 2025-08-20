@@ -1,9 +1,9 @@
 <?php
 // Include the doctors data
-require_once '../config/doctors.php';
+require_once '/Data/doctors.php';
 
 // Get cardiology doctors
-$cardiologyDoctors = array_filter($doctorsData, function($doctor) {
+$cardiologyDoctors = array_filter($doctorsData, function ($doctor) {
     return $doctor['department'] === 'Cardiology';
 });
 ?>
@@ -32,7 +32,7 @@ $cardiologyDoctors = array_filter($doctorsData, function($doctor) {
 
 <body class="font-inter bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
 
-    <?php include '../components/navbar.php'; ?>
+    <?php include 'app/Views/navbar.php'; ?>
 
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-r from-red-500 via-pink-500 to-red-600 text-white py-20">
@@ -240,7 +240,7 @@ $cardiologyDoctors = array_filter($doctorsData, function($doctor) {
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <?php 
+                <?php
                 $conditions = [
                     ['name' => 'Coronary Artery Disease', 'icon' => '❤️'],
                     ['name' => 'Heart Arrhythmias', 'icon' => '⚡'],
@@ -251,7 +251,7 @@ $cardiologyDoctors = array_filter($doctorsData, function($doctor) {
                     ['name' => 'Congenital Heart Disease', 'icon' => '👶'],
                     ['name' => 'Aortic Aneurysms', 'icon' => '🫀']
                 ];
-                
+
                 foreach ($conditions as $condition): ?>
                 <div
                     class="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-gray-100">

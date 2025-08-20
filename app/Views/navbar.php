@@ -11,7 +11,7 @@
             'about.php' => 'About',
             'services.php' => 'Services',
             'contact.php' => 'Contact',
-            'app/Views/blog.php' => 'Blog'
+            'blog.php' => 'Blog'
         ];
         foreach ($tabs as $file => $label) {
             $isActive = $current === $file;

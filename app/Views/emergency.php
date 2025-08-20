@@ -7,109 +7,109 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Emergency Services - BlueLife Hospital</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-            min-height: 100vh;
+    body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        min-height: 100vh;
+    }
+
+    .emergency-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s ease;
+    }
+
+    .emergency-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
+    }
+
+    .pulse-animation {
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            transform: scale(1);
         }
 
-        .emergency-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            transition: all 0.3s ease;
-        }
-
-        .emergency-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
-        }
-
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .emergency-number {
-            background: linear-gradient(135deg, #dc2626, #991b1b);
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            padding: 1rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .emergency-number:hover {
-            background: linear-gradient(135deg, #991b1b, #7f1d1d);
+        50% {
             transform: scale(1.05);
         }
+    }
 
-        .wait-time-good {
-            color: #059669;
+    .emergency-number {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 1rem;
+        border-radius: 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .emergency-number:hover {
+        background: linear-gradient(135deg, #991b1b, #7f1d1d);
+        transform: scale(1.05);
+    }
+
+    .wait-time-good {
+        color: #059669;
+    }
+
+    .wait-time-moderate {
+        color: #d97706;
+    }
+
+    .wait-time-busy {
+        color: #dc2626;
+    }
+
+    .first-aid-step {
+        counter-increment: step-counter;
+    }
+
+    .first-aid-step::before {
+        content: counter(step-counter);
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    .first-aid-container {
+        counter-reset: step-counter;
+    }
+
+    .alert-banner {
+        background: linear-gradient(90deg, #fbbf24, #f59e0b);
+        animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(-100%);
         }
 
-        .wait-time-moderate {
-            color: #d97706;
+        to {
+            transform: translateY(0);
         }
-
-        .wait-time-busy {
-            color: #dc2626;
-        }
-
-        .first-aid-step {
-            counter-increment: step-counter;
-        }
-
-        .first-aid-step::before {
-            content: counter(step-counter);
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-
-        .first-aid-container {
-            counter-reset: step-counter;
-        }
-
-        .alert-banner {
-            background: linear-gradient(90deg, #fbbf24, #f59e0b);
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
+    }
     </style>
 </head>
 
@@ -128,8 +128,8 @@
 
             <!-- Hero Section -->
             <div class="text-center mb-12">
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Emergency Services</h1>
-                <p class="text-white/90 text-lg max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-500 mb-4">Emergency Services</h1>
+                <p class="text-lg text-black font-semibold max-w-3xl mx-auto">
                     When every second counts, BlueLife Hospital's Emergency Department provides immediate,
                     life-saving care 24 hours a day, 7 days a week.
                 </p>
@@ -183,7 +183,8 @@
                     </div>
                 </div>
                 <div class="text-center mt-6">
-                    <p class="text-gray-600 text-sm">*Wait times are estimates and may vary based on severity of cases. Critical patients are seen immediately.</p>
+                    <p class="text-gray-600 text-sm">*Wait times are estimates and may vary based on severity of cases.
+                        Critical patients are seen immediately.</p>
                 </div>
             </div>
 
@@ -193,16 +194,19 @@
                     <h2 class="text-2xl font-bold text-gray-800 mb-6">What to Expect in Our Emergency Department</h2>
                     <div class="space-y-4">
                         <div class="flex items-start space-x-3">
-                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 <span class="text-blue-600 font-bold">1</span>
                             </div>
                             <div>
                                 <h3 class="font-semibold text-gray-800">Triage Assessment</h3>
-                                <p class="text-gray-600">Our nurses will quickly assess your condition and prioritize your care</p>
+                                <p class="text-gray-600">Our nurses will quickly assess your condition and prioritize
+                                    your care</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-3">
-                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 <span class="text-blue-600 font-bold">2</span>
                             </div>
                             <div>
@@ -211,7 +215,8 @@
                             </div>
                         </div>
                         <div class="flex items-start space-x-3">
-                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 <span class="text-blue-600 font-bold">3</span>
                             </div>
                             <div>
@@ -220,7 +225,8 @@
                             </div>
                         </div>
                         <div class="flex items-start space-x-3">
-                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 <span class="text-blue-600 font-bold">4</span>
                             </div>
                             <div>
@@ -229,7 +235,8 @@
                             </div>
                         </div>
                         <div class="flex items-start space-x-3">
-                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                                 <span class="text-blue-600 font-bold">5</span>
                             </div>
                             <div>
@@ -253,7 +260,8 @@
                         </div>
                         <div class="flex items-center space-x-3">
                             <span class="text-red-500">🔴</span>
-                            <span class="text-gray-700">Signs of stroke (face drooping, arm weakness, speech difficulty)</span>
+                            <span class="text-gray-700">Signs of stroke (face drooping, arm weakness, speech
+                                difficulty)</span>
                         </div>
                         <div class="flex items-center space-x-3">
                             <span class="text-red-500">🔴</span>
@@ -303,7 +311,8 @@
                             <li>✓ Insurance accepted</li>
                         </ul>
                         <div class="mt-4">
-                            <button class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all">
+                            <button
+                                class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all">
                                 Schedule Transport
                             </button>
                         </div>
@@ -389,7 +398,9 @@
                 </div>
 
                 <div class="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                    <p class="text-yellow-800 font-medium">⚠️ Important: These are basic guidelines only. Always call 911 for serious emergencies and seek professional medical training for proper first aid techniques.</p>
+                    <p class="text-yellow-800 font-medium">⚠️ Important: These are basic guidelines only. Always call
+                        911 for serious emergencies and seek professional medical training for proper first aid
+                        techniques.</p>
                 </div>
             </div>
 
@@ -426,59 +437,59 @@
     </div>
 
     <script>
-        // Update wait times periodically (simulation)
-        function updateWaitTimes() {
-            const times = [{
-                    selector: '.wait-time-good',
-                    min: 10,
-                    max: 25
-                },
-                {
-                    selector: '.wait-time-moderate',
-                    min: 30,
-                    max: 60
-                },
-                {
-                    selector: '.wait-time-busy',
-                    min: 0,
-                    max: 5
-                }
-            ];
+    // Update wait times periodically (simulation)
+    function updateWaitTimes() {
+        const times = [{
+                selector: '.wait-time-good',
+                min: 10,
+                max: 25
+            },
+            {
+                selector: '.wait-time-moderate',
+                min: 30,
+                max: 60
+            },
+            {
+                selector: '.wait-time-busy',
+                min: 0,
+                max: 5
+            }
+        ];
 
-            times.forEach((time, index) => {
-                const element = document.querySelector(time.selector);
-                if (index === 2) { // High priority always immediate
-                    element.textContent = 'Immediate';
-                } else {
-                    const randomTime = Math.floor(Math.random() * (time.max - time.min + 1)) + time.min;
-                    element.textContent = randomTime + ' min';
-                }
-            });
-        }
-
-        // Update wait times every 2 minutes
-        setInterval(updateWaitTimes, 120000);
-
-        // Emergency preparedness modal
-        function openPreparednessModal() {
-            document.getElementById('preparednessModal').classList.remove('hidden');
-        }
-
-        function closePreparednessModal() {
-            document.getElementById('preparednessModal').classList.add('hidden');
-        }
-
-        // Add emergency preparedness button
-        document.addEventListener('DOMContentLoaded', () => {
-            const preparednessBtn = document.createElement('button');
-            preparednessBtn.textContent = 'Emergency Preparedness Tips';
-            preparednessBtn.className = 'fixed bottom-6 right-6 px-4 py-2 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 transition-colors z-40';
-            preparednessBtn.onclick = openPreparednessModal;
-            document.body.appendChild(preparednessBtn);
+        times.forEach((time, index) => {
+            const element = document.querySelector(time.selector);
+            if (index === 2) { // High priority always immediate
+                element.textContent = 'Immediate';
+            } else {
+                const randomTime = Math.floor(Math.random() * (time.max - time.min + 1)) + time.min;
+                element.textContent = randomTime + ' min';
+            }
         });
+    }
+
+    // Update wait times every 2 minutes
+    setInterval(updateWaitTimes, 120000);
+
+    // Emergency preparedness modal
+    function openPreparednessModal() {
+        document.getElementById('preparednessModal').classList.remove('hidden');
+    }
+
+    function closePreparednessModal() {
+        document.getElementById('preparednessModal').classList.add('hidden');
+    }
+
+    // Add emergency preparedness button
+    document.addEventListener('DOMContentLoaded', () => {
+        const preparednessBtn = document.createElement('button');
+        preparednessBtn.textContent = 'Emergency Preparedness Tips';
+        preparednessBtn.className =
+            'fixed bottom-6 right-6 px-4 py-2 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 transition-colors z-40';
+        preparednessBtn.onclick = openPreparednessModal;
+        document.body.appendChild(preparednessBtn);
+    });
     </script>
 
-    <?php include 'footer.php'; ?>
 </body>
 
 </html>
