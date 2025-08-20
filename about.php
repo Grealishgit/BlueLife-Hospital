@@ -103,17 +103,20 @@
                             conveniently and efficiently. For over 25 years, we have been dedicated to providing
                             exceptional medical care to our community.
                         </p>
-                        <p class="leading-relaxed">
-                            At BlueLife, we understand the challenges individuals face when it comes to scheduling
-                            doctor appointments and managing their health records. That's why we've built a
-                            comprehensive healthcare system that prioritizes your convenience and well-being.
-                        </p>
+                        <div class="bg-blue-50 p-6 rounded-lg shadow-lg border-r-4 border-blue-500">
+                            <p class="leading-relaxed">
+                                At BlueLife, we understand the challenges individuals face when it comes to scheduling
+                                doctor appointments and managing their health records. That's why we've built a
+                                comprehensive healthcare system that prioritizes your convenience and well-being.
+                            </p>
+                        </div>
+
                         <p class="leading-relaxed">
                             BlueLife is committed to excellence in healthcare technology. We continuously strive
                             to enhance our services, integrating the latest medical advancements to improve
                             patient experience and deliver superior care.
                         </p>
-                        <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                        <div class="bg-blue-50 shadow-lg p-6 rounded-lg border-l-4 border-blue-500">
                             <h4 class="font-semibold text-blue-800 mb-2">Our Mission</h4>
                             <p class="text-blue-700">
                                 To provide compassionate, innovative healthcare that exceeds expectations while
