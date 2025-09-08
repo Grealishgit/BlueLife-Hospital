@@ -1,6 +1,6 @@
 <?php
 // Run this script once to create the users table in your database
-require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../../config/database.php';
 
 $db = (new Database())->connect();
 

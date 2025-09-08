@@ -60,8 +60,22 @@
                         class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
                 </div>
 
-                <input type="number" placeholder="Phone Number"
+                <input type="email" placeholder="Your Email"
                     class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
+                <input type="password" placeholder="Your Password"
+                    class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
+
+                <div class="flex md:flex-row flex-col gap-2">
+                    <input type="number" placeholder="Phone Number"
+                        class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
+
+                    <input type="date" placeholder="Date of Birth"
+                        class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
+                </div>
+
+
+
+
                 <select name="gender" id="gender" class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
                     <option value="">Select your gender</option>
                     <option value="male">Male</option>
@@ -69,12 +83,7 @@
                     <option value="other">Other</option>
                 </select>
                 <!-- DOB -->
-                <input type="date" placeholder="Date of Birth"
-                    class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
-                <input type="email" placeholder="Your Email"
-                    class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
-                <input type="password" placeholder="Your Password"
-                    class="w-full mb-3 px-3 py-2 border border-gray-400 rounded" required>
+
                 <button type="submit"
                     class="w-full bg-blue-500 cursor-pointer text-white py-2 rounded hover:bg-blue-600">
                     Sign Up
