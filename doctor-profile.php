@@ -51,10 +51,10 @@ if (!$doctor) {
                                 <span class="text-gray-500 ml-2">Rating</span>
                             </div>
                             <div class="mt-4">
-                                <button onclick="bookAppointment(<?php echo $doctorId; ?>)"
+                                <a href="appointment.php"
                                     class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
-                                    Book Appointment - Ksh<?php echo $doctor['consultation_fee']; ?>
-                                </button>
+                                    Book Appointment
+                                </a>
                             </div>
                         </div>
                     </div>
