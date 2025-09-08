@@ -6,7 +6,7 @@
             <!-- Heading to the left -->
             <div class="flex-1 items-center  justify-center flex flex-col">
                 <h1 class="md:text-6xl text-4xl ml-3 font-bold text-center text-white  my-8">
-                    Welcome to BlueLife Hospital
+                    Welcome to Sheywe Community Hospital
                 </h1>
                 <p class="md:text-lg text-md text-center text-white">
                     Your health is our priority. We provide the best medical services.
@@ -14,7 +14,7 @@
                 </p>
 
                 <div class="flex md:flex-row flex-col w-full gap-3 justify-center mt-5 items-center">
-                    <img src="/storage/uploads/group.png" alt="BlueLife Hospital"
+                    <img src="/storage/uploads/group.png" alt="Sheywe Community Hospital"
                         class="w-20 h-auto ml-5 rounded-lg shadow-md" />
                     <p class="text-white font-semibold text-center">
                         Simply navigate through our extensive list of trusted
@@ -38,7 +38,7 @@
 
             <!-- Image to the right -->
             <div class="flex-1 flex flex-col">
-                <img src="/storage/uploads/header.png" alt="BlueLife Hospital" class="w-full max-w-xl" />
+                <img src="/storage/uploads/header.png" alt="Sheywe Community Hospital" class="w-full max-w-xl" />
             </div>
         </div>
     </div>

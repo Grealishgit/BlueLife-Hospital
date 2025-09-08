@@ -7,7 +7,7 @@
         </button>
 
         <div class="flex items-center mb-3 justify-center">
-            <p class="text-2xl font-bold"><span class="text-blue-500">Blue</span>Life Hospital</p>
+            <p class="text-2xl font-bold"><span class="text-blue-500">Sheywe</span> Community Hospital</p>
         </div>
 
         <div class="flex justify-center mb-4">

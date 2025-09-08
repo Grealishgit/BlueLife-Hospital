@@ -1,4 +1,4 @@
-# BlueLife Hospital
+# Sheywe Community Hospital
 
 A PHP-based hospital management system.
 

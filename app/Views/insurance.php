@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Insurance & Billing - BlueLife Hospital</title>
+    <title>Insurance & Billing - Sheywe Community Hospital</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -406,7 +406,7 @@
                             <div class="text-2xl">✉️</div>
                             <div>
                                 <h3 class="font-semibold text-gray-800">Email Support</h3>
-                                <p class="text-gray-600">billing@bluelifehospital.com</p>
+                                <p class="text-gray-600">billing@sheywecommunityhospital.com</p>
                                 <p class="text-gray-500 text-sm">Response within 24 hours</p>
                             </div>
                         </div>
@@ -496,7 +496,8 @@
 
         function openFinancialAssistance() {
             alert(
-                'Financial Assistance Application\n\nYou will be redirected to our secure financial assistance application portal. Please have the following documents ready:\n\n• Recent tax returns\n• Pay stubs\n• Bank statements\n• Identification\n\nOur financial counselors are available to help you complete the application.');
+                'Financial Assistance Application\n\nYou will be redirected to our secure financial assistance application portal. Please have the following documents ready:\n\n• Recent tax returns\n• Pay stubs\n• Bank statements\n• Identification\n\nOur financial counselors are available to help you complete the application.'
+            );
         }
     </script>
 

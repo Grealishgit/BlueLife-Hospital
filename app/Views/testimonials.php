@@ -5,183 +5,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Patient Testimonials - BlueLife Hospital</title>
+    <title>Patient Testimonials - Sheywe Community Hospital</title>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(135deg, #1e40af 0%, #3730a3 50%, #581c87 100%);
-        min-height: 100vh;
-    }
-
-    .testimonial-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .testimonial-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
-    }
-
-    .testimonial-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981);
-    }
-
-    .rating-stars {
-        color: #fbbf24;
-        font-size: 1.25rem;
-    }
-
-    .quote-icon {
-        position: absolute;
-        top: -10px;
-        right: 20px;
-        font-size: 4rem;
-        color: rgba(59, 130, 246, 0.1);
-        font-family: serif;
-    }
-
-    .video-testimonial {
-        background: linear-gradient(135deg, #dc2626, #b91c1c);
-        color: white;
-    }
-
-    .success-story {
-        background: linear-gradient(135deg, #10b981, #059669);
-        color: white;
-    }
-
-    .review-form {
-        background: linear-gradient(135deg, #7c3aed, #a855f7);
-        color: white;
-    }
-
-    .masonry-grid {
-        columns: 3;
-        column-gap: 2rem;
-    }
-
-    .masonry-item {
-        break-inside: avoid;
-        margin-bottom: 2rem;
-    }
-
-    .stats-card {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 15px;
-        padding: 2rem;
-        text-align: center;
-        color: white;
-    }
-
-    .stat-number {
-        font-size: 3rem;
-        font-weight: bold;
-        background: linear-gradient(135deg, #fbbf24, #f59e0b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .filter-btn {
-        padding: 0.75rem 1.5rem;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-    }
-
-    .filter-btn.active,
-    .filter-btn:hover {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        border-color: transparent;
-    }
-
-    .before-after {
-        background: linear-gradient(135deg, #f59e0b, #d97706);
-        color: white;
-    }
-
-    .patient-photo {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid white;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .video-play-btn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80px;
-        height: 80px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        color: #3b82f6;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .video-play-btn:hover {
-        background: white;
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    @media (max-width: 768px) {
-        .masonry-grid {
-            columns: 1;
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e40af 0%, #3730a3 50%, #581c87 100%);
+            min-height: 100vh;
         }
-    }
 
-    @media (max-width: 1024px) and (min-width: 769px) {
-        .masonry-grid {
-            columns: 2;
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
-    }
 
-    .form-input {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 8px;
-        padding: 0.75rem;
-        color: white;
-        /* placeholder-color: rgba(255, 255, 255, 0.7); */
-    }
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
+        }
 
-    .form-input::placeholder {
-        color: rgba(255, 255, 255, 0.7);
-    }
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981);
+        }
 
-    .form-input:focus {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.5);
-        outline: none;
-    }
+        .rating-stars {
+            color: #fbbf24;
+            font-size: 1.25rem;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            font-size: 4rem;
+            color: rgba(59, 130, 246, 0.1);
+            font-family: serif;
+        }
+
+        .video-testimonial {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+        }
+
+        .success-story {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .review-form {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+        }
+
+        .masonry-grid {
+            columns: 3;
+            column-gap: 2rem;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 2rem;
+        }
+
+        .stats-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-color: transparent;
+        }
+
+        .before-after {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .patient-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #3b82f6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-play-btn:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .masonry-grid {
+                columns: 1;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .masonry-grid {
+                columns: 2;
+            }
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: white;
+            /* placeholder-color: rgba(255, 255, 255, 0.7); */
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+            outline: none;
+        }
     </style>
 </head>
 
@@ -196,7 +196,7 @@
                 <h1 class="text-4xl md:text-6xl font-bold text-white mb-4"
                     style="font-family: 'Playfair Display', serif;">Patient Stories</h1>
                 <p class="text-white/90 text-lg max-w-3xl mx-auto">
-                    Real experiences from real patients who have received exceptional care at BlueLife Hospital.
+                    Real experiences from real patients who have received exceptional care at Sheywe Community Hospital.
                     Their stories inspire us to continue providing the highest quality healthcare.
                 </p>
             </div>
@@ -248,7 +248,8 @@
                         </div>
                     </div>
                     <p class="text-gray-700 mb-4">
-                        "The cardiac team at BlueLife Hospital saved my life. Dr. Chen and his team performed a complex
+                        "The cardiac team at Sheywe Community Hospital saved my life. Dr. Chen and his team performed a
+                        complex
                         heart surgery with such precision and care. The nurses were angels, and the recovery process was
                         smooth thanks to their excellent post-operative care."
                     </p>
@@ -289,7 +290,8 @@
                     <h4 class="font-bold text-lg mb-3">A Mother's Gratitude</h4>
                     <p class="text-white/90 mb-4">
                         "When Emma was diagnosed with a rare condition, we were devastated. The pediatric team at
-                        BlueLife Hospital not only provided exceptional medical care but also emotional support for our
+                        Sheywe Community Hospital not only provided exceptional medical care but also emotional support
+                        for our
                         entire family. Today, Emma is a healthy, happy 5-year-old who loves to dance!"
                     </p>
                     <div class="text-sm text-white/70">
@@ -363,7 +365,7 @@
                     <p class="text-gray-700 mb-4">
                         "The robotic surgery I received was minimally invasive and incredibly precise. My recovery time
                         was much shorter than expected, and the surgical team explained every step of the process. The
-                        technology and expertise at BlueLife Hospital is truly world-class."
+                        technology and expertise at Sheywe Community Hospital is truly world-class."
                     </p>
                     <div class="text-sm text-gray-500">
                         ✓ Verified Patient • Robotic Surgery • Minimal Recovery Time
@@ -383,7 +385,8 @@
                         </div>
                     </div>
                     <p class="text-gray-700 mb-4">
-                        "Having premature twins was scary, but the NICU team at BlueLife Hospital provided exceptional
+                        "Having premature twins was scary, but the NICU team at Sheywe Community Hospital provided
+                        exceptional
                         care for both my babies and emotional support for our family. The nurses became like family to
                         us during our 8-week stay. Both boys are now healthy toddlers!"
                     </p>
@@ -405,7 +408,8 @@
                     </div>
                     <h4 class="font-bold text-lg mb-3">Fighting and Winning</h4>
                     <p class="text-white/90 mb-4">
-                        "Five years ago, I was diagnosed with stage 3 breast cancer. The oncology team at BlueLife
+                        "Five years ago, I was diagnosed with stage 3 breast cancer. The oncology team at Sheywe
+                        Community
                         Hospital created a comprehensive treatment plan that included surgery, chemotherapy, and
                         radiation. Their compassionate care and cutting-edge treatments helped me beat cancer
                         completely. I'm now cancer-free and living life to the fullest!"
@@ -421,7 +425,8 @@
             <div class="testimonial-card review-form p-8 mt-12">
                 <h2 class="text-3xl font-bold mb-6 text-center">Share Your Experience</h2>
                 <p class="text-center text-white/90 mb-8">
-                    Help others by sharing your experience with BlueLife Hospital. Your feedback helps us continue to
+                    Help others by sharing your experience with Sheywe Community Hospital. Your feedback helps us
+                    continue to
                     improve our care.
                 </p>
 
@@ -484,7 +489,8 @@
 
                     <div class="flex items-center">
                         <input type="checkbox" id="publish" name="publish" class="mr-3">
-                        <label for="publish" class="text-white">I consent to publishing this review on the BlueLife
+                        <label for="publish" class="text-white">I consent to publishing this review on the Sheywe
+                            Community
                             Hospital website</label>
                     </div>
 
@@ -515,164 +521,164 @@
     </div>
 
     <script>
-    let selectedRating = 0;
+        let selectedRating = 0;
 
-    // Counter animation
-    function animateCounters() {
-        const counters = document.querySelectorAll('.stat-number');
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
 
-        counters.forEach(counter => {
-            const target = parseFloat(counter.getAttribute('data-target'));
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            let current = 0;
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
 
-            const updateCounter = () => {
-                current += increment;
-                if (current < target) {
-                    if (target < 10) {
-                        counter.textContent = current.toFixed(1);
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        if (target < 10) {
+                            counter.textContent = current.toFixed(1);
+                        } else {
+                            counter.textContent = Math.floor(current).toLocaleString();
+                        }
+                        requestAnimationFrame(updateCounter);
                     } else {
-                        counter.textContent = Math.floor(current).toLocaleString();
+                        if (target < 10) {
+                            counter.textContent = target.toFixed(1);
+                        } else {
+                            counter.textContent = target.toLocaleString();
+                        }
                     }
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    if (target < 10) {
-                        counter.textContent = target.toFixed(1);
-                    } else {
-                        counter.textContent = target.toLocaleString();
-                    }
-                }
-            };
+                };
 
-            updateCounter();
-        });
-    }
+                updateCounter();
+            });
+        }
 
-    // Filter functionality
-    function initializeFilters() {
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const testimonials = document.querySelectorAll('.masonry-item');
+        // Filter functionality
+        function initializeFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const testimonials = document.querySelectorAll('.masonry-item');
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.getAttribute('data-filter');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-filter');
 
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
 
-                // Filter testimonials
-                testimonials.forEach(testimonial => {
-                    const category = testimonial.getAttribute('data-category');
-                    if (filter === 'all' || category === filter) {
-                        testimonial.style.display = 'block';
-                    } else {
-                        testimonial.style.display = 'none';
-                    }
+                    // Filter testimonials
+                    testimonials.forEach(testimonial => {
+                        const category = testimonial.getAttribute('data-category');
+                        if (filter === 'all' || category === filter) {
+                            testimonial.style.display = 'block';
+                        } else {
+                            testimonial.style.display = 'none';
+                        }
+                    });
                 });
             });
-        });
-    }
+        }
 
-    // Rating system
-    function initializeRating() {
-        const stars = document.querySelectorAll('.rating-star');
+        // Rating system
+        function initializeRating() {
+            const stars = document.querySelectorAll('.rating-star');
 
-        stars.forEach((star, index) => {
-            star.addEventListener('click', () => {
-                selectedRating = index + 1;
+            stars.forEach((star, index) => {
+                star.addEventListener('click', () => {
+                    selectedRating = index + 1;
+                    updateStars();
+                });
+
+                star.addEventListener('mouseover', () => {
+                    highlightStars(index + 1);
+                });
+            });
+
+            document.querySelector('.review-form').addEventListener('mouseleave', () => {
                 updateStars();
             });
-
-            star.addEventListener('mouseover', () => {
-                highlightStars(index + 1);
-            });
-        });
-
-        document.querySelector('.review-form').addEventListener('mouseleave', () => {
-            updateStars();
-        });
-    }
-
-    function highlightStars(rating) {
-        const stars = document.querySelectorAll('.rating-star');
-        stars.forEach((star, index) => {
-            if (index < rating) {
-                star.textContent = '★';
-                star.style.color = '#fbbf24';
-            } else {
-                star.textContent = '☆';
-                star.style.color = 'rgba(255, 255, 255, 0.5)';
-            }
-        });
-    }
-
-    function updateStars() {
-        highlightStars(selectedRating);
-    }
-
-    // Video functionality
-    function playVideo(videoId) {
-        const modal = document.getElementById('videoModal');
-        const video = document.getElementById('testimonialVideo');
-
-        // In a real implementation, you would set the actual video source
-        const videoSources = {
-            'video1': 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4'
-        };
-
-        video.src = videoSources[videoId] || '';
-        modal.classList.remove('hidden');
-        video.play();
-    }
-
-    function closeVideo() {
-        const modal = document.getElementById('videoModal');
-        const video = document.getElementById('testimonialVideo');
-
-        modal.classList.add('hidden');
-        video.pause();
-        video.currentTime = 0;
-    }
-
-    // Form submission
-    function initializeForm() {
-        const form = document.getElementById('reviewForm');
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            if (selectedRating === 0) {
-                alert('Please select a rating');
-                return;
-            }
-
-            const formData = new FormData(form);
-            formData.append('rating', selectedRating);
-
-            // Simulate form submission
-            alert('Thank you for your review! It will be reviewed and published within 24 hours.');
-            form.reset();
-            selectedRating = 0;
-            updateStars();
-        });
-    }
-
-    // Initialize page
-    document.addEventListener('DOMContentLoaded', () => {
-        animateCounters();
-        initializeFilters();
-        initializeRating();
-        initializeForm();
-    });
-
-    // Close video when clicking outside
-    document.getElementById('videoModal').addEventListener('click', (e) => {
-        if (e.target === e.currentTarget) {
-            closeVideo();
         }
-    });
+
+        function highlightStars(rating) {
+            const stars = document.querySelectorAll('.rating-star');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.textContent = '★';
+                    star.style.color = '#fbbf24';
+                } else {
+                    star.textContent = '☆';
+                    star.style.color = 'rgba(255, 255, 255, 0.5)';
+                }
+            });
+        }
+
+        function updateStars() {
+            highlightStars(selectedRating);
+        }
+
+        // Video functionality
+        function playVideo(videoId) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('testimonialVideo');
+
+            // In a real implementation, you would set the actual video source
+            const videoSources = {
+                'video1': 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4'
+            };
+
+            video.src = videoSources[videoId] || '';
+            modal.classList.remove('hidden');
+            video.play();
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('testimonialVideo');
+
+            modal.classList.add('hidden');
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        // Form submission
+        function initializeForm() {
+            const form = document.getElementById('reviewForm');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                if (selectedRating === 0) {
+                    alert('Please select a rating');
+                    return;
+                }
+
+                const formData = new FormData(form);
+                formData.append('rating', selectedRating);
+
+                // Simulate form submission
+                alert('Thank you for your review! It will be reviewed and published within 24 hours.');
+                form.reset();
+                selectedRating = 0;
+                updateStars();
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+            initializeFilters();
+            initializeRating();
+            initializeForm();
+        });
+
+        // Close video when clicking outside
+        document.getElementById('videoModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeVideo();
+            }
+        });
     </script>
 
     <?php include 'footer.php'; ?>

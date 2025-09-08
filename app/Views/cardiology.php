@@ -14,19 +14,19 @@ $cardiologyDoctors = array_filter($doctorsData, function ($doctor) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardiology Services - BlueLife Hospital</title>
+    <title>Cardiology Services - Sheywe Community Hospital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                fontFamily: {
-                    'inter': ['Inter', 'sans-serif'],
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
                 }
             }
         }
-    }
     </script>
 </head>
 
@@ -253,11 +253,11 @@ $cardiologyDoctors = array_filter($doctorsData, function ($doctor) {
                 ];
 
                 foreach ($conditions as $condition): ?>
-                <div
-                    class="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-gray-100">
-                    <div class="text-3xl mb-3"><?php echo $condition['icon']; ?></div>
-                    <h3 class="font-semibold text-gray-800"><?php echo $condition['name']; ?></h3>
-                </div>
+                    <div
+                        class="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-gray-100">
+                        <div class="text-3xl mb-3"><?php echo $condition['icon']; ?></div>
+                        <h3 class="font-semibold text-gray-800"><?php echo $condition['name']; ?></h3>
+                    </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -274,40 +274,40 @@ $cardiologyDoctors = array_filter($doctorsData, function ($doctor) {
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <?php foreach ($cardiologyDoctors as $doctor): ?>
-                <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow border border-gray-100">
-                    <div class="h-64 bg-gradient-to-br from-red-100 to-pink-100 flex items-center justify-center">
-                        <div class="w-32 h-32 bg-red-200 rounded-full flex items-center justify-center">
-                            <span
-                                class="text-2xl font-bold text-red-700"><?php echo strtoupper(substr($doctor['name'], 0, 2)); ?></span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2"><?php echo $doctor['name']; ?></h3>
-                        <p class="text-red-600 font-medium mb-3"><?php echo $doctor['specialization']; ?></p>
-                        <p class="text-gray-600 text-sm mb-4"><?php echo $doctor['experience']; ?> years of experience
-                        </p>
-
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Expertise:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <?php foreach ($doctor['expertise'] as $skill): ?>
+                    <div
+                        class="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow border border-gray-100">
+                        <div class="h-64 bg-gradient-to-br from-red-100 to-pink-100 flex items-center justify-center">
+                            <div class="w-32 h-32 bg-red-200 rounded-full flex items-center justify-center">
                                 <span
-                                    class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs"><?php echo $skill; ?></span>
-                                <?php endforeach; ?>
+                                    class="text-2xl font-bold text-red-700"><?php echo strtoupper(substr($doctor['name'], 0, 2)); ?></span>
                             </div>
                         </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-2"><?php echo $doctor['name']; ?></h3>
+                            <p class="text-red-600 font-medium mb-3"><?php echo $doctor['specialization']; ?></p>
+                            <p class="text-gray-600 text-sm mb-4"><?php echo $doctor['experience']; ?> years of experience
+                            </p>
 
-                        <div class="mb-4">
-                            <h4 class="font-semibold text-gray-800 mb-2">Available:</h4>
-                            <p class="text-gray-600 text-sm"><?php echo implode(', ', $doctor['schedule']); ?></p>
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-gray-800 mb-2">Expertise:</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <?php foreach ($doctor['expertise'] as $skill): ?>
+                                        <span
+                                            class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs"><?php echo $skill; ?></span>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-gray-800 mb-2">Available:</h4>
+                                <p class="text-gray-600 text-sm"><?php echo implode(', ', $doctor['schedule']); ?></p>
+                            </div>
+
+                            <button class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors">
+                                Book Appointment
+                            </button>
                         </div>
-
-                        <button class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors">
-                            Book Appointment
-                        </button>
                     </div>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -478,11 +478,11 @@ $cardiologyDoctors = array_filter($doctorsData, function ($doctor) {
     <?php include '../components/live-chat.php'; ?>
 
     <script>
-    function scrollToSection(sectionId) {
-        document.getElementById(sectionId).scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     </script>
 
 </body>

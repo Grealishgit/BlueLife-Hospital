@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Our Services - BlueLife Hospital</title>
+    <title>Our Services - Sheywe Community Hospital</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
@@ -227,7 +227,7 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Why Choose BlueLife Hospital?</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Why Choose Sheywe Community Hospital?</h2>
                     <div class="space-y-6">
                         <div class="flex items-start">
                             <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">✓</div>

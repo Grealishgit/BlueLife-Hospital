@@ -12,112 +12,112 @@ $allDoctors = DoctorsData::getAllDoctors();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>All Doctors - BlueLife Hospital</title>
+    <title>All Doctors - Sheywe Community Hospital</title>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(135deg, #b2bceaff 0%, #71a4deff 100%);
-        min-height: 100vh;
-    }
-
-    .glass-effect {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    }
-
-    .doctor-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        transition: all 0.3s ease;
-        transform-style: preserve-3d;
-    }
-
-    .doctor-card:hover {
-        transform: translateY(-10px) rotateX(5deg);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    .search-glass {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .floating-animation {
-        animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-
-        0%,
-        100% {
-            transform: translateY(0px);
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #b2bceaff 0%, #71a4deff 100%);
+            min-height: 100vh;
         }
 
-        50% {
-            transform: translateY(-20px);
-        }
-    }
-
-    .pulse-animation {
-        animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-
-        0%,
-        100% {
-            opacity: 1;
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
         }
 
-        50% {
-            opacity: 0.7;
+        .doctor-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
         }
-    }
 
-    .slide-in {
-        animation: slideIn 0.6s ease-out forwards;
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    @keyframes slideIn {
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        .doctor-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
-    }
 
-    .filter-button {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        transition: all 0.3s ease;
-    }
+        .search-glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
 
-    .filter-button:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: scale(1.05);
-    }
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
 
-    .filter-button.active {
-        background: rgba(59, 130, 246, 0.8);
-        color: white;
-    }
+        @keyframes float {
 
-    .specialty-badge {
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        color: white;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-    }
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .filter-button {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .filter-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .filter-button.active {
+            background: rgba(59, 130, 246, 0.8);
+            color: white;
+        }
+
+        .specialty-badge {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
     </style>
 </head>
 
@@ -209,16 +209,16 @@ $allDoctors = DoctorsData::getAllDoctors();
     <?php include 'app/Views/footer.php'; ?>
 
     <script>
-    // Get doctors data from PHP
-    const doctors = <?php echo json_encode(array_values($allDoctors)); ?>;
+        // Get doctors data from PHP
+        const doctors = <?php echo json_encode(array_values($allDoctors)); ?>;
 
-    let filteredDoctors = [...doctors];
-    let currentFilter = 'all';
-    let currentSort = 'name';
+        let filteredDoctors = [...doctors];
+        let currentFilter = 'all';
+        let currentSort = 'name';
 
-    // Generate doctor card HTML
-    function createDoctorCard(doctor) {
-        return `
+        // Generate doctor card HTML
+        function createDoctorCard(doctor) {
+            return `
                 <div class="doctor-card rounded-md border-2 hover:border-blue-500 hover:shadow-2xl shadow-white p-6 slide-in cursor-pointer"
                  data-doctor-id="${doctor.id}" onclick="openDoctorModal(${doctor.id})">
                     <div class="relative mb-4">
@@ -268,123 +268,123 @@ $allDoctors = DoctorsData::getAllDoctors();
                     </div>
                 </div>
             `;
-    }
+        }
 
-    // Render doctors grid
-    function renderDoctors() {
-        const grid = document.getElementById('doctorsGrid');
-        const noResults = document.getElementById('noResults');
+        // Render doctors grid
+        function renderDoctors() {
+            const grid = document.getElementById('doctorsGrid');
+            const noResults = document.getElementById('noResults');
 
-        if (filteredDoctors.length === 0) {
-            grid.innerHTML = '';
-            noResults.classList.remove('hidden');
-        } else {
-            noResults.classList.add('hidden');
-            grid.innerHTML = filteredDoctors.map(createDoctorCard).join('');
+            if (filteredDoctors.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                grid.innerHTML = filteredDoctors.map(createDoctorCard).join('');
 
-            // Add staggered animation
-            const cards = grid.querySelectorAll('.doctor-card');
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
+                // Add staggered animation
+                const cards = grid.querySelectorAll('.doctor-card');
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                });
+            }
+        }
+
+        // Filter doctors by specialty
+        function filterDoctors(specialty) {
+            currentFilter = specialty;
+
+            if (specialty === 'all') {
+                filteredDoctors = [...doctors];
+            } else {
+                filteredDoctors = doctors.filter(doctor => doctor.specialty === specialty);
+            }
+
+            applySearch();
+            sortDoctors(currentSort);
+            renderDoctors();
+        }
+
+        // Search functionality
+        function applySearch() {
+            const searchTerm = document.getElementById('doctorSearch').value.toLowerCase();
+
+            if (searchTerm) {
+                filteredDoctors = filteredDoctors.filter(doctor =>
+                    doctor.name.toLowerCase().includes(searchTerm) ||
+                    doctor.specialtyDisplay.toLowerCase().includes(searchTerm) ||
+                    doctor.education.toLowerCase().includes(searchTerm)
+                );
+            }
+        }
+
+        // Sort doctors
+        function sortDoctors(sortBy) {
+            currentSort = sortBy;
+
+            filteredDoctors.sort((a, b) => {
+                switch (sortBy) {
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    case 'specialty':
+                        return a.specialtyDisplay.localeCompare(b.specialtyDisplay);
+                    case 'experience':
+                        return b.experience_years - a.experience_years;
+                    case 'rating':
+                        return b.rating - a.rating;
+                    default:
+                        return 0;
+                }
             });
         }
-    }
 
-    // Filter doctors by specialty
-    function filterDoctors(specialty) {
-        currentFilter = specialty;
+        // Event listeners
+        document.getElementById('doctorSearch').addEventListener('input', () => {
+            filteredDoctors = currentFilter === 'all' ? [...doctors] : doctors.filter(doctor => doctor.specialty ===
+                currentFilter);
+            applySearch();
+            sortDoctors(currentSort);
+            renderDoctors();
+        });
 
-        if (specialty === 'all') {
-            filteredDoctors = [...doctors];
-        } else {
-            filteredDoctors = doctors.filter(doctor => doctor.specialty === specialty);
-        }
+        document.getElementById('sortSelect').addEventListener('change', (e) => {
+            sortDoctors(e.target.value);
+            renderDoctors();
+        });
 
-        applySearch();
-        sortDoctors(currentSort);
-        renderDoctors();
-    }
+        // Filter button functionality
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                filterDoctors(button.dataset.specialty);
+            });
+        });
 
-    // Search functionality
-    function applySearch() {
-        const searchTerm = document.getElementById('doctorSearch').value.toLowerCase();
-
-        if (searchTerm) {
-            filteredDoctors = filteredDoctors.filter(doctor =>
-                doctor.name.toLowerCase().includes(searchTerm) ||
-                doctor.specialtyDisplay.toLowerCase().includes(searchTerm) ||
-                doctor.education.toLowerCase().includes(searchTerm)
+        // Doctor interaction functions
+        function openDoctorModal(doctorId) {
+            const doctor = doctors.find(d => d.id === doctorId);
+            alert(
+                `Opening profile for ${doctor.name}\n\nSpecialty: ${doctor.specialtyDisplay}\nExperience: ${doctor.experience} years\nRating: ${doctor.rating}⭐\n\n${doctor.about}`
             );
         }
-    }
 
-    // Sort doctors
-    function sortDoctors(sortBy) {
-        currentSort = sortBy;
+        function bookAppointment(doctorId) {
+            const doctor = doctors.find(d => d.id === doctorId);
+            alert(
+                `Booking appointment with ${doctor.name}\nConsultation Fee: $Ksh${doctor.consultationFee}\n\nRedirecting to booking form...`
+            );
+            // Here you can open the booking modal or redirect to booking page
+        }
 
-        filteredDoctors.sort((a, b) => {
-            switch (sortBy) {
-                case 'name':
-                    return a.name.localeCompare(b.name);
-                case 'specialty':
-                    return a.specialtyDisplay.localeCompare(b.specialtyDisplay);
-                case 'experience':
-                    return b.experience_years - a.experience_years;
-                case 'rating':
-                    return b.rating - a.rating;
-                default:
-                    return 0;
-            }
+        function viewProfile(doctorId) {
+            window.location.href = `doctor-profile.php?id=${doctorId}`;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDoctors();
         });
-    }
-
-    // Event listeners
-    document.getElementById('doctorSearch').addEventListener('input', () => {
-        filteredDoctors = currentFilter === 'all' ? [...doctors] : doctors.filter(doctor => doctor.specialty ===
-            currentFilter);
-        applySearch();
-        sortDoctors(currentSort);
-        renderDoctors();
-    });
-
-    document.getElementById('sortSelect').addEventListener('change', (e) => {
-        sortDoctors(e.target.value);
-        renderDoctors();
-    });
-
-    // Filter button functionality
-    document.querySelectorAll('.filter-button').forEach(button => {
-        button.addEventListener('click', () => {
-            document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            filterDoctors(button.dataset.specialty);
-        });
-    });
-
-    // Doctor interaction functions
-    function openDoctorModal(doctorId) {
-        const doctor = doctors.find(d => d.id === doctorId);
-        alert(
-            `Opening profile for ${doctor.name}\n\nSpecialty: ${doctor.specialtyDisplay}\nExperience: ${doctor.experience} years\nRating: ${doctor.rating}⭐\n\n${doctor.about}`
-        );
-    }
-
-    function bookAppointment(doctorId) {
-        const doctor = doctors.find(d => d.id === doctorId);
-        alert(
-            `Booking appointment with ${doctor.name}\nConsultation Fee: $Ksh${doctor.consultationFee}\n\nRedirecting to booking form...`
-        );
-        // Here you can open the booking modal or redirect to booking page
-    }
-
-    function viewProfile(doctorId) {
-        window.location.href = `doctor-profile.php?id=${doctorId}`;
-    }
-
-    // Initialize page
-    document.addEventListener('DOMContentLoaded', () => {
-        renderDoctors();
-    });
     </script>
 </body>
 

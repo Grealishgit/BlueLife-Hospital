@@ -7,7 +7,8 @@
                 alt="dummyLogoDark"> -->
             <h2 class="font-bold text-black text-2xl">Blue<span class="text-blue-500">Life</span></h2>
             <p class="mt-2 text-sm">
-                Bluelife is a leading healthcare provider, committed to delivering high-quality medical services and
+                Sheywe Community is a leading healthcare provider, committed to delivering high-quality medical services
+                and
                 patient care.
                 We prioritize your health and well-being to ensure you receive the best possible care.
             </p>
@@ -48,7 +49,8 @@
 
     <div class="border-t border-gray-500/30 w-full">
         <p class="pt-2 text-center font-bold text-md md:text-sm">
-            Copyright <?php echo date("Y"); ?> © <a href="#"> <span class="text-blue-500">BlueLife</span> </a>. All
+            Copyright <?php echo date("Y"); ?> © <a href="#"> <span class="text-blue-500">Sheywe Community</span> </a>.
+            All
             Right
             Reserved. Your trusted partner in healthcare.
         </p>

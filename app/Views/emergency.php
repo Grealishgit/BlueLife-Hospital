@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Emergency Services - BlueLife Hospital</title>
+    <title>Emergency Services - Sheywe Community Hospital</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -131,7 +131,7 @@
             <div class="text-center mb-12">
                 <h1 class="text-4xl md:text-6xl font-bold text-gray-500 mb-4">Emergency Services</h1>
                 <p class="text-lg text-black font-semibold max-w-3xl mx-auto">
-                    When every second counts, BlueLife Hospital's Emergency Department provides immediate,
+                    When every second counts, Sheywe Community Hospital's Emergency Department provides immediate,
                     life-saving care 24 hours a day, 7 days a week.
                 </p>
             </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Contact Us - BlueLife Hospital</title>
+    <title>Contact Us - Sheywe Comunity Hospital</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
@@ -43,7 +43,7 @@
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-20 mt-10">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-5xl font-bold mb-6">Contact BlueLife Hospital</h1>
+            <h1 class="text-5xl font-bold mb-6">Contact Sheywe Community Hospital</h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto">
                 We're here to help with all your healthcare needs. Reach out to us anytime for appointments,
                 inquiries, or emergency assistance.
@@ -97,8 +97,8 @@
                         📧</div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Email</h3>
                     <p class="text-gray-600 mb-4">Send us your questions anytime</p>
-                    <a href="mailto:info@bluelifehospital.com"
-                        class="text-blue-600 font-semibold hover:text-blue-800">info@bluelifehospital.com</a>
+                    <a href="mailto:info@Sheywe Communityhospital.com"
+                        class="text-blue-600 font-semibold hover:text-blue-800">info@Sheywe Communityhospital.com</a>
                     <p class="text-sm text-gray-500 mt-2">Response within 24 hours</p>
                 </div>
 
@@ -216,7 +216,7 @@
                         <div class="space-y-3 text-sm">
                             <div class="flex items-center">
                                 <span class="w-6 text-blue-600">🏥</span>
-                                <span class="ml-2 font-semibold">BlueLife Hospital - Main Campus</span>
+                                <span class="ml-2 font-semibold">Sheywe Community Hospital - Main Campus</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="w-6 text-blue-600">🚗</span>

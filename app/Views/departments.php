@@ -10,7 +10,7 @@ $specialties = DoctorsData::getSpecialties();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Medical Departments - BlueLife Hospital</title>
+    <title>Medical Departments - Sheywe Community Hospital</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -189,7 +189,8 @@ $specialties = DoctorsData::getSpecialties();
                     <div class="department-card p-8">
                         <div class="department-icon">❤️</div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Cardiology</h3>
-                        <p class="text-gray-600 mb-6 text-center">Comprehensive heart care with advanced cardiac procedures and preventive treatments.</p>
+                        <p class="text-gray-600 mb-6 text-center">Comprehensive heart care with advanced cardiac
+                            procedures and preventive treatments.</p>
 
                         <div class="space-y-3 mb-6">
                             <h4 class="font-semibold text-gray-800">Key Services:</h4>
@@ -207,7 +208,8 @@ $specialties = DoctorsData::getSpecialties();
                         </div>
 
                         <div class="text-center">
-                            <button class="contact-button" onclick="openDepartmentModal('cardiology')">Learn More</button>
+                            <button class="contact-button" onclick="openDepartmentModal('cardiology')">Learn
+                                More</button>
                         </div>
                     </div>
 
@@ -215,7 +217,8 @@ $specialties = DoctorsData::getSpecialties();
                     <div class="department-card p-8">
                         <div class="department-icon">🧠</div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Neurology</h3>
-                        <p class="text-gray-600 mb-6 text-center">Expert care for neurological conditions with cutting-edge diagnostic technology.</p>
+                        <p class="text-gray-600 mb-6 text-center">Expert care for neurological conditions with
+                            cutting-edge diagnostic technology.</p>
 
                         <div class="space-y-3 mb-6">
                             <h4 class="font-semibold text-gray-800">Key Services:</h4>
@@ -233,7 +236,8 @@ $specialties = DoctorsData::getSpecialties();
                         </div>
 
                         <div class="text-center">
-                            <button class="contact-button" onclick="openDepartmentModal('neurology')">Learn More</button>
+                            <button class="contact-button" onclick="openDepartmentModal('neurology')">Learn
+                                More</button>
                         </div>
                     </div>
 
@@ -241,7 +245,8 @@ $specialties = DoctorsData::getSpecialties();
                     <div class="department-card p-8">
                         <div class="department-icon">👶</div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Pediatrics</h3>
-                        <p class="text-gray-600 mb-6 text-center">Specialized care for infants, children, and adolescents in a child-friendly environment.</p>
+                        <p class="text-gray-600 mb-6 text-center">Specialized care for infants, children, and
+                            adolescents in a child-friendly environment.</p>
 
                         <div class="space-y-3 mb-6">
                             <h4 class="font-semibold text-gray-800">Key Services:</h4>
@@ -255,11 +260,13 @@ $specialties = DoctorsData::getSpecialties();
 
                         <div class="mb-6">
                             <div class="equipment-tag mb-2">Child-Friendly</div>
-                            <p class="text-gray-600 text-sm">Specially designed equipment and environment for children</p>
+                            <p class="text-gray-600 text-sm">Specially designed equipment and environment for children
+                            </p>
                         </div>
 
                         <div class="text-center">
-                            <button class="contact-button" onclick="openDepartmentModal('pediatrics')">Learn More</button>
+                            <button class="contact-button" onclick="openDepartmentModal('pediatrics')">Learn
+                                More</button>
                         </div>
                     </div>
 
@@ -267,7 +274,8 @@ $specialties = DoctorsData::getSpecialties();
                     <div class="department-card p-8">
                         <div class="department-icon">🦴</div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Orthopedics</h3>
-                        <p class="text-gray-600 mb-6 text-center">Complete bone, joint, and muscle care with surgical and non-surgical treatments.</p>
+                        <p class="text-gray-600 mb-6 text-center">Complete bone, joint, and muscle care with surgical
+                            and non-surgical treatments.</p>
 
                         <div class="space-y-3 mb-6">
                             <h4 class="font-semibold text-gray-800">Key Services:</h4>
@@ -285,7 +293,8 @@ $specialties = DoctorsData::getSpecialties();
                         </div>
 
                         <div class="text-center">
-                            <button class="contact-button" onclick="openDepartmentModal('orthopedics')">Learn More</button>
+                            <button class="contact-button" onclick="openDepartmentModal('orthopedics')">Learn
+                                More</button>
                         </div>
                     </div>
 
@@ -293,7 +302,8 @@ $specialties = DoctorsData::getSpecialties();
                     <div class="department-card p-8">
                         <div class="department-icon">🧴</div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Dermatology</h3>
-                        <p class="text-gray-600 mb-6 text-center">Comprehensive skin, hair, and nail care with cosmetic and medical treatments.</p>
+                        <p class="text-gray-600 mb-6 text-center">Comprehensive skin, hair, and nail care with cosmetic
+                            and medical treatments.</p>
 
                         <div class="space-y-3 mb-6">
                             <h4 class="font-semibold text-gray-800">Key Services:</h4>
@@ -311,7 +321,8 @@ $specialties = DoctorsData::getSpecialties();
                         </div>
 
                         <div class="text-center">
-                            <button class="contact-button" onclick="openDepartmentModal('dermatology')">Learn More</button>
+                            <button class="contact-button" onclick="openDepartmentModal('dermatology')">Learn
+                                More</button>
                         </div>
                     </div>
 
@@ -319,7 +330,8 @@ $specialties = DoctorsData::getSpecialties();
                     <div class="department-card p-8">
                         <div class="department-icon">👨‍⚕️</div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">General Medicine</h3>
-                        <p class="text-gray-600 mb-6 text-center">Primary care and internal medicine for comprehensive health management.</p>
+                        <p class="text-gray-600 mb-6 text-center">Primary care and internal medicine for comprehensive
+                            health management.</p>
 
                         <div class="space-y-3 mb-6">
                             <h4 class="font-semibold text-gray-800">Key Services:</h4>
@@ -337,7 +349,8 @@ $specialties = DoctorsData::getSpecialties();
                         </div>
 
                         <div class="text-center">
-                            <button class="contact-button" onclick="openDepartmentModal('general-medicine')">Learn More</button>
+                            <button class="contact-button" onclick="openDepartmentModal('general-medicine')">Learn
+                                More</button>
                         </div>
                     </div>
 
@@ -411,12 +424,14 @@ $specialties = DoctorsData::getSpecialties();
                     ?>
                         <div class="department-card p-6">
                             <div class="text-center">
-                                <img src="<?php echo $doctor['image']; ?>" alt="<?php echo $doctor['name']; ?>" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
+                                <img src="<?php echo $doctor['image']; ?>" alt="<?php echo $doctor['name']; ?>"
+                                    class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
                                 <h3 class="text-lg font-bold text-gray-800"><?php echo $doctor['name']; ?></h3>
                                 <p class="text-blue-600 font-medium mb-2">Head of <?php echo $doctor['specialty']; ?></p>
                                 <p class="text-gray-600 text-sm mb-3"><?php echo $doctor['experience']; ?></p>
                                 <div class="text-yellow-500 mb-4">⭐ <?php echo $doctor['rating']; ?></div>
-                                <button onclick="window.location.href='doctor-profile.php?id=<?php echo $doctor['id']; ?>'" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg text-sm hover:from-blue-600 hover:to-purple-700 transition-all">
+                                <button onclick="window.location.href='doctor-profile.php?id=<?php echo $doctor['id']; ?>'"
+                                    class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg text-sm hover:from-blue-600 hover:to-purple-700 transition-all">
                                     View Profile
                                 </button>
                             </div>
