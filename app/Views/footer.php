@@ -1,7 +1,6 @@
-<footer class="w-full  border-t  items-center justify-center  border-gray-300 bg-white">
+<footer class="w-full border-t items-center justify-center border-gray-300 bg-white">
 
     <div class="w-full flex p-6 flex-col md:flex-row justify-between gap-4">
-
         <div class="flex md:w-1/2 w-full  flex-col">
             <!-- <img class="h-9"
                 src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoDark.svg"
@@ -15,7 +14,6 @@
         </div>
 
         <div class="flex md:w-1/2 w-full flex-col md:flex-row md:items-start items-center gap-10">
-
             <div class=" flex w-full items-start md:justify-end gap-20">
                 <div>
                     <h2 class="font-semibold mb-5 text-gray-800">Company</h2>
