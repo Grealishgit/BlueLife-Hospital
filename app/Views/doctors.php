@@ -12,7 +12,7 @@ $topDoctors = DoctorsData::getTopDoctors(6);
         Simply browse through our extensive list of trusted doctors.
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 w-full max-w-6xl flex px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 w-full md:max-w-7xl flex px-4">
         <?php foreach ($topDoctors as $doctor): ?>
             <!-- Doctor Card for <?php echo htmlspecialchars($doctor['name']); ?> -->
             <div class="bg-white rounded-md shadow-md shadow-gray-300 p-2 hover:border border-blue-500
