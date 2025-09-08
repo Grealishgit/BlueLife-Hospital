@@ -409,8 +409,10 @@
     </div>
 
     <!-- Emergency Preparedness Modal -->
-    <div id="preparednessModal" class="fixed  inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-2xl p-8 max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
+    <div id="preparednessModal"
+        class="fixed  inset-0 bg-black/50  backdrop-blur-lg flex items-center justify-center z-50 hidden   ">
+
+        <div class="bg-white rounded-md p-8 max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-2xl font-bold text-gray-800">Emergency Preparedness Kit</h3>
                 <button onclick="closePreparednessModal()"
