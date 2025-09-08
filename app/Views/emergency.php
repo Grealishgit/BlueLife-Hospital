@@ -19,7 +19,7 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            border-radius: 8px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             transition: all 0.3s ease;
         }
@@ -51,9 +51,10 @@
             font-size: 2rem;
             font-weight: bold;
             padding: 1rem;
-            border-radius: 15px;
+            border-radius: 8px;
             text-align: center;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .emergency-number:hover {
@@ -147,14 +148,14 @@
                 <div class="emergency-card p-6 text-center">
                     <div class="text-4xl mb-4">🏥</div>
                     <h3 class="text-xl font-bold text-gray-800 mb-3">Emergency Department</h3>
-                    <div class="emergency-number mb-3">(555) 123-EMRG</div>
+                    <div class="emergency-number mb-3">(254) 123-EMRG</div>
                     <p class="text-gray-600">Direct line to our Emergency Department</p>
                 </div>
 
                 <div class="emergency-card p-6 text-center">
                     <div class="text-4xl mb-4">🚑</div>
                     <h3 class="text-xl font-bold text-gray-800 mb-3">Ambulance Service</h3>
-                    <div class="emergency-number mb-3">(555) 123-AMBU</div>
+                    <div class="emergency-number mb-3">(254) 123-AMBU</div>
                     <p class="text-gray-600">Non-emergency ambulance transport</p>
                 </div>
             </div>
