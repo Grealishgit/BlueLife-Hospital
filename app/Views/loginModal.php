@@ -164,20 +164,67 @@
             return;
         }
 
-        // Determine login type
-        const loginType = isValidEmail(identifier) ? 'email' : 'phone';
+        // AJAX login
+        fetch('app/auth.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    action: 'login',
+                    identifier: identifier,
+                    password: password
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Login successful!');
+                    closeModal();
+                    // Optionally reload or redirect
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(() => alert('Login failed.'));
+    });
 
-        // Simulate login process
-        console.log('Login attempt:', {
-            type: loginType,
-            identifier: identifier,
-            password: password
-        });
-
-        // Here you would typically send the data to your backend
-        alert(`Login successful!\nLogin type: ${loginType}\nIdentifier: ${identifier}`);
-
-        closeModal();
+    // Handle signup form submission
+    document.querySelector('#signupForm form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = {
+            action: 'signup',
+            first_name: form.querySelector('input[placeholder="First Name"]').value,
+            last_name: form.querySelector('input[placeholder="Last Name"]').value,
+            phone: form.querySelector('input[placeholder="Phone Number"]').value,
+            gender: form.querySelector('select[name="gender"]').value,
+            dob: form.querySelector('input[type="date"]').value,
+            email: form.querySelector('input[type="email"]').value,
+            password: form.querySelector('input[type="password"]').value
+        };
+        // Basic validation
+        if (Object.values(data).some(v => v === '')) {
+            alert('Please fill all fields.');
+            return;
+        }
+        fetch('app/auth.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(data)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Signup successful! You can now login.');
+                    switchToLogin();
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(() => alert('Signup failed.'));
     });
 
     // Tab switching functionality

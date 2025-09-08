@@ -1,0 +1,53 @@
+<?php
+// Authentication handler for login and signup
+require_once __DIR__ . '/models/User.php';
+header('Content-Type: application/json');
+
+$action = $_POST['action'] ?? '';
+$response = ["success" => false, "message" => "Invalid request."];
+
+$userModel = new User();
+
+if ($action === 'login') {
+    $identifier = $_POST['identifier'] ?? '';
+    $password = $_POST['password'] ?? '';
+    if (!$identifier || !$password) {
+        $response['message'] = 'Missing credentials.';
+    } else {
+        $user = $userModel->verifyLogin($identifier, $password);
+        if ($user) {
+            // You can set session here if needed
+            $response = ["success" => true, "message" => "Login successful.", "user" => $user];
+        } else {
+            $response['message'] = 'Invalid credentials.';
+        }
+    }
+} elseif ($action === 'signup') {
+    $data = [
+        'first_name' => $_POST['first_name'] ?? '',
+        'last_name' => $_POST['last_name'] ?? '',
+        'phone' => $_POST['phone'] ?? '',
+        'gender' => $_POST['gender'] ?? '',
+        'dob' => $_POST['dob'] ?? '',
+        'email' => $_POST['email'] ?? '',
+        'password' => $_POST['password'] ?? ''
+    ];
+    // Basic validation
+    if (in_array('', $data, true)) {
+        $response['message'] = 'Please fill all fields.';
+    } else {
+        // Check if user exists
+        if ($userModel->findByIdentifier($data['email']) || $userModel->findByIdentifier($data['phone'])) {
+            $response['message'] = 'User already exists.';
+        } else {
+            $created = $userModel->create($data);
+            if ($created) {
+                $response = ["success" => true, "message" => "Signup successful."];
+            } else {
+                $response['message'] = 'Signup failed.';
+            }
+        }
+    }
+}
+
+echo json_encode($response);
