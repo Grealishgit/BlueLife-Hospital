@@ -1,7 +1,7 @@
 <div class="flex flex-col bg-gray-100 items-center  mt-10 w-full min-h-screen">
     <!-- style="background-image: url('/storage/uploads/bg1.jpg'); background-size: cover; background-position: center;" -->
 
-    <div class="md:p-10 p-1 w-full md:max-w-7xl">
+    <div class="md:p-6 xl:p-8 p-1 w-full">
         <div class="rounded-md flex md:flex-row flex-col mt-5  bg-blue-500 w-full">
             <!-- Heading to the left -->
             <div class="flex-1 items-center  justify-center flex flex-col">
