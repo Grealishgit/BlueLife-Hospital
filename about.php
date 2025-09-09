@@ -45,6 +45,19 @@ session_start();
         font-weight: bold;
         font-family: 'Courier New', Courier, monospace, Arial, sans-serif;
     }
+
+    .about-leader-card {
+        transition: box-shadow 0.3s, transform 0.3s;
+        box-shadow: 0 2px 8px rgba(186, 202, 227, 0.08);
+        border-radius: 8px;
+        background: #afc1e5ff;
+    }
+
+    .about-leader-card:hover {
+        box-shadow: 0 8px 32px rgba(155, 188, 242, 0.18);
+        transform: translateY(-6px) scale(1.03);
+        background: #6fb2f1ff;
+    }
     </style>
 </head>
 
@@ -264,23 +277,26 @@ session_start();
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center">
+                <div class="text-center about-leader-card p-3 cursor-pointer"
+                    onclick="showLeaderModal('Dr. Sarah Johnson', 'Chief Executive Officer', '25+ years in healthcare administration', '/storage/uploads/doctor1.png')">
                     <img src="/storage/uploads/doctor1.png" alt="CEO"
-                        class="w-32 h-32 rounded-full mx-auto border-4 border-purple-500 mb-4 object-cover" />
+                        class="w-32 h-32 rounded-full mx-auto  mb-4 object-cover" />
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Dr. Sarah Johnson</h3>
                     <p class="text-blue-600 font-medium mb-2">Chief Executive Officer</p>
                     <p class="text-gray-600 text-sm">25+ years in healthcare administration</p>
                 </div>
-                <div class="text-center">
+                <div class="text-center about-leader-card p-3 cursor-pointer"
+                    onclick="showLeaderModal('Dr. Michael Chen', 'Chief Medical Officer', 'Board-certified in Internal Medicine', '/storage/uploads/doctor2.png')">
                     <img src="/storage/uploads/doctor2.png" alt="CMO"
-                        class="w-32 h-32 rounded-full mx-auto border-4 border-purple-500 mb-4 object-cover" />
+                        class="w-32 h-32 rounded-full mx-auto  mb-4 object-cover" />
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Dr. Michael Chen</h3>
                     <p class="text-blue-600 font-medium mb-2">Chief Medical Officer</p>
                     <p class="text-gray-600 text-sm">Board-certified in Internal Medicine</p>
                 </div>
-                <div class="text-center">
+                <div class="text-center about-leader-card p-3 cursor-pointer"
+                    onclick="showLeaderModal('Nancy Williams, RN', 'Chief Nursing Officer', 'Expert in patient care excellence', '/storage/uploads/doctor3.png')">
                     <img src="/storage/uploads/doctor3.png" alt="CNO"
-                        class="w-32 h-32 rounded-full mx-auto border-4 border-purple-500 mb-4 object-cover" />
+                        class="w-32 h-32 rounded-full mx-auto  mb-4 object-cover" />
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Nancy Williams, RN</h3>
                     <p class="text-blue-600 font-medium mb-2">Chief Nursing Officer</p>
                     <p class="text-gray-600 text-sm">Expert in patient care excellence</p>
@@ -289,28 +305,39 @@ session_start();
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-6">Experience the Sheywe Difference</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Whether you're booking your first appointment or managing ongoing care,
-                Sheywe is here to support you every step of the way.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button onclick="openModal()"
-                    class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                    Schedule Appointment
-                </button>
-                <button onclick="contactUs()"
-                    class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-                    Learn More
-                </button>
+    <!-- Leadership Modal -->
+    <div id="leaderModal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md bg-opacity-50 hidden">
+        <div class="bg-white rounded-md shadow-lg w-full max-w-md p-8 relative">
+            <button onclick="closeLeaderModal()"
+                class="absolute top-2 right-4 cursor-pointer text-2xl text-red-500 hover:text-red-700">&times;</button>
+            <div class="flex flex-col items-center">
+                <img id="leaderModalImg" src="" alt="Leader"
+                    class="w-32 h-32 rounded-full border-4 border-blue-500 mb-4 object-cover" />
+                <h3 id="leaderModalName" class="text-2xl font-bold text-gray-800 mb-2"></h3>
+                <p id="leaderModalRole" class="text-blue-600 font-medium mb-2"></p>
+                <p id="leaderModalInfo" class="text-gray-600 text-center"></p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <?php include 'app/Views/footer.php'; ?>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-3xl font-bold">Sheywe Community Hospital</h2>
+                </div>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <a href="about.php" class="hover:underline">About Us</a>
+                    <a href="services.php" class="hover:underline">Services</a>
+                    <a href="contact.php" class="hover:underline">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-4 pt-4 text-center">
+                <p class="text-sm">&copy; 2023 Sheywe Community Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
     function scrollToStory() {
@@ -377,6 +404,18 @@ session_start();
     const statsSection = document.querySelector('.stats-counter').closest('section');
     if (statsSection) {
         statsObserver.observe(statsSection);
+    }
+
+    function showLeaderModal(name, role, info, img) {
+        document.getElementById('leaderModalName').textContent = name;
+        document.getElementById('leaderModalRole').textContent = role;
+        document.getElementById('leaderModalInfo').textContent = info;
+        document.getElementById('leaderModalImg').src = img;
+        document.getElementById('leaderModal').classList.remove('hidden');
+    }
+
+    function closeLeaderModal() {
+        document.getElementById('leaderModal').classList.add('hidden');
     }
     </script>
 
