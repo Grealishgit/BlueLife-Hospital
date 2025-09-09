@@ -29,6 +29,16 @@ $tabs = [
         ?>
     </ul>
 
+    <!-- Mobile Menu Button -->
+    <button id="mobileMenuBtn"
+        class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors">
+        <div class="hamburger-menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </div>
+    </button>
+
     <!-- Desktop Login/Profile -->
     <?php
     $user = $_SESSION['user'] ?? null;
@@ -76,7 +86,7 @@ $tabs = [
         <div class="p-6">
             <!-- Mobile Menu Header -->
             <div class="flex items-center justify-between mb-8">
-                <span class="font-bold text-blue-500 text-xl">Blue<span class="text-black">Life</span></span>
+                <span class="font-bold text-blue-500 text-xl">Shweye<span class="text-black"> Hospital</span></span>
                 <button id="closeMobileMenu"
                     class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
                     <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
