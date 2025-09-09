@@ -98,10 +98,10 @@ session_start();
     <!-- Our Story Section -->
     <section id="story" class="py-16">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center">
                 <div>
                     <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Story & Mission</h2>
-                    <div class="space-y-6 text-gray-700">
+                    <div class="space-y-2 text-gray-700">
                         <div class="text-lg bg-teal-50 p-6 rounded-md shadow-lg border-r-4 border-b-4 border-blue-500">
                             <p class="leading-relaxed">
                                 Welcome to Sheywe Community Hospital, your trusted partner in managing your healthcare
