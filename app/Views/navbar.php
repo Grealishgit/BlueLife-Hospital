@@ -53,21 +53,25 @@ $tabs = [
             $firstName = htmlspecialchars($user['first_name']);
             $initials = strtoupper(substr($user['first_name'], 0, 1) . substr($user['last_name'], 0, 1));
         ?>
-        <span class="text-blue-700 font-semibold mr-2">Hello 👋, <?= $firstName ?>!</span>
+        <span class="text-blue-700 font-semibold mr-2">Hello, <?= $firstName ?>!</span>
         <button id="profileMenuBtn2" class="focus:outline-none relative">
             <div
                 class="w-8 h-8 flex items-center justify-center bg-blue-100 border border-blue-500 rounded-full text-blue-700 font-bold text-lg">
                 <?= $initials ?>
             </div>
         </button>
-        <!-- Profile Modal (fixed, but positioned relative to navbar) -->
+        <!-- Profile Modal (fixed, positioned to the right of initials) -->
         <div id="profileModal2"
-            class="absolute right-0 z-50 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg hidden">
-            <div class="p-4">
-                <h3 class="font-semibold text-gray-800">Profile</h3>
-                <p class="text-gray-600"><?= $firstName ?></p>
-                <p class="text-gray-600"><?= htmlspecialchars($user['email']) ?></p>
-            </div>
+            class="absolute right-0 top-12 mt-2 w-64 bg-white border border-gray-200 rounded-md shadow-lg z-50 hidden">
+            <ul class="py-4">
+                <li><a href="profile.php"
+                        class="block px-6 py-3 text-lg text-blue-700 hover:bg-blue-50 font-semibold">My Profile</a></li>
+                <li><a href="myappointments.php"
+                        class="block px-6 py-3 text-lg text-blue-700 hover:bg-blue-50 font-semibold">My Appointments</a>
+                </li>
+                <li><a href="#" onclick="logoutUser()"
+                        class="block px-6 py-3 text-lg text-red-600 hover:bg-red-50 font-semibold">Logout</a></li>
+            </ul>
         </div>
         <?php endif; ?>
     </div>
@@ -270,6 +274,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// Profile Modal logic for desktop initials
+const profileBtn2 = document.getElementById('profileMenuBtn2');
+const profileModal2 = document.getElementById('profileModal2');
+if (profileBtn2 && profileModal2) {
+    profileBtn2.addEventListener('click', function(e) {
+        e.stopPropagation();
+        profileModal2.classList.toggle('hidden');
+    });
+    profileBtn2.addEventListener('mouseenter', function() {
+        profileModal2.classList.remove('hidden');
+    });
+    profileBtn2.addEventListener('mouseleave', function() {
+        setTimeout(() => {
+            if (!profileModal2.matches(':hover')) {
+                profileModal2.classList.add('hidden');
+            }
+        }, 150);
+    });
+    profileModal2.addEventListener('mouseleave', function() {
+        profileModal2.classList.add('hidden');
+    });
+    document.addEventListener('click', function(e) {
+        if (!profileModal2.contains(e.target) && e.target !== profileBtn2) {
+            profileModal2.classList.add('hidden');
+        }
+    });
+}
+
 // Prevent duplicate initialization
 if (!window.mobileMenuInitialized) {
     window.mobileMenuInitialized = true;
