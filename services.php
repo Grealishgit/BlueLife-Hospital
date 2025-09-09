@@ -10,34 +10,34 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Our Services - Sheywe Community Hospital</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-        body {
-            font-family: 'Quicksand', sans-serif;
-        }
+    body {
+        font-family: 'Quicksand', sans-serif;
+    }
 
-        .service-card {
-            transition: all 0.3s ease;
-        }
+    .service-card {
+        transition: all 0.3s ease;
+    }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
+    .service-card:hover {
+        transform: translateY(-5px);
+    }
 
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
+    .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
 
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1rem;
-        }
+    .service-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin: 0 auto 1rem;
+    }
     </style>
 </head>
 
@@ -233,7 +233,7 @@ session_start();
                     <h2 class="text-4xl font-bold text-gray-800 mb-6">Why Choose Sheywe Community Hospital?</h2>
                     <div class="space-y-6">
                         <div class="flex items-start">
-                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">✓</div>
+                            <div class="bg-blue-100 text-blue-600 px-4 py-3 rounded-full mr-4">✓</div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-2">Expert Medical Team</h4>
                                 <p class="text-gray-600">Board-certified physicians with years of specialized experience
@@ -241,21 +241,21 @@ session_start();
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">✓</div>
+                            <div class="bg-blue-100 text-blue-600 px-4 py-3 rounded-full mr-4">✓</div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-2">Advanced Technology</h4>
                                 <p class="text-gray-600">Latest medical equipment and cutting-edge treatment methods</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">✓</div>
+                            <div class="bg-blue-100 text-blue-600 px-4 py-3 rounded-full mr-4">✓</div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-2">24/7 Availability</h4>
                                 <p class="text-gray-600">Round-the-clock emergency services and patient care</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4">✓</div>
+                            <div class="bg-blue-100 text-blue-600 px-4 py-3 rounded-full mr-4">✓</div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-2">Patient-Centered Care</h4>
                                 <p class="text-gray-600">Personalized treatment plans focused on your unique needs</p>
@@ -295,56 +295,56 @@ session_start();
     <?php include 'app/Views/footer.php'; ?>
 
     <script>
-        function scrollToServices() {
-            document.getElementById('services').scrollIntoView({
+    function scrollToServices() {
+        document.getElementById('services').scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
+    function bookService(service) {
+        // You can customize this based on your booking system
+        alert(`Booking ${service} consultation. Redirecting to appointment booking...`);
+        // Example: window.location.href = `book-appointment.php?service=${service}`;
+        openModal(); // For now, open the login modal
+    }
+
+    function contactUs() {
+        // Redirect to contact page or open contact modal
+        window.location.href = 'contact.php';
+    }
+
+    // Add smooth scrolling for better UX
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
-        }
-
-        function bookService(service) {
-            // You can customize this based on your booking system
-            alert(`Booking ${service} consultation. Redirecting to appointment booking...`);
-            // Example: window.location.href = `book-appointment.php?service=${service}`;
-            openModal(); // For now, open the login modal
-        }
-
-        function contactUs() {
-            // Redirect to contact page or open contact modal
-            window.location.href = 'contact.php';
-        }
-
-        // Add smooth scrolling for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
+    });
 
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    // Add scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe service cards for animation
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
         });
+    }, observerOptions);
+
+    // Observe service cards for animation
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
     </script>
 </body>
 

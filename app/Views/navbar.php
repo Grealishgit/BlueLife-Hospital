@@ -2,8 +2,8 @@
 $current = basename($_SERVER['PHP_SELF']);
 $tabs = [
     'index.php' => 'Home',
-    'about.php' => 'About',
     'services.php' => 'Services',
+    'about.php' => 'About',
     'contact.php' => 'Contact',
     'blog.php' => 'Blog'
 ];
