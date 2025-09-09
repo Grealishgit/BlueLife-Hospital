@@ -58,6 +58,12 @@ if ($action === 'login') {
             }
         }
     }
+} elseif ($action === 'logout') {
+    session_start();
+    session_unset();
+    session_destroy();
+    echo json_encode(["success" => true, "message" => "Logged out."]);
+    exit;
 }
 
 echo json_encode($response);
