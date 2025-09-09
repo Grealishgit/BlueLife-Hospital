@@ -10,40 +10,41 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>About Us - Sheywe Community Hospital</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-        body {
-            font-family: 'Quicksand', sans-serif;
-        }
+    body {
+        font-family: 'Quicksand', sans-serif;
+    }
 
-        .font-value {
-            font-family: 'Courier New', Courier, monospace;
-        }
+    .font-value {
+        font-family: 'Courier New', Courier, monospace;
+    }
 
-        .about-card {
-            transition: all 0.3s ease;
-        }
+    .about-card {
+        transition: all 0.3s ease;
+    }
 
-        .about-card:hover {
-            transform: translateY(-5px);
-        }
+    .about-card:hover {
+        transform: translateY(-5px);
+    }
 
-        .gradient-bg {
-            background: linear-gradient(135deg, #4f63bdff 0%, #6c8aefff 100%);
-        }
+    .gradient-bg {
+        background: linear-gradient(135deg, #4f63bdff 0%, #6c8aefff 100%);
+    }
 
-        .specialty-card {
-            transition: all 0.3s ease;
-        }
+    .specialty-card {
+        transition: all 0.3s ease;
+    }
 
-        .specialty-card:hover {
-            transform: scale(1.05);
-        }
+    .specialty-card:hover {
+        transform: scale(1.05);
+    }
 
-        .stats-counter {
-            font-size: 3rem;
-            font-weight: bold;
-        }
+    .stats-counter {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: 'Courier New', Courier, monospace, Arial, sans-serif;
+    }
     </style>
 </head>
 
@@ -71,7 +72,7 @@ session_start();
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
                 <div class="about-card p-6">
-                    <p class="stats-counter font-value text-blue-600 mb-2">25+</p>
+                    <p class="stats-counter  text-blue-600 mb-2">25+</p>
                     <h3 class="text-lg font-semibold text-gray-800">Years of Excellence</h3>
                     <p class="text-gray-600 text-sm">Serving our community</p>
                 </div>
@@ -101,25 +102,30 @@ session_start();
                 <div>
                     <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Story & Mission</h2>
                     <div class="space-y-6 text-gray-700">
-                        <p class="text-lg leading-relaxed">
-                            Welcome to Sheywe Community Hospital, your trusted partner in managing your healthcare needs
-                            conveniently and efficiently. For over 25 years, we have been dedicated to providing
-                            exceptional medical care to our community.
-                        </p>
-                        <div class="bg-blue-50 p-6 rounded-lg shadow-lg border-r-4 border-blue-500">
+                        <div class="text-lg bg-teal-50 p-6 rounded-md shadow-lg border-r-4 border-b-4 border-blue-500">
+                            <p class="leading-relaxed">
+                                Welcome to Sheywe Community Hospital, your trusted partner in managing your healthcare
+                                needs
+                                conveniently and efficiently. For over 25 years, we have been dedicated to providing
+                                exceptional medical care to our community.
+                            </p>
+
+                        </div>
+                        <div class="bg-blue-50 p-6 rounded-lg shadow-lg border-l-4 border-b-4 border-blue-500">
                             <p class="leading-relaxed">
                                 At Sheywe, we understand the challenges individuals face when it comes to scheduling
                                 doctor appointments and managing their health records. That's why we've built a
                                 comprehensive healthcare system that prioritizes your convenience and well-being.
                             </p>
                         </div>
-
-                        <p class="leading-relaxed">
-                            Sheywe is committed to excellence in healthcare technology. We continuously strive
-                            to enhance our services, integrating the latest medical advancements to improve
-                            patient experience and deliver superior care.
-                        </p>
-                        <div class="bg-blue-50 shadow-lg p-6 rounded-lg border-l-4 border-blue-500">
+                        <div class="text-lg bg-teal-50 p-6 rounded-md shadow-lg border-r-4 border-b-4 border-blue-500">
+                            <p class="leading-relaxed">
+                                Sheywe is committed to excellence in healthcare technology. We continuously strive
+                                to enhance our services, integrating the latest medical advancements to improve
+                                patient experience and deliver superior care.
+                            </p>
+                        </div>
+                        <div class="bg-blue-50 shadow-lg p-6 rounded-lg border-l-4 border-b-4 border-blue-500">
                             <h4 class="font-semibold text-blue-800 mb-2">Our Mission</h4>
                             <p class="text-blue-700">
                                 To provide compassionate, innovative healthcare that exceeds expectations while
@@ -306,71 +312,71 @@ session_start();
     <?php include 'app/Views/footer.php'; ?>
 
     <script>
-        function scrollToStory() {
-            document.getElementById('story').scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-
-        function contactUs() {
-            window.location.href = 'contact.php';
-        }
-
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe cards for animation
-        document.querySelectorAll('.about-card, .specialty-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+    function scrollToStory() {
+        document.getElementById('story').scrollIntoView({
+            behavior: 'smooth'
         });
+    }
 
-        // Animate stats counters
-        function animateCounter(element, target) {
-            let current = 0;
-            const increment = target / 100;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current) + (target >= 1000 ? '+' : '');
-            }, 20);
-        }
+    function contactUs() {
+        window.location.href = 'contact.php';
+    }
 
-        // Trigger counter animation when stats section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('.stats-counter');
-                    counters.forEach(counter => {
-                        const target = parseInt(counter.textContent);
-                        animateCounter(counter, target);
-                    });
-                    statsObserver.unobserve(entry.target);
-                }
-            });
+    // Add scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
         });
+    }, observerOptions);
 
-        const statsSection = document.querySelector('.stats-counter').closest('section');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
-        }
+    // Observe cards for animation
+    document.querySelectorAll('.about-card, .specialty-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+    });
+
+    // Animate stats counters
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current) + (target >= 1000 ? '+' : '');
+        }, 20);
+    }
+
+    // Trigger counter animation when stats section is visible
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.stats-counter');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.textContent);
+                    animateCounter(counter, target);
+                });
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    });
+
+    const statsSection = document.querySelector('.stats-counter').closest('section');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
     </script>
 
 
