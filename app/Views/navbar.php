@@ -42,7 +42,7 @@ $tabs = [
             <ul class="py-2">
                 <li><a href="/profile.php" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">My Profile</a>
                 </li>
-                <li><a href="/appointment.php" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">My
+                <li><a href="/myappointments.php" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">My
                         Appointments</a></li>
                 <li><a href="/blog.php" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Blog Posts</a></li>
                 <li><a href="/services.php" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Services</a></li>
