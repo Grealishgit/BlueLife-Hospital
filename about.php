@@ -134,10 +134,11 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="relative">
+                <div class=" flex flex-col gap-4 md:mt-12">
                     <img src="/storage/uploads/bg%20(6).jpg" alt="Sheywe Hospital Building"
-                        class="rounded-lg shadow-lg w-full" />
-                    <div class="absolute inset-0  rounded-lg"></div>
+                        class="rounded-lg shadow-lg h-80 w-full" />
+                    <img src="/storage/uploads/bg%20(7).jpg" alt="Sheywe Hospital Building"
+                        class="rounded-lg shadow-lg h-80 w-full" />
                 </div>
             </div>
         </div>
