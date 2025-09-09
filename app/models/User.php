@@ -54,4 +54,9 @@ class User
         }
         return false;
     }
+
+    public function getPdo()
+    {
+        return $this->db;
+    }
 }
