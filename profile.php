@@ -77,13 +77,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
 
 <body>
     <?php include 'app/Views/navbar.php'; ?>
-    <div class="bg-white flex w-full rounded-lg shadow-lg shadow-blue-500 items-center p-8 min-h-screen justify-center">
+    <div
+        class="bg-gray-100 flex w-full rounded-lg shadow-lg shadow-blue-500 items-center p-8 min-h-screen justify-center">
         <div class="flex flex-col max-w-3xl md:flex-row">
             <div class="flex-1 bg-white border-b-4 rounded-l-md border-blue-500 shadow-lg hidden md:block">
                 <img src="/storage/uploads/bg1.jpg" alt="Profile UI" class="w-full h-full object-cover rounded-l-md" />
             </div>
             <div
-                class="md:flex-1  bg-gray-100 rounded-r-md  border-t-4 border-blue-500  p-8 w-full flex flex-col justify-between">
+                class="md:flex-1  bg-white rounded-r-md  border-t-4 border-blue-500  p-8 w-full flex flex-col justify-between">
                 <div class="flex flex-col items-center mb-6">
                     <h1 class="text-4xl font-bold mb-2 text-blue-700">Your Profile</h1>
                 </div>
@@ -96,8 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
                         <div>
                             <div class="text-xl font-semibold text-gray-800">
                                 <?= htmlspecialchars($dbUser['first_name'] . ' ' . $dbUser['last_name']) ?></div>
-                            <div class="text-gray-600">Email: <?= htmlspecialchars($dbUser['email']) ?></div>
-                            <div class="text-gray-600">Phone: <?= htmlspecialchars($dbUser['phone']) ?></div>
+                            <div class="text-gray-600 font-semibold">Email: <?= htmlspecialchars($dbUser['email']) ?>
+                            </div>
+                            <div class="text-gray-600 font-semibold">Phone: <?= htmlspecialchars($dbUser['phone']) ?>
+                            </div>
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
@@ -111,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
                         </div>
                     </div>
                     <div class="mt-4 text-center">
-                        <div class="font-medium text-gray-700">Age</div>
+                        <div class="font-medium text-gray-700">Your Current Age</div>
                         <div class="text-gray-900">
                             <?= $age['years'] ?> years, <?= $age['months'] ?> months, <?= $age['days'] ?> days
                         </div>
