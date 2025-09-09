@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/config/database.php';
 // If you have a User session, you can use it to get user_id
 // For demo, we'll use a static user_id

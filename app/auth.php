@@ -16,8 +16,18 @@ if ($action === 'login') {
     } else {
         $user = $userModel->verifyLogin($identifier, $password);
         if ($user) {
-            // You can set session here if needed
-            $response = ["success" => true, "message" => "Login successful.", "user" => $user];
+            // Generate a simple token (can be JWT or random string)
+            session_start();
+            $token = bin2hex(random_bytes(32));
+            $_SESSION['user_token'] = $token;
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'first_name' => $user['first_name'],
+                'last_name' => $user['last_name'],
+                'email' => $user['email'],
+                'token' => $token
+            ];
+            $response = ["success" => true, "message" => "Login successful.", "user" => $_SESSION['user'], "token" => $token];
         } else {
             $response['message'] = 'Invalid credentials.';
         }

@@ -188,9 +188,8 @@
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    alert('Login successful!');
                     closeModal();
-                    // Optionally reload or redirect
+                    location.reload(); // Refresh page to update navbar
                 } else {
                     alert(data.message);
                 }

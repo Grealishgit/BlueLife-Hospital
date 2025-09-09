@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Include the centralized doctors data
 require_once 'app/Data/doctors.php';
 

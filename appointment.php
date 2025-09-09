@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'app/Data/doctors.php';
 $doctors = DoctorsData::getAllDoctors();
 $specialties = DoctorsData::getSpecialties();
