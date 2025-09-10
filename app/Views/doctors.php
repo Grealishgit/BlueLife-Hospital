@@ -17,7 +17,8 @@ $topDoctors = DoctorsData::getTopDoctors(6);
         <!-- Doctor Card for <?php echo htmlspecialchars($doctor['name']); ?> -->
         <div class="bg-white rounded-md shadow-md shadow-gray-300 p-2 hover:border border-blue-500
          flex flex-col items-center cursor-pointer hover:shadow-lg transition-shadow"
-            onclick="openDoctorProfile(<?php echo $doctor['id']; ?>)">
+            title="Click to view profile and book appointment">
+
             <img src="<?php echo htmlspecialchars($doctor['image']); ?>"
                 alt="<?php echo htmlspecialchars($doctor['name']); ?>"
                 class="w-full h-30 object-contain border-b border-gray-200 mb-4" />
@@ -34,12 +35,30 @@ $topDoctors = DoctorsData::getTopDoctors(6);
             </div>
 
             <button class="mt-2 bg-blue-500 text-white px-4 font-bold py-2 cursor-pointer rounded hover:bg-blue-600"
+                <?php if (isset($_SESSION['user'])): ?> <button
+                class="mt-2 bg-blue-500 text-white px-4 font-bold py-2 cursor-pointer rounded hover:bg-blue-600"
                 onclick="openDoctorProfile(<?php echo $doctor['id']; ?>)">View Profile</button>
+
+            <?php else: ?>
+            <button class="mt-2 bg-blue-500 text-white px-4 font-bold py-2 cursor-pointer rounded hover:bg-blue-600"
+                onclick="showLoginModal()">View Profile</button>
+            <?php endif; ?>
+            <script>
+            function showLoginModal() {
+                var modal = document.getElementById('loginModal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                } else {
+                    alert('Login modal not found.');
+                }
+            }
+            </script>
         </div>
         <?php endforeach; ?>
     </div>
 
     <div class="mt-5 flex flex-col items-center">
+        <?php if (isset($_SESSION['user'])): ?>
         <a href="all-doctors.php">
             <button
                 class="mt-4 mb-8 bg-gray-400 cursor-pointer rounded-md hover:border
@@ -47,6 +66,11 @@ $topDoctors = DoctorsData::getTopDoctors(6);
                 View More
             </button>
         </a>
+        <?php else: ?>
+        <button
+            class="mt-4 mb-8 bg-gray-400 cursor-pointer rounded-md hover:border border-blue-500 hover:bg-white text-white font-bold  px-6 py-2 hover:text-blue-500 rounded hover:bg-blue-600"
+            onclick="showLoginModal()">View More</button>
+        <?php endif; ?>
 
     </div>
 </div>
