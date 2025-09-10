@@ -7,110 +7,110 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Emergency Services - Sheywe Community Hospital</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-            min-height: 100vh;
+    body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        min-height: 100vh;
+    }
+
+    .emergency-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s ease;
+    }
+
+    .emergency-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
+    }
+
+    .pulse-animation {
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            transform: scale(1);
         }
 
-        .emergency-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            transition: all 0.3s ease;
-        }
-
-        .emergency-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
-        }
-
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .emergency-number {
-            background: linear-gradient(135deg, #dc2626, #991b1b);
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .emergency-number:hover {
-            background: linear-gradient(135deg, #991b1b, #7f1d1d);
+        50% {
             transform: scale(1.05);
         }
+    }
 
-        .wait-time-good {
-            color: #059669;
+    .emergency-number {
+        background: linear-gradient(135deg, #dc2626, #991b1b);
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .emergency-number:hover {
+        background: linear-gradient(135deg, #991b1b, #7f1d1d);
+        transform: scale(1.05);
+    }
+
+    .wait-time-good {
+        color: #059669;
+    }
+
+    .wait-time-moderate {
+        color: #d97706;
+    }
+
+    .wait-time-busy {
+        color: #dc2626;
+    }
+
+    .first-aid-step {
+        counter-increment: step-counter;
+    }
+
+    .first-aid-step::before {
+        content: counter(step-counter);
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    .first-aid-container {
+        counter-reset: step-counter;
+    }
+
+    .alert-banner {
+        background: linear-gradient(90deg, #fbbf24, #f59e0b);
+        animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(-100%);
         }
 
-        .wait-time-moderate {
-            color: #d97706;
+        to {
+            transform: translateY(0);
         }
-
-        .wait-time-busy {
-            color: #dc2626;
-        }
-
-        .first-aid-step {
-            counter-increment: step-counter;
-        }
-
-        .first-aid-step::before {
-            content: counter(step-counter);
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-
-        .first-aid-container {
-            counter-reset: step-counter;
-        }
-
-        .alert-banner {
-            background: linear-gradient(90deg, #fbbf24, #f59e0b);
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
+    }
     </style>
 </head>
 
@@ -441,57 +441,57 @@
     </div>
 
     <script>
-        // Update wait times periodically (simulation)
-        function updateWaitTimes() {
-            const times = [{
-                    selector: '.wait-time-good',
-                    min: 10,
-                    max: 25
-                },
-                {
-                    selector: '.wait-time-moderate',
-                    min: 30,
-                    max: 60
-                },
-                {
-                    selector: '.wait-time-busy',
-                    min: 0,
-                    max: 5
-                }
-            ];
+    // Update wait times periodically (simulation)
+    function updateWaitTimes() {
+        const times = [{
+                selector: '.wait-time-good',
+                min: 10,
+                max: 25
+            },
+            {
+                selector: '.wait-time-moderate',
+                min: 30,
+                max: 60
+            },
+            {
+                selector: '.wait-time-busy',
+                min: 0,
+                max: 5
+            }
+        ];
 
-            times.forEach((time, index) => {
-                const element = document.querySelector(time.selector);
-                if (index === 2) { // High priority always immediate
-                    element.textContent = 'Immediate';
-                } else {
-                    const randomTime = Math.floor(Math.random() * (time.max - time.min + 1)) + time.min;
-                    element.textContent = randomTime + ' min';
-                }
-            });
-        }
-
-        // Update wait times every 2 minutes
-        setInterval(updateWaitTimes, 120000);
-
-        // Emergency preparedness modal
-        function openPreparednessModal() {
-            document.getElementById('preparednessModal').classList.remove('hidden');
-        }
-
-        function closePreparednessModal() {
-            document.getElementById('preparednessModal').classList.add('hidden');
-        }
-
-        // Add emergency preparedness button
-        document.addEventListener('DOMContentLoaded', () => {
-            const preparednessBtn = document.createElement('button');
-            preparednessBtn.textContent = 'Emergency Preparedness Tips';
-            preparednessBtn.className =
-                'fixed bottom-2 md:right-22 right-2 px-4 py-2 bg-red-600 text-white cursor-pointer rounded-full shadow-lg hover:bg-red-700 transition-colors z-40';
-            preparednessBtn.onclick = openPreparednessModal;
-            document.body.appendChild(preparednessBtn);
+        times.forEach((time, index) => {
+            const element = document.querySelector(time.selector);
+            if (index === 2) { // High priority always immediate
+                element.textContent = 'Immediate';
+            } else {
+                const randomTime = Math.floor(Math.random() * (time.max - time.min + 1)) + time.min;
+                element.textContent = randomTime + ' min';
+            }
         });
+    }
+
+    // Update wait times every 2 minutes
+    setInterval(updateWaitTimes, 120000);
+
+    // Emergency preparedness modal
+    function openPreparednessModal() {
+        document.getElementById('preparednessModal').classList.remove('hidden');
+    }
+
+    function closePreparednessModal() {
+        document.getElementById('preparednessModal').classList.add('hidden');
+    }
+
+    // Add emergency preparedness button
+    document.addEventListener('DOMContentLoaded', () => {
+        const preparednessBtn = document.createElement('button');
+        preparednessBtn.textContent = 'Emergency Preparedness Tips';
+        preparednessBtn.className =
+            'fixed bottom-2 md:right-22 right-2 px-4 py-2 bg-red-600 text-white cursor-pointer rounded-full shadow-lg hover:bg-red-700 transition-colors z-40';
+        preparednessBtn.onclick = openPreparednessModal;
+        document.body.appendChild(preparednessBtn);
+    });
     </script>
 
 </body>
