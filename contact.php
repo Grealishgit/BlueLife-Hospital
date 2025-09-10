@@ -87,7 +87,7 @@ session_start();
                         📞</div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Phone</h3>
                     <p class="text-gray-600 mb-4">Call us for appointments and inquiries</p>
-                    <a href="tel:+15551234567" class="text-blue-600 font-semibold hover:text-blue-800">+1 (555)
+                    <a href="tel:+15551234567" class="text-blue-600 font-semibold hover:text-blue-800">+254 (011)
                         123-4567</a>
                     <p class="text-sm text-gray-500 mt-2">Mon-Fri: 8AM-6PM<br>Sat-Sun: 9AM-4PM</p>
                 </div>
@@ -101,7 +101,7 @@ session_start();
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Email</h3>
                     <p class="text-gray-600 mb-4">Send us your questions anytime</p>
                     <a href="mailto:info@Sheywe Communityhospital.com"
-                        class="text-blue-600 font-semibold hover:text-blue-800">info@Sheywe Communityhospital.com</a>
+                        class="text-blue-600 font-semibold hover:text-blue-800">info@sheywecommunityhospital.com</a>
                     <p class="text-sm text-gray-500 mt-2">Response within 24 hours</p>
                 </div>
 
