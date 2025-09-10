@@ -262,13 +262,80 @@
     setInterval(updateDateTime, 1000); // Update every second
 
     // Set active nav item based on current page
-    const currentPage = window.location.pathname.split('/').pop();
-    document.querySelectorAll('#sidebar a').forEach(link => {
-        if (link.getAttribute('href') === currentPage) {
-            link.classList.add('bg-blue-600', 'text-white');
-            link.classList.remove('hover:bg-gray-700');
+    function setActiveNavItem() {
+        const currentPage = window.location.pathname.split('/').pop();
+        const currentPageLower = currentPage.toLowerCase();
+
+        // Define page mappings for better matching
+        const pageMapping = {
+            'admin.php': 'admin-dashboard.php',
+            'admin-dashboard.php': 'admin-dashboard.php',
+            'dashboard.php': 'admin-dashboard.php',
+            'admin-appointments.php': 'admin-appointments.php',
+            'appointments.php': 'admin-appointments.php',
+            'admin-patients.php': 'admin-patients.php',
+            'patients.php': 'admin-patients.php',
+            'admin-doctors.php': 'admin-doctors.php',
+            'doctors.php': 'admin-doctors.php',
+            'admin-consultations.php': 'admin-consultations.php',
+            'consultations.php': 'admin-consultations.php',
+            'admin-messages.php': 'admin-messages.php',
+            'messages.php': 'admin-messages.php'
+        };
+
+        // Get the target page to highlight
+        const targetPage = pageMapping[currentPageLower] || currentPageLower;
+
+        // Remove active classes from all nav items
+        document.querySelectorAll('#sidebar nav a').forEach(link => {
+            link.classList.remove('bg-blue-600', 'text-white', 'shadow-lg');
+            link.classList.add('hover:bg-gray-700');
+        });
+
+        // Add active classes to matching nav item
+        document.querySelectorAll('#sidebar nav a').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === targetPage) {
+                link.classList.add('bg-blue-600', 'text-white', 'shadow-lg');
+                link.classList.remove('hover:bg-gray-700');
+            }
+        });
+
+        // If no exact match found, try partial matching
+        if (!document.querySelector('#sidebar nav a.bg-blue-600')) {
+            document.querySelectorAll('#sidebar nav a').forEach(link => {
+                const href = link.getAttribute('href').toLowerCase();
+                const linkText = link.textContent.trim().toLowerCase();
+
+                // Check if current page contains key terms
+                if ((currentPageLower.includes('dashboard') || currentPageLower === 'admin.php') && href
+                    .includes('dashboard')) {
+                    link.classList.add('bg-blue-600', 'text-white', 'shadow-lg');
+                    link.classList.remove('hover:bg-gray-700');
+                } else if (currentPageLower.includes('appointment') && href.includes('appointment')) {
+                    link.classList.add('bg-blue-600', 'text-white', 'shadow-lg');
+                    link.classList.remove('hover:bg-gray-700');
+                } else if (currentPageLower.includes('patient') && href.includes('patient')) {
+                    link.classList.add('bg-blue-600', 'text-white', 'shadow-lg');
+                    link.classList.remove('hover:bg-gray-700');
+                } else if (currentPageLower.includes('doctor') && href.includes('doctor')) {
+                    link.classList.add('bg-blue-600', 'text-white', 'shadow-lg');
+                    link.classList.remove('hover:bg-gray-700');
+                } else if (currentPageLower.includes('consultation') && href.includes('consultation')) {
+                    link.classList.add('bg-blue-600', 'text-white', 'shadow-lg');
+                    link.classList.remove('hover:bg-gray-700');
+                } else if (currentPageLower.includes('message') && href.includes('message')) {
+                    link.classList.add('bg-blue-600', 'text-white', 'shadow-lg');
+                    link.classList.remove('hover:bg-gray-700');
+                }
+            });
         }
-    });
+    }
+
+    // Initialize
+    updateDateTime();
+    setInterval(updateDateTime, 1000); // Update every second
+    setActiveNavItem(); // Set active nav item on page load
     </script>
 </body>
 
