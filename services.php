@@ -86,7 +86,7 @@ session_start();
                         <li>• Ambulance services</li>
                         <li>• Emergency diagnostics</li>
                     </ul>
-                    <button onclick="openBookingModal('emergency')"
+                    <button onclick="checkLoginAndBook('emergency')"
                         class="w-full bg-red-500 cursor-pointer text-white py-3 rounded-lg hover:bg-red-600 transition-colors">
                         Emergency Contact
                     </button>
@@ -105,7 +105,7 @@ session_start();
                         <li>• Heart surgery</li>
                         <li>• Preventive cardiology</li>
                     </ul>
-                    <button onclick="openBookingModal('cardiology')"
+                    <button onclick="checkLoginAndBook('cardiology')"
                         class="w-full bg-blue-500 cursor-pointer text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
                         Book Consultation
                     </button>
@@ -124,7 +124,7 @@ session_start();
                         <li>• Epilepsy management</li>
                         <li>• Neurosurgery</li>
                     </ul>
-                    <button onclick="openBookingModal('neurology')"
+                    <button onclick="checkLoginAndBook('neurology')"
                         class="w-full bg-purple-500 cursor-pointer text-white py-3 rounded-lg hover:bg-purple-600 transition-colors">
                         Book Consultation
                     </button>
@@ -143,7 +143,7 @@ session_start();
                         <li>• Growth monitoring</li>
                         <li>• Pediatric surgery</li>
                     </ul>
-                    <button onclick="openBookingModal('pediatrics')"
+                    <button onclick="checkLoginAndBook('pediatrics')"
                         class="w-full bg-green-500 cursor-pointer text-white py-3 rounded-lg hover:bg-green-600 transition-colors">
                         Book Consultation
                     </button>
@@ -162,7 +162,7 @@ session_start();
                         <li>• Fracture treatment</li>
                         <li>• Physical therapy</li>
                     </ul>
-                    <button onclick="openBookingModal('orthopedics')"
+                    <button onclick="checkLoginAndBook('orthopedics')"
                         class="w-full bg-orange-500 cursor-pointer text-white py-3 rounded-lg hover:bg-orange-600 transition-colors">
                         Book Consultation
                     </button>
@@ -181,7 +181,7 @@ session_start();
                         <li>• Gynecological exams</li>
                         <li>• Family planning</li>
                     </ul>
-                    <button onclick="openBookingModal('obgyn')"
+                    <button onclick="checkLoginAndBook('obgyn')"
                         class="w-full bg-pink-500 cursor-pointer text-white py-3 rounded-lg hover:bg-pink-600 transition-colors">
                         Book Consultation
                     </button>
@@ -306,6 +306,21 @@ session_start();
         alert(`Booking ${service} consultation. Redirecting to appointment booking...`);
         // Example: window.location.href = `book-appointment.php?service=${service}`;
         openModal(); // For now, open the login modal
+    }
+
+    function checkLoginAndBook(service) {
+        <?php if (!isset($_SESSION['user'])): ?>
+        // Not logged in, show login modal
+        var modal = document.getElementById('loginModal');
+        if (modal) {
+            modal.classList.remove('hidden');
+        } else {
+            alert('Please log in to book a consultation.');
+        }
+        <?php else: ?>
+        // Logged in, open booking modal
+        openBookingModal(service);
+        <?php endif; ?>
     }
 
     function contactUs() {
