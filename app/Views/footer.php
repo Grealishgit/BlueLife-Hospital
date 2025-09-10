@@ -5,7 +5,8 @@
             <!-- <img class="h-9"
                 src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoDark.svg"
                 alt="dummyLogoDark"> -->
-            <h2 class="font-bold text-black text-2xl">Blue<span class="text-blue-500">Life</span></h2>
+            <a href="admin.php" class="font-bold cursor-pointer text-black text-2xl">Sheywe<span
+                    class="text-blue-500">Community</span></a>
             <p class="mt-2 text-sm">
                 Sheywe Community is a leading healthcare provider, committed to delivering high-quality medical services
                 and

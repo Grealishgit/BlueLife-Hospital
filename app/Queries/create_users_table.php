@@ -14,6 +14,7 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
     dob DATE NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+    role ENUM('patient', 'doctor', 'admin') DEFAULT 'patient',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
 
