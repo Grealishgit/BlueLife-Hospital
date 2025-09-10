@@ -36,11 +36,12 @@ $topDoctors = DoctorsData::getTopDoctors(6);
 
             <button class="mt-2 bg-blue-500 text-white px-4 font-bold py-2 cursor-pointer rounded hover:bg-blue-600"
                 <?php if (isset($_SESSION['user'])): ?> <button
-                class="mt-2 bg-blue-500 text-white px-4 font-bold py-2 cursor-pointer rounded hover:bg-blue-600"
+                class="mt-2 bg-blue-500 text-white px-4 font-bold py-2 mb-8 cursor-pointer rounded hover:bg-blue-600"
                 onclick="openDoctorProfile(<?php echo $doctor['id']; ?>)">View Profile</button>
 
             <?php else: ?>
-            <button class="mt-2 bg-blue-500 text-white px-4 font-bold py-2 cursor-pointer rounded hover:bg-blue-600"
+            <button
+                class="mt-2 bg-blue-500 text-white px-4 font-bold py-2 mb-5 cursor-pointer rounded hover:bg-blue-600"
                 onclick="showLoginModal()">View Profile</button>
             <?php endif; ?>
             <script>
