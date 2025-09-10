@@ -18,34 +18,41 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['user']['role']) || $_SESSION[
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    </style>
 
     <!-- Custom CSS for additional styling -->
     <style>
-        .sidebar-transition {
-            transition: transform 0.3s ease-in-out;
-        }
+    body {
+        font-family: 'Quicksand', sans-serif;
+    }
 
-        .sidebar-collapsed {
-            transform: translateX(-100%);
-        }
+    .sidebar-transition {
+        transition: transform 0.3s ease-in-out;
+    }
 
-        .content-expanded {
+    .sidebar-collapsed {
+        transform: translateX(-100%);
+    }
+
+    .content-expanded {
+        margin-left: 0;
+    }
+
+    .content-normal {
+        margin-left: 16rem;
+    }
+
+    @media (max-width: 768px) {
+        .content-normal {
             margin-left: 0;
         }
-
-        .content-normal {
-            margin-left: 16rem;
-        }
-
-        @media (max-width: 768px) {
-            .content-normal {
-                margin-left: 0;
-            }
-        }
+    }
     </style>
 </head>
 
-<body class="bg-gray-100">
+<body>
 
     <?php
     // Include the admin navbar
@@ -54,9 +61,7 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['user']['role']) || $_SESSION[
 
     <!-- Main Content Area -->
 
-
-
-    <div class="content-normal pt-16 min-h-screen bg-gray-100">
+    <div class="content-normal pt-16 min-h-screen bg-gray-100 relative z-10">
         <div class="p-6">
             <!-- Page Header -->
             <div class="mb-8">
@@ -232,26 +237,26 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['user']['role']) || $_SESSION[
     </div>
 
     <script>
-        // Adjust content margin based on sidebar state
-        function adjustContentMargin() {
-            const sidebar = document.getElementById('sidebar');
-            const content = document.querySelector('.content-normal');
+    // Adjust content margin based on sidebar state
+    function adjustContentMargin() {
+        const sidebar = document.getElementById('sidebar');
+        const content = document.querySelector('.content-normal');
 
-            if (window.innerWidth >= 768) {
-                if (sidebar.classList.contains('sidebar-collapsed')) {
-                    content.classList.remove('content-normal');
-                    content.classList.add('content-expanded');
-                } else {
-                    content.classList.remove('content-expanded');
-                    content.classList.add('content-normal');
-                }
+        if (window.innerWidth >= 768) {
+            if (sidebar.classList.contains('sidebar-collapsed')) {
+                content.classList.remove('content-normal');
+                content.classList.add('content-expanded');
+            } else {
+                content.classList.remove('content-expanded');
+                content.classList.add('content-normal');
             }
         }
+    }
 
-        // Listen for sidebar toggle
-        document.getElementById('sidebarToggle').addEventListener('click', () => {
-            setTimeout(adjustContentMargin, 300); // Wait for transition
-        });
+    // Listen for sidebar toggle
+    document.getElementById('sidebarToggle').addEventListener('click', () => {
+        setTimeout(adjustContentMargin, 300); // Wait for transition
+    });
     </script>
 
 </body>
