@@ -1,17 +1,17 @@
 <!-- Booking Modal -->
 <style>
-    .hide-scrollbar {
-        /* Hide scrollbar for IE, Edge and Firefox */
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-    }
+.hide-scrollbar {
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
 
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
 </style>
 
 <div id="bookingModal"
@@ -26,11 +26,11 @@
             <p id="serviceTitle" class="text-blue-600 font-semibold text-lg"></p>
         </div>
 
-        <form id="bookingForm" class="space-y-6">
+        <form id="bookingForm" class="space-y-6" onsubmit="return checkLoginStatus(event)">
             <input type="hidden" id="selectedService" name="service">
 
             <!-- Patient Information -->
-            <div class="border-b pb-6">
+            <!-- <div class="border-b pb-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Patient Information</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -75,7 +75,7 @@
                         </select>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Appointment Details -->
             <div class="border-b pb-6">
@@ -217,114 +217,124 @@
 </div>
 
 <script>
-    // Service details for different specialties
-    const serviceDetails = {
-        'emergency': {
-            title: 'Emergency Care Consultation',
-            description: '24/7 emergency medical services'
-        },
-        'cardiology': {
-            title: 'Cardiology Consultation',
-            description: 'Heart and cardiovascular care'
-        },
-        'neurology': {
-            title: 'Neurology Consultation',
-            description: 'Brain and nervous system care'
-        },
-        'pediatrics': {
-            title: 'Pediatrics Consultation',
-            description: 'Healthcare for children and adolescents'
-        },
-        'orthopedics': {
-            title: 'Orthopedics Consultation',
-            description: 'Bone, joint, and muscle care'
-        },
-        'obgyn': {
-            title: 'OB/GYN Consultation',
-            description: 'Women\'s health and reproductive care'
-        }
-    };
+// Service details for different specialties
+const serviceDetails = {
+    'emergency': {
+        title: 'Emergency Care Consultation',
+        description: '24/7 emergency medical services'
+    },
+    'cardiology': {
+        title: 'Cardiology Consultation',
+        description: 'Heart and cardiovascular care'
+    },
+    'neurology': {
+        title: 'Neurology Consultation',
+        description: 'Brain and nervous system care'
+    },
+    'pediatrics': {
+        title: 'Pediatrics Consultation',
+        description: 'Healthcare for children and adolescents'
+    },
+    'orthopedics': {
+        title: 'Orthopedics Consultation',
+        description: 'Bone, joint, and muscle care'
+    },
+    'obgyn': {
+        title: 'OB/GYN Consultation',
+        description: 'Women\'s health and reproductive care'
+    }
+};
 
-    function openBookingModal(service) {
-        const modal = document.getElementById('bookingModal');
-        const serviceTitle = document.getElementById('serviceTitle');
-        const selectedService = document.getElementById('selectedService');
+function openBookingModal(service) {
+    const modal = document.getElementById('bookingModal');
+    const serviceTitle = document.getElementById('serviceTitle');
+    const selectedService = document.getElementById('selectedService');
 
-        // Set service details
-        if (serviceDetails[service]) {
-            serviceTitle.textContent = serviceDetails[service].title;
-            selectedService.value = service;
-        }
+    // Set service details
+    if (serviceDetails[service]) {
+        serviceTitle.textContent = serviceDetails[service].title;
+        selectedService.value = service;
+    }
 
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('preferredDate').min = today;
-        document.getElementById('dateOfBirth').max = today;
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('preferredDate').min = today;
 
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function checkLoginStatus(e) {
+    <?php if (!isset($_SESSION['user'])): ?>
+    var modal = document.getElementById('loginModal');
+    if (modal) {
         modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    } else {
+        alert('Login modal not found.');
+    }
+    if (e) e.preventDefault();
+    return false;
+    <?php endif; ?>
+    return true;
+}
+
+function closeBookingModal() {
+    const modal = document.getElementById('bookingModal');
+    modal.classList.add('hidden');
+    document.body.style.overflow = ''; // Restore scrolling
+
+    // Reset form
+    document.getElementById('bookingForm').reset();
+}
+
+// Handle form submission
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Get form data
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+
+    // Basic validation
+    const requiredFields = ['preferredDate', 'preferredTime', 'appointmentType', 'reasonForVisit'];
+    const missingFields = requiredFields.filter(field => !data[field]);
+
+    if (missingFields.length > 0) {
+        alert('Please fill in all required fields.');
+        return;
     }
 
-    function closeBookingModal() {
-        const modal = document.getElementById('bookingModal');
-        modal.classList.add('hidden');
-        document.body.style.overflow = ''; // Restore scrolling
-
-        // Reset form
-        document.getElementById('bookingForm').reset();
+    if (!data.termsAccepted || !data.consentTreatment) {
+        alert('Please accept the terms and conditions and consent to treatment.');
+        return;
     }
 
-    // Handle form submission
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+    // Simulate booking submission
+    const serviceName = serviceDetails[data.service]?.title || 'Medical Consultation';
 
-        // Get form data
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
+    alert(
+        `Appointment booked successfully!\n\nService: ${serviceName}\nDate: ${data.preferredDate}\nTime: ${data.preferredTime}\n\nYou will receive a confirmation email shortly.`
+    );
 
-        // Basic validation
-        const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'dateOfBirth', 'gender',
-            'preferredDate',
-            'preferredTime', 'appointmentType', 'reasonForVisit'
-        ];
-        const missingFields = requiredFields.filter(field => !data[field]);
+    closeBookingModal();
 
-        if (missingFields.length > 0) {
-            alert('Please fill in all required fields.');
-            return;
-        }
+    // Here you would typically send the data to your backend
+    console.log('Booking data:', data);
+});
 
-        if (!data.termsAccepted || !data.consentTreatment) {
-            alert('Please accept the terms and conditions and consent to treatment.');
-            return;
-        }
-
-        // Simulate booking submission
-        const serviceName = serviceDetails[data.service]?.title || 'Medical Consultation';
-
-        alert(
-            `Appointment booked successfully!\n\nService: ${serviceName}\nPatient: ${data.firstName} ${data.lastName}\nDate: ${data.preferredDate}\nTime: ${data.preferredTime}\n\nYou will receive a confirmation email shortly.`
-        );
-
+// Close modal when clicking outside
+document.getElementById('bookingModal').addEventListener('click', function(e) {
+    if (e.target === this) {
         closeBookingModal();
+    }
+});
 
-        // Here you would typically send the data to your backend
-        console.log('Booking data:', data);
-    });
-
-    // Close modal when clicking outside
-    document.getElementById('bookingModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeBookingModal();
-        }
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !document.getElementById('bookingModal').classList.contains('hidden')) {
-            closeBookingModal();
-        }
-    });
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !document.getElementById('bookingModal').classList.contains('hidden')) {
+        closeBookingModal();
+    }
+});
 </script>
 </body>
 
