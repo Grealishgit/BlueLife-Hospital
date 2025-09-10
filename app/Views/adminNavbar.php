@@ -54,9 +54,10 @@
                             d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
-                <h1 class="md:text-xl text-md flex font-bold">Sheywe <span class="md:block hidden">
+                <a href="index.php" class="md:text-xl text-md cursor-pointer flex font-bold">Sheywe <span
+                        class="md:block hidden">
                         Admin</span>
-                </h1>
+                </a>
             </div>
 
             <div class="text-sm md:block hidden">

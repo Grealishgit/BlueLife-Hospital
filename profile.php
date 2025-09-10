@@ -74,29 +74,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Profile - Sheywe Community Hospital</title>
 </head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+</style>
 
 <body>
     <?php include 'app/Views/navbar.php'; ?>
     <div
         class="bg-gray-100 mt-15 flex w-full rounded-lg  shadow-lg shadow-blue-500 items-center p-2 min-h-screen justify-center">
         <div
-            class="flex flex-col md:max-w-6xl w-full md:flex-row hover:shadow-2xl cursor-pointer transition-shadow duration-300">
+            class="flex flex-col md:w-210 w-full md:flex-row hover:shadow-2xl cursor-pointer transition-shadow duration-300">
             <div class="flex-1 bg-white border-b-4 rounded-l-md border-blue-500 shadow-lg hidden md:block">
                 <img src="/storage/uploads/bg1.jpg" alt="Profile UI" class="w-full h-full object-cover rounded-l-md" />
             </div>
             <div
                 class="md:flex-1  bg-white rounded-r-md  border-t-4 border-blue-500  p-8 w-full flex flex-col justify-between">
                 <div class="flex flex-col items-center mb-6">
-                    <h1 class="text-xl font-bold text-center mb-2 text-blue-500">Hi 👋
+                    <h1 class="text-xl font-bold text-center mb-2 text-blue-500">Hi👋
                         <?= htmlspecialchars($dbUser['first_name']) ?>, this is your Profile</h1>
                 </div>
                 <div class="space-y-4">
                     <div class="flex md:flex-row flex-col items-center gap-4 mb-4">
                         <div
-                            class="w-25 md:16 h-25 md:h-16 flex items-center justify-center bg-blue-100 border border-blue-500 rounded-full text-blue-700 font-bold text-2xl">
+                            class="w-25 h-25 md:w-16  md:h-14 flex items-center justify-center bg-blue-100 border border-blue-500 rounded-full text-blue-700 font-bold text-2xl">
                             <?= strtoupper(substr($dbUser['first_name'], 0, 1) . substr($dbUser['last_name'], 0, 1)) ?>
                         </div>
-                        <div>
+                        <div class="flex flex-col items-center rounded-md bg-sky-100 p-2 shadow-lg w-full">
                             <div class="text-xl font-semibold text-gray-800">
                                 <?= htmlspecialchars($dbUser['first_name'] . ' ' . $dbUser['last_name']) ?></div>
                             <div class="text-gray-600 font-semibold">Email: <?= htmlspecialchars($dbUser['email']) ?>
@@ -105,29 +112,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
                             </div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <div class="font-medium text-gray-700">Gender</div>
-                            <div class="text-gray-900 capitalize"><?= htmlspecialchars($dbUser['gender']) ?></div>
+
+                    <div class="flex flex-col gap-1 bg-indigo-100 shadow-lg rounded-md">
+
+                        <div class="flex items-center mt-7 w-full justify-center flex-row gap-4">
+                            <div class="border-r border-gray-500 pr-4">
+                                <div class="font-medium text-gray-700">Gender</div>
+                                <div class="text-gray-900 font-bold capitalize">
+                                    <?= htmlspecialchars($dbUser['gender']) ?>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="font-medium text-gray-700">Date of Birth</div>
+                                <div class="text-gray-900 font-bold"><?= htmlspecialchars($dbUser['dob']) ?></div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="font-medium text-gray-700">Date of Birth</div>
-                            <div class="text-gray-900"><?= htmlspecialchars($dbUser['dob']) ?></div>
+                        <div class="mt-4 items-center mb-4 w-full text-center">
+                            <div class="font-semibold text-gray-700">Your Current Age</div>
+                            <div>
+                                <p class="text-gray-900 font-semibold">
+                                    <span class="text-red-300"><?= $age['years'] ?></span> years,
+                                    <span class="text-red-300"><?= $age['months'] ?></span> months,
+                                    <span class="text-red-300"><?= $age['days'] ?></span> days
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="mt-4 text-center">
-                        <div class="font-medium text-gray-700">Your Current Age</div>
-                        <div class="text-gray-900">
-                            <?= $age['years'] ?> years, <?= $age['months'] ?> months, <?= $age['days'] ?> days
-                        </div>
-                    </div>
-                    <div class="flex md:flex-row flex-col w-full gap-4 mt-6">
+
+                    <div class="flex flex-row w-full gap-4 mt-6">
                         <button onclick="document.getElementById('editProfileModal').classList.remove('hidden')"
                             class="bg-blue-500 text-white py-2 w-full cursor-pointer rounded hover:bg-blue-600 font-semibold">Edit
                             Profile
                         </button>
                         <button onclick="document.getElementById('changePasswordModal').classList.remove('hidden')"
-                            class="bg-green-500 text-white  py-2 w-full cursor-pointer rounded hover:bg-green-600 font-semibold">
+                            class="bg-gray-400 text-white  py-2 w-full cursor-pointer rounded hover:bg-gray-600 font-semibold">
                             Change Password</button>
 
                     </div>
@@ -199,6 +218,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
             </form>
         </div>
     </div>
+    <?php include 'app/Views/footer.php'; ?>
 </body>
 
 </html>
