@@ -25,6 +25,9 @@ if ($action === 'login') {
                 'first_name' => $user['first_name'],
                 'last_name' => $user['last_name'],
                 'email' => $user['email'],
+                'phone' => $user['phone'],
+                'gender' => $user['gender'],
+                'dob' => $user['dob'],
                 'token' => $token
             ];
             $response = ["success" => true, "message" => "Login successful.", "user" => $_SESSION['user'], "token" => $token];

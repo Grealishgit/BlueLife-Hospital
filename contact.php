@@ -10,32 +10,32 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Contact Us - Sheywe Comunity Hospital</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-        body {
-            font-family: 'Quicksand', sans-serif;
-        }
+    body {
+        font-family: 'Quicksand', sans-serif;
+    }
 
-        .contact-card {
-            transition: all 0.3s ease;
-        }
+    .contact-card {
+        transition: all 0.3s ease;
+    }
 
-        .contact-card:hover {
-            transform: translateY(-5px);
-        }
+    .contact-card:hover {
+        transform: translateY(-5px);
+    }
 
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
+    .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
 
-        .map-container {
-            filter: grayscale(30%);
-            transition: filter 0.3s ease;
-        }
+    .map-container {
+        filter: grayscale(30%);
+        transition: filter 0.3s ease;
+    }
 
-        .map-container:hover {
-            filter: grayscale(0%);
-        }
+    .map-container:hover {
+        filter: grayscale(0%);
+    }
     </style>
 </head>
 
@@ -144,6 +144,8 @@ session_start();
                 <div>
                     <h2 class="text-3xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
                     <form id="contactForm" class="space-y-6">
+                        <?php if (!isset($_SESSION['user'])): ?>
+                        <!-- Personal Information - Only show for guests -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name
@@ -171,6 +173,18 @@ session_start();
                             <input type="tel" id="phone" name="phone"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         </div>
+                        <?php else: ?>
+                        <!-- User is logged in - Personal info will be fetched from session -->
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                            <p class="text-blue-800 font-medium">
+                                Contacting as:
+                                <?php echo htmlspecialchars($_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name']); ?>
+                            </p>
+                            <p class="text-blue-600 text-sm">
+                                Email: <?php echo htmlspecialchars($_SESSION['user']['email']); ?>
+                            </p>
+                        </div>
+                        <?php endif; ?>
 
                         <div>
                             <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject *</label>
@@ -238,7 +252,7 @@ session_start();
 
                     <!-- Quick Actions -->
                     <div class="space-y-3">
-                        <button onclick="openModal()"
+                        <button onclick="checkLoginAndNavigate()"
                             class="w-full bg-green-600 cursor-pointer text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors">
                             Book Appointment Online
                         </button>
@@ -324,61 +338,76 @@ session_start();
     <?php include 'app/Views/footer.php'; ?>
 
     <script>
-        function scrollToContact() {
-            document.getElementById('contact').scrollIntoView({
-                behavior: 'smooth'
-            });
+    function scrollToContact() {
+        document.getElementById('contact').scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
+    function callHospital() {
+        window.location.href = 'tel:+15551234567';
+    }
+
+    function checkLoginAndNavigate() {
+        <?php if (isset($_SESSION['user'])): ?>
+        // User is logged in, navigate to appointment page
+        window.location.href = 'appointment.php';
+        <?php else: ?>
+        // User is not logged in, show login modal
+        var modal = document.getElementById('loginModal');
+        if (modal) {
+            modal.classList.remove('hidden');
+        } else {
+            alert('Please log in to book an appointment.');
+        }
+        <?php endif; ?>
+    }
+
+    function toggleFAQ(faqNumber) {
+        const faqContent = document.getElementById(`faq${faqNumber}`);
+        const faqIcon = document.getElementById(`faq${faqNumber}-icon`);
+
+        if (faqContent.classList.contains('hidden')) {
+            faqContent.classList.remove('hidden');
+            faqIcon.textContent = '-';
+        } else {
+            faqContent.classList.add('hidden');
+            faqIcon.textContent = '+';
+        }
+    }
+
+    // Handle contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+
+        // Simple validation
+        if (!data.firstName || !data.lastName || !data.email || !data.subject || !data.message) {
+            alert('Please fill in all required fields.');
+            return;
         }
 
-        function callHospital() {
-            window.location.href = 'tel:+15551234567';
-        }
+        // Simulate form submission
+        alert('Thank you for your message! We will get back to you within 24 hours.');
+        this.reset();
+    });
 
-        function toggleFAQ(faqNumber) {
-            const faqContent = document.getElementById(`faq${faqNumber}`);
-            const faqIcon = document.getElementById(`faq${faqNumber}-icon`);
-
-            if (faqContent.classList.contains('hidden')) {
-                faqContent.classList.remove('hidden');
-                faqIcon.textContent = '-';
-            } else {
-                faqContent.classList.add('hidden');
-                faqIcon.textContent = '+';
-            }
-        }
-
-        // Handle contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-
-            // Simple validation
-            if (!data.firstName || !data.lastName || !data.email || !data.subject || !data.message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Simulate form submission
-            alert('Thank you for your message! We will get back to you within 24 hours.');
-            this.reset();
+    // Add form field animations
+    const formInputs = document.querySelectorAll('input, select, textarea');
+    formInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
         });
 
-        // Add form field animations
-        const formInputs = document.querySelectorAll('input, select, textarea');
-        formInputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.classList.add('focused');
-            });
-
-            input.addEventListener('blur', function() {
-                if (this.value === '') {
-                    this.parentElement.classList.remove('focused');
-                }
-            });
+        input.addEventListener('blur', function() {
+            if (this.value === '') {
+                this.parentElement.classList.remove('focused');
+            }
         });
+    });
     </script>
 </body>
 

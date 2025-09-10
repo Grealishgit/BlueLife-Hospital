@@ -331,6 +331,49 @@ $specialties = DoctorsData::getSpecialties();
                     <div class="form-step" data-step="3">
                         <h2 class="text-2xl font-bold text-gray-800 mb-6">Patient Information</h2>
 
+                        <?php if (isset($_SESSION['user'])): ?>
+                        <!-- User is logged in - Show user info in disabled fields -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">First Name *</label>
+                                <input type="text" name="firstName"
+                                    value="<?php echo htmlspecialchars($_SESSION['user']['first_name']); ?>" disabled
+                                    class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-600">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Last Name *</label>
+                                <input type="text" name="lastName"
+                                    value="<?php echo htmlspecialchars($_SESSION['user']['last_name']); ?>" disabled
+                                    class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-600">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email *</label>
+                                <input type="email" name="email"
+                                    value="<?php echo htmlspecialchars($_SESSION['user']['email']); ?>" disabled
+                                    class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-600">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Phone Number *</label>
+                                <input type="tel" name="phone"
+                                    value="<?php echo htmlspecialchars($_SESSION['user']['phone'] ?? ''); ?>" disabled
+                                    class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-600">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Date of Birth *</label>
+                                <input type="date" name="dob"
+                                    value="<?php echo htmlspecialchars($_SESSION['user']['dob'] ?? ''); ?>" disabled
+                                    class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-600">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Gender *</label>
+                                <input type="text" name="gender"
+                                    value="<?php echo htmlspecialchars(ucfirst($_SESSION['user']['gender'] ?? '')); ?>"
+                                    disabled
+                                    class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-600">
+                            </div>
+                        </div>
+                        <?php else: ?>
+                        <!-- Guest user - Show editable fields -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-gray-700 font-medium mb-2">First Name *</label>
@@ -368,6 +411,7 @@ $specialties = DoctorsData::getSpecialties();
                                 </select>
                             </div>
                         </div>
+                        <?php endif; ?>
 
                         <div class="mt-6">
                             <label class="block text-gray-700 font-medium mb-2">Insurance Provider</label>
