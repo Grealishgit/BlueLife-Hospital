@@ -60,7 +60,6 @@ if (!isset($_SESSION['user']) || !isset($_SESSION['user']['role']) || $_SESSION[
     ?>
 
     <!-- Main Content Area -->
-
     <div class="content-normal pt-16 min-h-screen bg-gray-100 relative z-10">
         <div id="dynamic-content" class="p-6">
             <!-- Dashboard content will be loaded here by default -->
