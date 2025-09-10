@@ -1,3 +1,6 @@
+<!-- Include Toast Component -->
+<?php include 'components/toast.php'; ?>
+
 <!-- Login/Signup Modal -->
 <div id="loginModal"
     class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md bg-opacity-50 hidden">
@@ -38,7 +41,7 @@
                     </a>
                 </p>
                 <button type="submit"
-                    class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors">
+                    class="w-full bg-blue-500 text-white py-2 cursor-pointer rounded hover:bg-blue-600 transition-colors">
                     Login
                 </button>
                 <div>
@@ -101,141 +104,144 @@
 </div>
 
 <script>
-    function openModal() {
-        document.getElementById('loginModal').classList.remove('hidden');
+function openModal() {
+    document.getElementById('loginModal').classList.remove('hidden');
+}
+
+function closeModal() {
+    document.getElementById('loginModal').classList.add('hidden');
+}
+
+function switchToSignup() {
+    document.getElementById('signupForm').classList.remove('hidden');
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('showSignup').classList.add('text-blue-500', 'border-b-2', 'border-blue-500');
+    document.getElementById('showLogin').classList.remove('text-blue-500', 'border-b-2', 'border-blue-500');
+}
+
+function switchToLogin() {
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('signupForm').classList.add('hidden');
+    document.getElementById('showLogin').classList.add('text-blue-500', 'border-b-2', 'border-blue-500');
+    document.getElementById('showSignup').classList.remove('text-blue-500', 'border-b-2', 'border-blue-500');
+}
+
+// Email validation function
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Phone validation function
+function isValidPhone(phone) {
+    const phoneRegex = /^[\+]?[\d\s\-\(\)]{10,}$/;
+    return phoneRegex.test(phone);
+}
+
+// Real-time validation for login identifier
+document.getElementById('loginIdentifier').addEventListener('input', function() {
+    const value = this.value.trim();
+    const identifierType = document.getElementById('identifierType');
+
+    if (value === '') {
+        identifierType.textContent = 'Enter your email address or phone number';
+        identifierType.className = 'text-xs text-gray-500 mt-1';
+    } else if (isValidEmail(value)) {
+        identifierType.textContent = '✓ Valid email address';
+        identifierType.className = 'text-xs text-green-600 mt-1';
+    } else if (isValidPhone(value)) {
+        identifierType.textContent = '✓ Valid phone number';
+        identifierType.className = 'text-xs text-green-600 mt-1';
+    } else {
+        identifierType.textContent = 'Please enter a valid email or phone number';
+        identifierType.className = 'text-xs text-red-500 mt-1';
+    }
+});
+
+// Handle login form submission
+document.getElementById('loginFormElement').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const identifier = document.getElementById('loginIdentifier').value.trim();
+    const password = document.getElementById('loginPassword').value;
+
+    // Validate identifier
+    if (!isValidEmail(identifier) && !isValidPhone(identifier)) {
+        showToast.error('Please enter a valid email address or phone number.');
+        return;
     }
 
-    function closeModal() {
-        document.getElementById('loginModal').classList.add('hidden');
+    if (password.length < 6) {
+        showToast.error('Password must be at least 6 characters long.');
+        return;
     }
 
-    function switchToSignup() {
-        document.getElementById('signupForm').classList.remove('hidden');
-        document.getElementById('loginForm').classList.add('hidden');
-        document.getElementById('showSignup').classList.add('text-blue-500', 'border-b-2', 'border-blue-500');
-        document.getElementById('showLogin').classList.remove('text-blue-500', 'border-b-2', 'border-blue-500');
-    }
-
-    function switchToLogin() {
-        document.getElementById('loginForm').classList.remove('hidden');
-        document.getElementById('signupForm').classList.add('hidden');
-        document.getElementById('showLogin').classList.add('text-blue-500', 'border-b-2', 'border-blue-500');
-        document.getElementById('showSignup').classList.remove('text-blue-500', 'border-b-2', 'border-blue-500');
-    }
-
-    // Email validation function
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    // Phone validation function
-    function isValidPhone(phone) {
-        const phoneRegex = /^[\+]?[\d\s\-\(\)]{10,}$/;
-        return phoneRegex.test(phone);
-    }
-
-    // Real-time validation for login identifier
-    document.getElementById('loginIdentifier').addEventListener('input', function() {
-        const value = this.value.trim();
-        const identifierType = document.getElementById('identifierType');
-
-        if (value === '') {
-            identifierType.textContent = 'Enter your email address or phone number';
-            identifierType.className = 'text-xs text-gray-500 mt-1';
-        } else if (isValidEmail(value)) {
-            identifierType.textContent = '✓ Valid email address';
-            identifierType.className = 'text-xs text-green-600 mt-1';
-        } else if (isValidPhone(value)) {
-            identifierType.textContent = '✓ Valid phone number';
-            identifierType.className = 'text-xs text-green-600 mt-1';
-        } else {
-            identifierType.textContent = 'Please enter a valid email or phone number';
-            identifierType.className = 'text-xs text-red-500 mt-1';
-        }
-    });
-
-    // Handle login form submission
-    document.getElementById('loginFormElement').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const identifier = document.getElementById('loginIdentifier').value.trim();
-        const password = document.getElementById('loginPassword').value;
-
-        // Validate identifier
-        if (!isValidEmail(identifier) && !isValidPhone(identifier)) {
-            alert('Please enter a valid email address or phone number.');
-            return;
-        }
-
-        if (password.length < 6) {
-            alert('Password must be at least 6 characters long.');
-            return;
-        }
-
-        // AJAX login
-        fetch('app/auth.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    action: 'login',
-                    identifier: identifier,
-                    password: password
-                })
+    // AJAX login
+    fetch('app/auth.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                action: 'login',
+                identifier: identifier,
+                password: password
             })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    closeModal();
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                showToast.success('Login successful! Welcome back.');
+                closeModal();
+                setTimeout(() => {
                     location.reload(); // Refresh page to update navbar
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(() => alert('Login failed.'));
-    });
+                }, 1500);
+            } else {
+                showToast.error(data.message || 'Login failed. Please try again.');
+            }
+        })
+        .catch(() => showToast.error('Login failed. Please check your connection.'));
+});
 
-    // Handle signup form submission
-    document.querySelector('#signupForm form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const form = e.target;
-        const data = {
-            action: 'signup',
-            first_name: form.querySelector('input[placeholder="First Name"]').value,
-            last_name: form.querySelector('input[placeholder="Last Name"]').value,
-            phone: form.querySelector('input[placeholder="Phone Number"]').value,
-            gender: form.querySelector('select[name="gender"]').value,
-            dob: form.querySelector('input[type="date"]').value,
-            email: form.querySelector('input[type="email"]').value,
-            password: form.querySelector('input[type="password"]').value
-        };
-        // Basic validation
-        if (Object.values(data).some(v => v === '')) {
-            alert('Please fill all fields.');
-            return;
-        }
-        fetch('app/auth.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams(data)
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Signup successful! You can now login.');
-                    switchToLogin();
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(() => alert('Signup failed.'));
-    });
+// Handle signup form submission
+document.querySelector('#signupForm form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+        action: 'signup',
+        first_name: form.querySelector('input[placeholder="First Name"]').value,
+        last_name: form.querySelector('input[placeholder="Last Name"]').value,
+        phone: form.querySelector('input[placeholder="Phone Number"]').value,
+        gender: form.querySelector('select[name="gender"]').value,
+        dob: form.querySelector('input[type="date"]').value,
+        email: form.querySelector('input[type="email"]').value,
+        password: form.querySelector('input[type="password"]').value
+    };
+    // Basic validation
+    if (Object.values(data).some(v => v === '')) {
+        showToast.error('Please fill all fields.');
+        return;
+    }
+    fetch('app/auth.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                showToast.success('Signup successful! You can now login.');
+                switchToLogin();
+            } else {
+                showToast.error(data.message || 'Signup failed. Please try again.');
+            }
+        })
+        .catch(() => showToast.error('Signup failed. Please check your connection.'));
+});
 
-    // Tab switching functionality
-    document.getElementById('showLogin').onclick = switchToLogin;
-    document.getElementById('showSignup').onclick = switchToSignup;
+// Tab switching functionality
+document.getElementById('showLogin').onclick = switchToLogin;
+document.getElementById('showSignup').onclick = switchToSignup;
 </script>
