@@ -78,20 +78,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
 <body>
     <?php include 'app/Views/navbar.php'; ?>
     <div
-        class="bg-gray-100 mt-15 flex w-full rounded-lg  shadow-lg shadow-blue-500 items-center md:p-8 p-2 min-h-screen justify-center">
-        <div class="flex flex-col max-w-3xl md:flex-row hover:shadow-2xl cursor-pointer transition-shadow duration-300">
+        class="bg-gray-100 mt-15 flex w-full rounded-lg  shadow-lg shadow-blue-500 items-center p-2 min-h-screen justify-center">
+        <div
+            class="flex flex-col md:max-w-6xl w-full md:flex-row hover:shadow-2xl cursor-pointer transition-shadow duration-300">
             <div class="flex-1 bg-white border-b-4 rounded-l-md border-blue-500 shadow-lg hidden md:block">
                 <img src="/storage/uploads/bg1.jpg" alt="Profile UI" class="w-full h-full object-cover rounded-l-md" />
             </div>
             <div
                 class="md:flex-1  bg-white rounded-r-md  border-t-4 border-blue-500  p-8 w-full flex flex-col justify-between">
                 <div class="flex flex-col items-center mb-6">
-                    <h1 class="text-4xl font-bold mb-2 text-blue-700">Your Profile</h1>
+                    <h1 class="text-xl font-bold text-center mb-2 text-blue-500">Hi 👋
+                        <?= htmlspecialchars($dbUser['first_name']) ?>, this is your Profile</h1>
                 </div>
                 <div class="space-y-4">
                     <div class="flex md:flex-row flex-col items-center gap-4 mb-4">
                         <div
-                            class="w-16 h-16 flex items-center justify-center bg-blue-100 border border-blue-500 rounded-full text-blue-700 font-bold text-2xl">
+                            class="w-25 md:16 h-25 md:h-16 flex items-center justify-center bg-blue-100 border border-blue-500 rounded-full text-blue-700 font-bold text-2xl">
                             <?= strtoupper(substr($dbUser['first_name'], 0, 1) . substr($dbUser['last_name'], 0, 1)) ?>
                         </div>
                         <div>
@@ -106,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <div class="font-medium text-gray-700">Gender</div>
-                            <div class="text-gray-900"><?= htmlspecialchars($dbUser['gender']) ?></div>
+                            <div class="text-gray-900 capitalize"><?= htmlspecialchars($dbUser['gender']) ?></div>
                         </div>
                         <div>
                             <div class="font-medium text-gray-700">Date of Birth</div>
