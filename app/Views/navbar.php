@@ -48,21 +48,21 @@ $tabs = [
     <div class="hidden md:flex items-center space-x-4">
         <?php if (!$isLoggedIn): ?>
         <a href="#" onclick="openModal()"
-            class="text-blue-500 px-6 py-2 text-white rounded-md bg-blue-500 font-semibold hover:text-blue-200">Login</a>
+            class="text-blue-500 px-6 py-2 text-white cursor-pointer rounded-md bg-blue-500 font-semibold hover:text-blue-200">Login</a>
         <?php else:
             $firstName = htmlspecialchars($user['first_name']);
             $initials = strtoupper(substr($user['first_name'], 0, 1) . substr($user['last_name'], 0, 1));
         ?>
         <span class="text-blue-700 font-semibold mr-2">Hello, <?= $firstName ?>!</span>
         <button id="profileMenuBtn2" class="focus:outline-none relative">
-            <div
-                class="w-8 h-8 flex items-center justify-center bg-blue-100 border border-blue-500 rounded-full text-blue-700 font-bold text-lg">
+            <a href="profile.php"
+                class="w-8 h-8 flex items-center justify-center cursor-pointer bg-blue-100 border border-blue-500 rounded-full text-blue-700 font-bold text-lg">
                 <?= $initials ?>
-            </div>
+            </a>
         </button>
         <!-- Profile Modal (fixed, positioned to the right of initials) -->
         <div id="profileModal2"
-            class="absolute right-0 top-12 mt-2 w-64 bg-white border border-gray-200 rounded-md shadow-lg z-50 hidden">
+            class="absolute right-0 top-12 mt-2 w-64 bg-white border border-gray-200 rounded-md shadow-lg z-60 hidden">
             <ul class="py-4">
                 <li><a href="profile.php"
                         class="block px-6 py-3 text-lg text-blue-700 hover:bg-blue-50 font-semibold">My Profile</a></li>

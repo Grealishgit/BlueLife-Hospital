@@ -25,45 +25,6 @@ function getAgeDetails($dob)
     ];
 }
 $age = getAgeDetails($dbUser['dob']);
-
-// Handle profile edit
-$editSuccess = false;
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_profile'])) {
-    $first_name = $_POST['first_name'] ?? '';
-    $last_name = $_POST['last_name'] ?? '';
-    $phone = $_POST['phone'] ?? '';
-    $gender = $_POST['gender'] ?? '';
-    $dob = $_POST['dob'] ?? '';
-    $password = $_POST['edit_password'] ?? '';
-    // Verify password
-    if (password_verify($password, $dbUser['password'])) {
-        $stmt = $userModel->getPdo()->prepare("UPDATE users SET first_name=?, last_name=?, phone=?, gender=?, dob=? WHERE id=?");
-        $stmt->execute([$first_name, $last_name, $phone, $gender, $dob, $dbUser['id']]);
-        $editSuccess = true;
-        // Refresh page
-        header('Location: profile.php');
-        exit;
-    } else {
-        $editSuccess = 'wrong';
-    }
-}
-// Handle password change
-$passSuccess = false;
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
-    $old_password = $_POST['old_password'] ?? '';
-    $new_password = $_POST['new_password'] ?? '';
-    // Verify old password
-    if (password_verify($old_password, $dbUser['password'])) {
-        $stmt = $userModel->getPdo()->prepare("UPDATE users SET password=? WHERE id=?");
-        $stmt->execute([password_hash($new_password, PASSWORD_DEFAULT), $dbUser['id']]);
-        $passSuccess = true;
-        // Refresh page
-        header('Location: profile.php');
-        exit;
-    } else {
-        $passSuccess = 'wrong';
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,6 +45,7 @@ body {
 
 <body>
     <?php include 'app/Views/navbar.php'; ?>
+    <?php include 'components/toast.php'; ?>
     <div
         class="bg-gray-100 mt-15 flex w-full rounded-lg  shadow-lg shadow-blue-500 items-center p-2 min-h-screen justify-center">
         <div
@@ -165,24 +127,34 @@ body {
             <button onclick="document.getElementById('editProfileModal').classList.add('hidden')"
                 class="absolute top-2 right-4 cursor-pointer text-2xl text-red-500 hover:text-red-700">&times;</button>
             <h2 class="text-2xl font-bold mb-4 text-blue-700">Edit Profile</h2>
-            <?php if ($editSuccess === 'wrong'): ?><div class="text-red-500 mb-2">Incorrect password!</div>
-            <?php endif; ?>
-            <form method="POST">
+            <form id="editProfileForm" method="POST">
                 <input type="hidden" name="edit_profile" value="1" />
-                <div class="mb-3"><input type="text" name="first_name"
-                        value="<?= htmlspecialchars($dbUser['first_name']) ?>"
-                        class="w-full px-3 py-2 border border-gray-400 rounded" required placeholder="First Name" />
+                <div class="flex gap-2 md:gap-4">
+                    <div class="mb-3"><input type="text" name="first_name"
+                            value="<?= htmlspecialchars($dbUser['first_name']) ?>"
+                            class="w-full px-3 py-2 border border-gray-400 rounded" required placeholder="First Name" />
+                    </div>
+                    <div class="mb-3"><input type="text" name="last_name"
+                            value="<?= htmlspecialchars($dbUser['last_name']) ?>"
+                            class="w-full px-3 py-2 border border-gray-400 rounded" required placeholder="Last Name" />
+                    </div>
                 </div>
-                <div class="mb-3"><input type="text" name="last_name"
-                        value="<?= htmlspecialchars($dbUser['last_name']) ?>"
-                        class="w-full px-3 py-2 border border-gray-400 rounded" required placeholder="Last Name" />
+                <div class="flex gap-2 md:gap-4">
+                    <div class="mb-3"><input type="text" name="phone" value="<?= htmlspecialchars($dbUser['phone']) ?>"
+                            class="w-full px-3 py-2 border border-gray-400 rounded" required placeholder="Phone" />
+                    </div>
+                    <div class="mb-3">
+                        <select name="gender" class="w-full px-3 py-2 border border-gray-400 rounded" required>
+                            <option value="">Select Gender</option>
+                            <option value="male" <?= $dbUser['gender'] === 'male' ? 'selected' : '' ?>>Male</option>
+                            <option value="female" <?= $dbUser['gender'] === 'female' ? 'selected' : '' ?>>Female
+                            </option>
+                            <option value="other" <?= $dbUser['gender'] === 'other' ? 'selected' : '' ?>>Other</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="mb-3"><input type="text" name="phone" value="<?= htmlspecialchars($dbUser['phone']) ?>"
-                        class="w-full px-3 py-2 border border-gray-400 rounded" required placeholder="Phone" />
-                </div>
-                <div class="mb-3"><input type="text" name="gender" value="<?= htmlspecialchars($dbUser['gender']) ?>"
-                        class="w-full px-3 py-2 border border-gray-400 rounded" required placeholder="Gender" />
-                </div>
+
+
                 <div class="mb-3"><input type="date" name="dob" value="<?= htmlspecialchars($dbUser['dob']) ?>"
                         class="w-full px-3 py-2 border border-gray-400 rounded" required placeholder="Date of Birth" />
                 </div>
@@ -203,9 +175,7 @@ body {
             <button onclick="document.getElementById('changePasswordModal').classList.add('hidden')"
                 class="absolute top-2 right-4 cursor-pointer text-2xl text-red-500 hover:text-red-700">&times;</button>
             <h2 class="text-2xl font-bold mb-4 text-red-700">Change Password</h2>
-            <?php if ($passSuccess === 'wrong'): ?><div class="text-red-500 mb-2">Incorrect old password!</div>
-            <?php endif; ?>
-            <form method="POST">
+            <form id="changePasswordForm" method="POST">
                 <input type="hidden" name="change_password" value="1" />
                 <div class="mb-3"><input type="password" name="old_password"
                         class="w-full px-3 py-2 border border-gray-400 rounded" required placeholder="Old Password" />
@@ -220,6 +190,126 @@ body {
         </div>
     </div>
     <?php include 'app/Views/footer.php'; ?>
+
+    <script>
+    // Handle Edit Profile Form
+    document.getElementById('editProfileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        formData.append('action', 'edit_profile');
+
+        // Basic client-side validation
+        const firstName = formData.get('first_name').trim();
+        const lastName = formData.get('last_name').trim();
+        const phone = formData.get('phone').trim();
+        const gender = formData.get('gender');
+        const dob = formData.get('dob');
+        const password = formData.get('edit_password');
+
+        if (!firstName || !lastName || !phone || !gender || !dob || !password) {
+            showToast.error('All fields are required');
+            return;
+        }
+
+        if (password.length < 6) {
+            showToast.error('Password must be at least 6 characters long');
+            return;
+        }
+
+        // Submit form
+        fetch('app/profile-handler.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast.success(data.message);
+                    document.getElementById('editProfileModal').classList.add('hidden');
+                    // Refresh page after a short delay to show updated data
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    showToast.error(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast.error('An error occurred while updating profile');
+            });
+    });
+
+    // Handle Change Password Form
+    document.getElementById('changePasswordForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        formData.append('action', 'change_password');
+
+        // Basic client-side validation
+        const oldPassword = formData.get('old_password');
+        const newPassword = formData.get('new_password');
+
+        if (!oldPassword || !newPassword) {
+            showToast.error('Both old and new passwords are required');
+            return;
+        }
+
+        if (newPassword.length < 6) {
+            showToast.error('New password must be at least 6 characters long');
+            return;
+        }
+
+        if (oldPassword === newPassword) {
+            showToast.warning('New password must be different from the old password');
+            return;
+        }
+
+        // Submit form
+        fetch('app/profile-handler.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast.success(data.message);
+                    document.getElementById('changePasswordModal').classList.add('hidden');
+                    // Clear form
+                    this.reset();
+                } else {
+                    showToast.error(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast.error('An error occurred while changing password');
+            });
+    });
+
+    // Modal close functionality with ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.getElementById('editProfileModal').classList.add('hidden');
+            document.getElementById('changePasswordModal').classList.add('hidden');
+        }
+    });
+
+    // Close modal when clicking outside
+    document.getElementById('editProfileModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.add('hidden');
+        }
+    });
+
+    document.getElementById('changePasswordModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.add('hidden');
+        }
+    });
+    </script>
 </body>
 
 </html>
