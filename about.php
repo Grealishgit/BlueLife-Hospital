@@ -321,23 +321,7 @@ session_start();
         </div>
     </div>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h2 class="text-3xl font-bold">Sheywe Community Hospital</h2>
-                </div>
-                <div class="flex flex-col md:flex-row gap-4">
-                    <a href="about.php" class="hover:underline">About Us</a>
-                    <a href="services.php" class="hover:underline">Services</a>
-                    <a href="contact.php" class="hover:underline">Contact</a>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-4 pt-4 text-center">
-                <p class="text-sm">&copy; 2023 Sheywe Community Hospital. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <?php include 'app/Views/footer.php'; ?>
 
     <script>
     function scrollToStory() {
