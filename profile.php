@@ -190,7 +190,8 @@ body {
                         class="w-full px-3 py-2 border border-gray-400 rounded" required
                         placeholder="Enter your password to save changes" /></div>
                 <button type="submit"
-                    class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 font-semibold">Save Changes
+                    class="w-full bg-blue-500 text-white cursor-pointer py-2 rounded hover:bg-blue-600 font-semibold">
+                    Save Changes
                 </button>
             </form>
         </div>
@@ -201,7 +202,7 @@ body {
         <div class="bg-white rounded-md shadow-lg w-full max-w-md p-8 relative">
             <button onclick="document.getElementById('changePasswordModal').classList.add('hidden')"
                 class="absolute top-2 right-4 cursor-pointer text-2xl text-red-500 hover:text-red-700">&times;</button>
-            <h2 class="text-2xl font-bold mb-4 text-purple-700">Change Password</h2>
+            <h2 class="text-2xl font-bold mb-4 text-red-700">Change Password</h2>
             <?php if ($passSuccess === 'wrong'): ?><div class="text-red-500 mb-2">Incorrect old password!</div>
             <?php endif; ?>
             <form method="POST">
@@ -213,7 +214,7 @@ body {
                         class="w-full px-3 py-2 border border-gray-400 rounded" required placeholder="New Password" />
                 </div>
                 <button type="submit"
-                    class="w-full bg-purple-500 text-white py-2 rounded hover:bg-purple-600 font-semibold">Change
+                    class="w-full bg-red-500 text-white py-2 rounded cursor-pointer hover:bg-red-600 font-semibold">Change
                     Password</button>
             </form>
         </div>
