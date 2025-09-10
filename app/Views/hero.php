@@ -25,15 +25,37 @@
 
 
                 <div class="mt-6 flex md:flex-row items-center flex-col gap-4">
-                    <a href="insurance.php"
-                        class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-200 transition duration-300">
-                        Get Started
-                    </a>
+                    <?php if (isset($_SESSION['user'])): ?>
                     <a href="appointment.php"
                         class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-100 transition duration-300">
                         Book Appointment
                     </a>
+                    <a href="consult.php"
+                        class="bg-white text-green-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-green-100 transition duration-300">
+                        Consult A Doctor
+                    </a>
+                    <?php else: ?>
+                    <a href="#" onclick="showLoginModal()"
+                        class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-200 transition duration-300">
+                        Get Started
+                    </a>
+                    <a href="#" onclick="showLoginModal()"
+                        class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-gray-100 transition duration-300">
+                        Book Appointment
+                    </a>
+                    <?php endif; ?>
                 </div>
+                <script>
+                function showLoginModal() {
+                    // Show the login modal (assumes you have a modal with id 'loginModal')
+                    var modal = document.getElementById('loginModal');
+                    if (modal) {
+                        modal.classList.remove('hidden');
+                    } else {
+                        alert('Login modal not found.');
+                    }
+                }
+                </script>
             </div>
 
             <!-- Image to the right -->

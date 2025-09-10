@@ -78,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
 <body>
     <?php include 'app/Views/navbar.php'; ?>
     <div
-        class="bg-gray-100 flex w-full rounded-lg shadow-lg shadow-blue-500 items-center p-8 min-h-screen justify-center">
-        <div class="flex flex-col max-w-3xl md:flex-row">
+        class="bg-gray-100 mt-15 flex w-full rounded-lg  shadow-lg shadow-blue-500 items-center md:p-8 p-2 min-h-screen justify-center">
+        <div class="flex flex-col max-w-3xl md:flex-row hover:shadow-2xl cursor-pointer transition-shadow duration-300">
             <div class="flex-1 bg-white border-b-4 rounded-l-md border-blue-500 shadow-lg hidden md:block">
                 <img src="/storage/uploads/bg1.jpg" alt="Profile UI" class="w-full h-full object-cover rounded-l-md" />
             </div>
@@ -119,15 +119,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
                             <?= $age['years'] ?> years, <?= $age['months'] ?> months, <?= $age['days'] ?> days
                         </div>
                     </div>
-                    <div class="flex md:flex-row flex-col gap-4 mt-6">
+                    <div class="flex md:flex-row flex-col w-full gap-4 mt-6">
                         <button onclick="document.getElementById('editProfileModal').classList.remove('hidden')"
-                            class="bg-blue-500 text-white px-4 py-2 cursor-pointer rounded hover:bg-blue-600 font-semibold">Edit
+                            class="bg-blue-500 text-white py-2 w-full cursor-pointer rounded hover:bg-blue-600 font-semibold">Edit
                             Profile
                         </button>
                         <button onclick="document.getElementById('changePasswordModal').classList.remove('hidden')"
-                            class="bg-red-400 text-white px-4 py-2 cursor-pointer rounded hover:bg-purple-600 font-semibold">
+                            class="bg-green-500 text-white  py-2 w-full cursor-pointer rounded hover:bg-green-600 font-semibold">
                             Change Password</button>
+
                     </div>
+                    <button class=" bg-red-600 text-white w-full py-2 cursor-pointer rounded hover:bg-red-500
+                            font-semibold">
+                        Delete Account</button>
                 </div>
             </div>
         </div>
