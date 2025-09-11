@@ -240,10 +240,7 @@ $allDoctors = DoctorsData::getAllDoctors();
                     </div>
                     
                     <div class="space-y-2 text-sm text-gray-600 mb-4">
-                        <div class="flex items-center justify-between">
-                            <span>💬 Languages:</span>
-                            <span class="font-medium">${doctor.languages.join(', ')}</span>
-                        </div>
+
                         <div class="flex items-center justify-between">
                             <span>📅 Available:</span>
                             <span class="font-medium">${doctor.availability}</span>
@@ -255,7 +252,6 @@ $allDoctors = DoctorsData::getAllDoctors();
                     </div>
                     
                     <p class="text-gray-700 text-sm mb-4 line-clamp-2">${doctor.bio}</p>
-                    
                     <div class="flex md:flex-row flex-col gap-2">
                         <a href="appointment.php"
                                 class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium">

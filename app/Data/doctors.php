@@ -23,7 +23,6 @@ class DoctorsData
                 'email' => 'sarah.johnson@Sheywe Community.com',
                 'rating' => 4.9,
                 'consultation_fee' => 150,
-                'languages' => ['English', 'Spanish'],
                 'availability' => 'Mon-Fri',
                 'is_top_doctor' => true
             ],
@@ -44,7 +43,6 @@ class DoctorsData
                 'email' => 'michael.chen@Sheywe Community.com',
                 'rating' => 4.8,
                 'consultation_fee' => 180,
-                'languages' => ['English', 'Mandarin'],
                 'availability' => 'Mon-Thu',
                 'is_top_doctor' => true
             ],
@@ -65,7 +63,6 @@ class DoctorsData
                 'email' => 'emily.rodriguez@Sheywe Community.com',
                 'rating' => 4.9,
                 'consultation_fee' => 120,
-                'languages' => ['English', 'Spanish'],
                 'availability' => 'Tue-Sat',
                 'is_top_doctor' => true
             ],
@@ -86,7 +83,6 @@ class DoctorsData
                 'email' => 'james.wilson@Sheywe Community.com',
                 'rating' => 4.7,
                 'consultation_fee' => 200,
-                'languages' => ['English'],
                 'availability' => 'Mon-Wed, Fri',
                 'is_top_doctor' => true
             ],
@@ -107,7 +103,6 @@ class DoctorsData
                 'email' => 'lisa.thompson@Sheywe Community.com',
                 'rating' => 4.8,
                 'consultation_fee' => 140,
-                'languages' => ['English', 'French'],
                 'availability' => 'Mon-Fri',
                 'is_top_doctor' => false
             ],
@@ -128,7 +123,6 @@ class DoctorsData
                 'email' => 'robert.kumar@Sheywe Community.com',
                 'rating' => 4.6,
                 'consultation_fee' => 160,
-                'languages' => ['English', 'Hindi'],
                 'availability' => 'Tue-Thu',
                 'is_top_doctor' => false
             ],
@@ -149,7 +143,6 @@ class DoctorsData
                 'email' => 'maria.garcia@Sheywe Community.com',
                 'rating' => 4.9,
                 'consultation_fee' => 220,
-                'languages' => ['English', 'Spanish'],
                 'availability' => 'Mon-Fri',
                 'is_top_doctor' => true
             ],
@@ -170,7 +163,6 @@ class DoctorsData
                 'email' => 'david.lee@Sheywe Community.com',
                 'rating' => 4.8,
                 'consultation_fee' => 250,
-                'languages' => ['English', 'Korean'],
                 'availability' => 'Mon-Wed',
                 'is_top_doctor' => true
             ]
