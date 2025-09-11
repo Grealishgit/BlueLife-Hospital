@@ -47,13 +47,13 @@ try {
 
         <!-- Error Display -->
         <?php if (isset($error)): ?>
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-                <strong>Error:</strong> <?php echo htmlspecialchars($error); ?>
-            </div>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+            <strong>Error:</strong> <?php echo htmlspecialchars($error); ?>
+        </div>
         <?php endif; ?>
 
         <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <!-- Total Doctors Card -->
             <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
                 <div class="flex items-center">
@@ -144,9 +144,9 @@ try {
                         class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <option value="">All Specialties</option>
                         <?php foreach ($specialties as $specialty): ?>
-                            <option value="<?php echo htmlspecialchars($specialty); ?>">
-                                <?php echo ucfirst(str_replace('_', ' ', $specialty)); ?>
-                            </option>
+                        <option value="<?php echo htmlspecialchars($specialty); ?>">
+                            <?php echo ucfirst(str_replace('_', ' ', $specialty)); ?>
+                        </option>
                         <?php endforeach; ?>
                     </select>
 
@@ -194,139 +194,139 @@ try {
 
             <div id="doctorsContainer" class="p-6">
                 <?php if (empty($allDoctors)): ?>
-                    <div class="text-center py-12">
-                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
-                            </path>
-                        </svg>
-                        <h3 class="mt-2 text-sm font-medium text-gray-900">No doctors found</h3>
-                        <p class="mt-1 text-sm text-gray-500">Get started by adding your first doctor to the system.</p>
-                    </div>
+                <div class="text-center py-12">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
+                    </svg>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">No doctors found</h3>
+                    <p class="mt-1 text-sm text-gray-500">Get started by adding your first doctor to the system.</p>
+                </div>
                 <?php else: ?>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6" id="doctorsGrid">
-                        <?php foreach ($allDoctors as $doctor): ?>
-                            <div class="doctor-card bg-gray-50 rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-200"
-                                data-specialty="<?php echo htmlspecialchars($doctor['specialty']); ?>"
-                                data-name="<?php echo htmlspecialchars(strtolower($doctor['name'])); ?>"
-                                data-rating="<?php echo $doctor['rating']; ?>"
-                                data-experience="<?php echo $doctor['experience_years']; ?>">
+                <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6" id="doctorsGrid">
+                    <?php foreach ($allDoctors as $doctor): ?>
+                    <div class="doctor-card bg-gray-50 rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-200"
+                        data-specialty="<?php echo htmlspecialchars($doctor['specialty']); ?>"
+                        data-name="<?php echo htmlspecialchars(strtolower($doctor['name'])); ?>"
+                        data-rating="<?php echo $doctor['rating']; ?>"
+                        data-experience="<?php echo $doctor['experience_years']; ?>">
 
-                                <!-- Doctor Header -->
-                                <div class="flex items-start justify-between mb-4">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="flex-shrink-0">
-                                            <img class="h-16 w-16 rounded-full object-cover border-2 border-gray-200"
-                                                src="<?php echo htmlspecialchars($doctor['image']); ?>"
-                                                alt="<?php echo htmlspecialchars($doctor['name']); ?>"
-                                                onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22%23d1d5db%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%22/%3E%3C/svg%3E'">
-                                        </div>
-                                        <div class="flex-1">
-                                            <h4 class="text-lg font-semibold text-gray-900">
-                                                <?php echo htmlspecialchars($doctor['name']); ?></h4>
-                                            <p class="text-sm text-blue-600 font-medium">
-                                                <?php echo htmlspecialchars($doctor['specialtyDisplay']); ?></p>
-                                        </div>
-                                    </div>
-
-                                    <?php if ($doctor['is_top_doctor']): ?>
-                                        <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                                <path
-                                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
-                                                </path>
-                                            </svg>
-                                            Top Doctor
-                                        </span>
-                                    <?php endif; ?>
+                        <!-- Doctor Header -->
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-shrink-0">
+                                    <img class="h-16 w-16 rounded-full object-cover border-2 border-gray-200"
+                                        src="<?php echo htmlspecialchars($doctor['image']); ?>"
+                                        alt="<?php echo htmlspecialchars($doctor['name']); ?>"
+                                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22%23d1d5db%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%22/%3E%3C/svg%3E'">
                                 </div>
-
-                                <!-- Doctor Info -->
-                                <div class="space-y-3 mb-4">
-                                    <div class="flex items-center text-sm text-gray-600">
-                                        <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        <?php echo htmlspecialchars($doctor['experience']); ?> experience
-                                    </div>
-
-                                    <div class="flex items-center text-sm text-gray-600">
-                                        <svg class="w-4 h-4 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
-                                            </path>
-                                        </svg>
-                                        <?php echo number_format($doctor['rating'], 1); ?> rating
-                                    </div>
-
-                                    <div class="flex items-center text-sm text-gray-600">
-                                        <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
-                                            </path>
-                                        </svg>
-                                        Ksh <?php echo number_format($doctor['consultation_fee']); ?> consultation
-                                    </div>
-
-                                    <div class="flex items-center text-sm text-gray-600">
-                                        <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M8 7V3a4 4 0 118 0v4m-4 8a3 3 0 01-3-3V9a3 3 0 116 0v3a3 3 0 01-3 3z"></path>
-                                        </svg>
-                                        <?php echo htmlspecialchars($doctor['availability']); ?>
-                                    </div>
-                                </div>
-
-                                <!-- Contact Info -->
-                                <div class="border-t border-gray-200 pt-4 space-y-2">
-                                    <div class="flex items-center text-sm text-gray-600">
-                                        <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                            </path>
-                                        </svg>
-                                        <?php echo htmlspecialchars($doctor['email']); ?>
-                                    </div>
-
-                                    <div class="flex items-center text-sm text-gray-600">
-                                        <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
-                                            </path>
-                                        </svg>
-                                        <?php echo htmlspecialchars($doctor['phone']); ?>
-                                    </div>
-                                </div>
-
-                                <!-- Action Buttons -->
-                                <div class="border-t border-gray-200 pt-4 flex gap-2">
-                                    <button onclick="viewDoctorDetails(<?php echo $doctor['id']; ?>)"
-                                        class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
-                                        View Details
-                                    </button>
-                                    <button onclick="editDoctor(<?php echo $doctor['id']; ?>)"
-                                        class="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
-                                        Edit
-                                    </button>
-                                    <button onclick="deleteDoctor(<?php echo $doctor['id']; ?>)"
-                                        class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
-                                            </path>
-                                        </svg>
-                                    </button>
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-semibold text-gray-900">
+                                        <?php echo htmlspecialchars($doctor['name']); ?></h4>
+                                    <p class="text-sm text-blue-600 font-medium">
+                                        <?php echo htmlspecialchars($doctor['specialtyDisplay']); ?></p>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+
+                            <?php if ($doctor['is_top_doctor']): ?>
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
+                                    </path>
+                                </svg>
+                                Top Doctor
+                            </span>
+                            <?php endif; ?>
+                        </div>
+
+                        <!-- Doctor Info -->
+                        <div class="space-y-3 mb-4">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <?php echo htmlspecialchars($doctor['experience']); ?> experience
+                            </div>
+
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
+                                    </path>
+                                </svg>
+                                <?php echo number_format($doctor['rating'], 1); ?> rating
+                            </div>
+
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
+                                    </path>
+                                </svg>
+                                Ksh <?php echo number_format($doctor['consultation_fee']); ?> consultation
+                            </div>
+
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3a4 4 0 118 0v4m-4 8a3 3 0 01-3-3V9a3 3 0 116 0v3a3 3 0 01-3 3z"></path>
+                                </svg>
+                                <?php echo htmlspecialchars($doctor['availability']); ?>
+                            </div>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="border-t border-gray-200 pt-4 space-y-2">
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <?php echo htmlspecialchars($doctor['email']); ?>
+                            </div>
+
+                            <div class="flex items-center text-sm text-gray-600">
+                                <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                    </path>
+                                </svg>
+                                <?php echo htmlspecialchars($doctor['phone']); ?>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="border-t border-gray-200 pt-4 flex gap-2">
+                            <button onclick="viewDoctorDetails(<?php echo $doctor['id']; ?>)"
+                                class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                                View Details
+                            </button>
+                            <button onclick="editDoctor(<?php echo $doctor['id']; ?>)"
+                                class="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                                Edit
+                            </button>
+                            <button onclick="deleteDoctor(<?php echo $doctor['id']; ?>)"
+                                class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
+                    <?php endforeach; ?>
+                </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -337,19 +337,19 @@ try {
 
 
 <style>
-    .doctor-card {
-        transition: all 0.2s ease-in-out;
-    }
+.doctor-card {
+    transition: all 0.2s ease-in-out;
+}
 
-    .doctor-card:hover {
-        transform: translateY(-2px);
-    }
+.doctor-card:hover {
+    transform: translateY(-2px);
+}
 
-    .doctor-card img {
-        transition: transform 0.2s ease-in-out;
-    }
+.doctor-card img {
+    transition: transform 0.2s ease-in-out;
+}
 
-    .doctor-card:hover img {
-        transform: scale(1.05);
-    }
+.doctor-card:hover img {
+    transform: scale(1.05);
+}
 </style>
