@@ -10,34 +10,34 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Our Services - Sheywe Community Hospital</title>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Signika:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-    body {
-        font-family: 'Quicksand', sans-serif;
-    }
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
 
-    .service-card {
-        transition: all 0.3s ease;
-    }
+        .service-card {
+            transition: all 0.3s ease;
+        }
 
-    .service-card:hover {
-        transform: translateY(-5px);
-    }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
 
-    .gradient-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
 
-    .service-icon {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        margin: 0 auto 1rem;
-    }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+        }
     </style>
 </head>
 
@@ -45,6 +45,7 @@ session_start();
     <?php include 'app/Views/navbar.php'; ?>
     <?php include 'app/Views/bookingModal.php'; ?>
     <?php include 'app/Views/loginModal.php'; ?>
+    <?php include 'components/toast.php'; ?>
 
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-20 mt-10">
@@ -295,71 +296,85 @@ session_start();
     <?php include 'app/Views/footer.php'; ?>
 
     <script>
-    function scrollToServices() {
-        document.getElementById('services').scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
-
-    function bookService(service) {
-        // You can customize this based on your booking system
-        alert(`Booking ${service} consultation. Redirecting to appointment booking...`);
-        // Example: window.location.href = `book-appointment.php?service=${service}`;
-        openModal(); // For now, open the login modal
-    }
-
-    function checkLoginAndBook(service) {
-        <?php if (!isset($_SESSION['user'])): ?>
-        // Not logged in, show login modal
-        var modal = document.getElementById('loginModal');
-        if (modal) {
-            modal.classList.remove('hidden');
-        } else {
-            alert('Please log in to book a consultation.');
-        }
-        <?php else: ?>
-        // Logged in, open booking modal
-        openBookingModal(service);
-        <?php endif; ?>
-    }
-
-    function contactUs() {
-        // Redirect to contact page or open contact modal
-        window.location.href = 'contact.php';
-    }
-
-    // Add smooth scrolling for better UX
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
+        function scrollToServices() {
+            document.getElementById('services').scrollIntoView({
                 behavior: 'smooth'
             });
+        }
+
+        function bookService(service) {
+            // You can customize this based on your booking system
+            alert(`Booking ${service} consultation. Redirecting to appointment booking...`);
+            // Example: window.location.href = `book-appointment.php?service=${service}`;
+            openModal(); // For now, open the login modal
+        }
+
+        function checkLoginAndBook(service) {
+            <?php if (!isset($_SESSION['user'])): ?>
+                // Not logged in, show login modal
+                var modal = document.getElementById('loginModal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                } else {
+                    alert('Please log in to book a consultation.');
+                }
+            <?php else: ?>
+                // Logged in, open booking modal
+                openBookingModal(service);
+            <?php endif; ?>
+        }
+
+        function openModal() {
+            // For general booking - default to general consultation
+            <?php if (!isset($_SESSION['user'])): ?>
+                var modal = document.getElementById('loginModal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                } else {
+                    alert('Please log in to book a consultation.');
+                }
+            <?php else: ?>
+                openBookingModal('general');
+            <?php endif; ?>
+        }
+
+        function contactUs() {
+            // Redirect to contact page or open contact modal
+            window.location.href = 'contact.php';
+        }
+
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
-    });
 
-    // Add scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards for animation
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
         });
-    }, observerOptions);
-
-    // Observe service cards for animation
-    document.querySelectorAll('.service-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
     </script>
 </body>
 

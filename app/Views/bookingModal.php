@@ -1,17 +1,17 @@
 <!-- Booking Modal -->
 <style>
-.hide-scrollbar {
-    /* Hide scrollbar for IE, Edge and Firefox */
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-}
+    .hide-scrollbar {
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.hide-scrollbar::-webkit-scrollbar {
-    display: none;
-}
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 </style>
 
 <div id="bookingModal"
@@ -26,23 +26,23 @@
             <p id="serviceTitle" class="text-blue-600 font-semibold text-lg"></p>
         </div>
 
-        <form id="bookingForm" class="space-y-6" onsubmit="return checkLoginStatus(event)">
-            <input type="hidden" id="selectedService" name="service">
+        <form id="bookingForm" class="space-y-6" onsubmit="return submitConsultation(event)">
+            <input type="hidden" id="selectedService" name="consultation_type">
 
             <!-- Patient Information -->
-            <!-- <div class="border-b pb-6">
+            <div class="border-b pb-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Patient Information</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name
                             *</label>
-                        <input type="text" id="firstName" name="firstName" required
+                        <input type="text" id="firstName" name="first_name" required
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
                         <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name
                             *</label>
-                        <input type="text" id="lastName" name="lastName" required
+                        <input type="text" id="lastName" name="last_name" required
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
@@ -58,10 +58,12 @@
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
-                        <label for="dateOfBirth" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth
+                        <label for="yearOfBirth" class="block text-sm font-medium text-gray-700 mb-1">Year of Birth
                             *</label>
-                        <input type="date" id="dateOfBirth" name="dateOfBirth" required
+                        <select id="yearOfBirth" name="year_of_birth" required
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Select Year</option>
+                        </select>
                     </div>
                     <div>
                         <label for="gender" class="block text-sm font-medium text-gray-700 mb-1">Gender *</label>
@@ -71,11 +73,10 @@
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="other">Other</option>
-                            <option value="prefer-not-to-say">Prefer not to say</option>
                         </select>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             <!-- Appointment Details -->
             <div class="border-b pb-6">
@@ -85,40 +86,28 @@
                         <label for="preferredDate" class="block text-sm font-medium text-gray-700 mb-1">Preferred
                             Date
                             *</label>
-                        <input type="date" id="preferredDate" name="preferredDate" required
+                        <input type="date" id="preferredDate" name="preferred_date" required
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
                         <label for="preferredTime" class="block text-sm font-medium text-gray-700 mb-1">Preferred
                             Time
                             *</label>
-                        <select id="preferredTime" name="preferredTime" required
+                        <select id="preferredTime" name="preferred_time" required
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             <option value="">Select Time</option>
-                            <option value="09:00">9:00 AM</option>
-                            <option value="09:30">9:30 AM</option>
-                            <option value="10:00">10:00 AM</option>
-                            <option value="10:30">10:30 AM</option>
-                            <option value="11:00">11:00 AM</option>
-                            <option value="11:30">11:30 AM</option>
-                            <option value="14:00">2:00 PM</option>
-                            <option value="14:30">2:30 PM</option>
-                            <option value="15:00">3:00 PM</option>
-                            <option value="15:30">3:30 PM</option>
-                            <option value="16:00">4:00 PM</option>
-                            <option value="16:30">4:30 PM</option>
-                        </select>
-                    </div>
-                    <div class="md:col-span-2">
-                        <label for="appointmentType" class="block text-sm font-medium text-gray-700 mb-1">Appointment
-                            Type *</label>
-                        <select id="appointmentType" name="appointmentType" required
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                            <option value="">Select Type</option>
-                            <option value="consultation">Initial Consultation</option>
-                            <option value="follow-up">Follow-up Visit</option>
-                            <option value="routine-checkup">Routine Check-up</option>
-                            <option value="urgent">Urgent Care</option>
+                            <option value="09:00:00">9:00 AM</option>
+                            <option value="09:30:00">9:30 AM</option>
+                            <option value="10:00:00">10:00 AM</option>
+                            <option value="10:30:00">10:30 AM</option>
+                            <option value="11:00:00">11:00 AM</option>
+                            <option value="11:30:00">11:30 AM</option>
+                            <option value="14:00:00">2:00 PM</option>
+                            <option value="14:30:00">2:30 PM</option>
+                            <option value="15:00:00">3:00 PM</option>
+                            <option value="15:30:00">3:30 PM</option>
+                            <option value="16:00:00">4:00 PM</option>
+                            <option value="16:30:00">4:30 PM</option>
                         </select>
                     </div>
                 </div>
@@ -131,50 +120,16 @@
                     <div>
                         <label for="reasonForVisit" class="block text-sm font-medium text-gray-700 mb-1">Reason for
                             Visit *</label>
-                        <textarea id="reasonForVisit" name="reasonForVisit" rows="3" required
+                        <textarea id="reasonForVisit" name="reason_for_visit" rows="3" required
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             placeholder="Please describe your symptoms or reason for the consultation"></textarea>
                     </div>
                     <div>
-                        <label for="currentMedications" class="block text-sm font-medium text-gray-700 mb-1">Current
-                            Medications</label>
-                        <textarea id="currentMedications" name="currentMedications" rows="2"
+                        <label for="additionalNotes" class="block text-sm font-medium text-gray-700 mb-1">Additional
+                            Notes</label>
+                        <textarea id="additionalNotes" name="additional_notes" rows="2"
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="List any medications you are currently taking"></textarea>
-                    </div>
-                    <div>
-                        <label for="allergies" class="block text-sm font-medium text-gray-700 mb-1">Allergies</label>
-                        <input type="text" id="allergies" name="allergies"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="List any known allergies">
-                    </div>
-                    <div>
-                        <label for="medicalHistory" class="block text-sm font-medium text-gray-700 mb-1">Medical
-                            History</label>
-                        <textarea id="medicalHistory" name="medicalHistory" rows="2"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Brief medical history or previous conditions"></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Insurance Information -->
-            <div class="border-b pb-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">Insurance Information</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label for="insuranceProvider" class="block text-sm font-medium text-gray-700 mb-1">Insurance
-                            Provider</label>
-                        <input type="text" id="insuranceProvider" name="insuranceProvider"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="e.g., Blue Cross Blue Shield">
-                    </div>
-                    <div>
-                        <label for="policyNumber" class="block text-sm font-medium text-gray-700 mb-1">Policy
-                            Number</label>
-                        <input type="text" id="policyNumber" name="policyNumber"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Your insurance policy number">
+                            placeholder="Any additional information you'd like to share"></textarea>
                     </div>
                 </div>
             </div>
@@ -205,7 +160,7 @@
             <div class="flex flex-col sm:flex-row gap-3 pt-4">
                 <button type="submit"
                     class="flex-1 bg-blue-600 cursor-pointer text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                    Book Appointment
+                    Book Consultation
                 </button>
                 <button type="button" onclick="closeBookingModal()"
                     class="flex-1 bg-gray-500 text-white py-3 px-6 cursor-pointer rounded-lg font-semibold hover:bg-gray-600 transition-colors">
@@ -217,124 +172,225 @@
 </div>
 
 <script>
-// Service details for different specialties
-const serviceDetails = {
-    'emergency': {
-        title: 'Emergency Care Consultation',
-        description: '24/7 emergency medical services'
-    },
-    'cardiology': {
-        title: 'Cardiology Consultation',
-        description: 'Heart and cardiovascular care'
-    },
-    'neurology': {
-        title: 'Neurology Consultation',
-        description: 'Brain and nervous system care'
-    },
-    'pediatrics': {
-        title: 'Pediatrics Consultation',
-        description: 'Healthcare for children and adolescents'
-    },
-    'orthopedics': {
-        title: 'Orthopedics Consultation',
-        description: 'Bone, joint, and muscle care'
-    },
-    'obgyn': {
-        title: 'OB/GYN Consultation',
-        description: 'Women\'s health and reproductive care'
-    }
-};
+    // Service details for different specialties
+    const serviceDetails = {
+        'emergency': {
+            title: 'Emergency Care Consultation',
+            description: '24/7 emergency medical services'
+        },
+        'cardiology': {
+            title: 'Cardiology Consultation',
+            description: 'Heart and cardiovascular care'
+        },
+        'neurology': {
+            title: 'Neurology Consultation',
+            description: 'Brain and nervous system care'
+        },
+        'pediatrics': {
+            title: 'Pediatrics Consultation',
+            description: 'Healthcare for children and adolescents'
+        },
+        'orthopedics': {
+            title: 'Orthopedics Consultation',
+            description: 'Bone, joint, and muscle care'
+        },
+        'obgyn': {
+            title: 'OB/GYN Consultation',
+            description: 'Women\'s health and reproductive care'
+        },
+        'general': {
+            title: 'General Medical Consultation',
+            description: 'General healthcare and medical consultation'
+        }
+    };
 
-function openBookingModal(service) {
-    const modal = document.getElementById('bookingModal');
-    const serviceTitle = document.getElementById('serviceTitle');
-    const selectedService = document.getElementById('selectedService');
+    function openBookingModal(service) {
+        const modal = document.getElementById('bookingModal');
+        const serviceTitle = document.getElementById('serviceTitle');
+        const selectedService = document.getElementById('selectedService');
 
-    // Set service details
-    if (serviceDetails[service]) {
-        serviceTitle.textContent = serviceDetails[service].title;
-        selectedService.value = service;
-    }
+        // Set service details
+        if (serviceDetails[service]) {
+            serviceTitle.textContent = serviceDetails[service].title;
+            selectedService.value = service;
+        }
 
-    // Set minimum date to today
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('preferredDate').min = today;
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('preferredDate').min = today;
 
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-}
+        // Populate year of birth dropdown
+        populateYearDropdown();
 
-function checkLoginStatus(e) {
-    <?php if (!isset($_SESSION['user'])): ?>
-    var modal = document.getElementById('loginModal');
-    if (modal) {
+        // Pre-fill user data if logged in
+        <?php if (isset($_SESSION['user'])): ?>
+            const userData = <?php echo json_encode($_SESSION['user']); ?>;
+            if (userData) {
+                document.getElementById('firstName').value = userData.first_name || '';
+                document.getElementById('lastName').value = userData.last_name || '';
+                document.getElementById('email').value = userData.email || '';
+                document.getElementById('phone').value = userData.phone || '';
+                if (userData.gender) {
+                    document.getElementById('gender').value = userData.gender;
+                }
+                if (userData.dob) {
+                    const birthYear = new Date(userData.dob).getFullYear();
+                    document.getElementById('yearOfBirth').value = birthYear;
+                }
+            }
+        <?php endif; ?>
+
         modal.classList.remove('hidden');
-    } else {
-        alert('Login modal not found.');
-    }
-    if (e) e.preventDefault();
-    return false;
-    <?php endif; ?>
-    return true;
-}
-
-function closeBookingModal() {
-    const modal = document.getElementById('bookingModal');
-    modal.classList.add('hidden');
-    document.body.style.overflow = ''; // Restore scrolling
-
-    // Reset form
-    document.getElementById('bookingForm').reset();
-}
-
-// Handle form submission
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Get form data
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
-
-    // Basic validation
-    const requiredFields = ['preferredDate', 'preferredTime', 'appointmentType', 'reasonForVisit'];
-    const missingFields = requiredFields.filter(field => !data[field]);
-
-    if (missingFields.length > 0) {
-        alert('Please fill in all required fields.');
-        return;
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
 
-    if (!data.termsAccepted || !data.consentTreatment) {
-        alert('Please accept the terms and conditions and consent to treatment.');
-        return;
+    function populateYearDropdown() {
+        const yearSelect = document.getElementById('yearOfBirth');
+        const currentYear = new Date().getFullYear();
+        const startYear = currentYear - 100; // 100 years ago
+
+        // Clear existing options except the first one
+        yearSelect.innerHTML = '<option value="">Select Year</option>';
+
+        // Add years from current year back to 100 years ago
+        for (let year = currentYear; year >= startYear; year--) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+        }
     }
 
-    // Simulate booking submission
-    const serviceName = serviceDetails[data.service]?.title || 'Medical Consultation';
+    function submitConsultation(e) {
+        e.preventDefault();
 
-    alert(
-        `Appointment booked successfully!\n\nService: ${serviceName}\nDate: ${data.preferredDate}\nTime: ${data.preferredTime}\n\nYou will receive a confirmation email shortly.`
-    );
+        const form = document.getElementById('bookingForm');
+        const formData = new FormData(form);
 
-    closeBookingModal();
+        // Add action for the consultation handler
+        formData.append('action', 'create_consultation');
 
-    // Here you would typically send the data to your backend
-    console.log('Booking data:', data);
-});
+        // Basic client-side validation
+        const requiredFields = ['first_name', 'last_name', 'email', 'phone', 'gender', 'year_of_birth', 'consultation_type',
+            'preferred_date', 'preferred_time', 'reason_for_visit'
+        ];
+        const missingFields = [];
 
-// Close modal when clicking outside
-document.getElementById('bookingModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeBookingModal();
+        requiredFields.forEach(field => {
+            if (!formData.get(field)) {
+                missingFields.push(field);
+            }
+        });
+
+        if (missingFields.length > 0) {
+            if (typeof showToast !== 'undefined') {
+                showToast.error('Please fill in all required fields.');
+            } else {
+                alert('Please fill in all required fields.');
+            }
+            return false;
+        }
+
+        if (!formData.get('termsAccepted') || !formData.get('consentTreatment')) {
+            if (typeof showToast !== 'undefined') {
+                showToast.warning('Please accept the terms and conditions and consent to treatment.');
+            } else {
+                alert('Please accept the terms and conditions and consent to treatment.');
+            }
+            return false;
+        }
+
+        // Show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+
+        // Submit to consultation handler
+        fetch('app/consultation-handler.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (typeof showToast !== 'undefined') {
+                        showToast.success('Consultation request submitted successfully! We will contact you shortly to confirm your appointment.');
+                    } else {
+                        alert('Consultation request submitted successfully! We will contact you shortly to confirm your appointment.');
+                    }
+                    closeBookingModal();
+                    form.reset();
+                } else {
+                    if (typeof showToast !== 'undefined') {
+                        showToast.error('Error: ' + data.message);
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                if (typeof showToast !== 'undefined') {
+                    showToast.error('An error occurred while submitting your request. Please try again.');
+                } else {
+                    alert('An error occurred while submitting your request. Please try again.');
+                }
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+
+        return false;
     }
-});
 
-// Close modal with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !document.getElementById('bookingModal').classList.contains('hidden')) {
-        closeBookingModal();
+    function checkLoginStatus(e) {
+        <?php if (!isset($_SESSION['user'])): ?>
+            var modal = document.getElementById('loginModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+            } else {
+                alert('Login modal not found.');
+            }
+            if (e) e.preventDefault();
+            return false;
+        <?php endif; ?>
+        return true;
     }
-});
+
+    function closeBookingModal() {
+        const modal = document.getElementById('bookingModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+
+        // Reset form
+        document.getElementById('bookingForm').reset();
+    }
+
+    // Handle form submission
+    document.addEventListener('DOMContentLoaded', function() {
+        // The form submission is now handled by the submitConsultation function
+        // which is called from the form's onsubmit attribute
+
+        // Populate year dropdown when page loads
+        populateYearDropdown();
+    });
+
+    // Close modal when clicking outside
+    document.getElementById('bookingModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeBookingModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !document.getElementById('bookingModal').classList.contains('hidden')) {
+            closeBookingModal();
+        }
+    });
 </script>
 </body>
 
