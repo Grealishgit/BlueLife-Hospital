@@ -7,6 +7,9 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Contact Us - Sheywe Comunity Hospital</title>
     <style>
@@ -42,6 +45,7 @@ session_start();
 <body class="bg-gray-50">
     <?php include 'app/Views/navbar.php'; ?>
     <?php include 'app/Views/loginModal.php'; ?>
+    <?php include 'components/toast.php'; ?>
 
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-20 mt-10">
@@ -143,20 +147,28 @@ session_start();
                 <!-- Contact Form -->
                 <div>
                     <h2 class="text-3xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
-                    <form id="contactForm" class="space-y-6">
+
+                    <!-- Result/Status Display -->
+                    <div id="messageResult" class="hidden mb-6 p-4 rounded-lg"></div>
+
+                    <form method="POST" id="contactForm" class="space-y-6" onsubmit="return false;">
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="0326c4fa-e73d-4a16-bb46-1ccfac7efb03">
+                        <input type="hidden" name="action" value="send_message">
+
                         <?php if (!isset($_SESSION['user'])): ?>
                         <!-- Personal Information - Only show for guests -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name
+                                <label for="first_name" class="block text-sm font-medium text-gray-700 mb-1">First Name
                                     *</label>
-                                <input type="text" id="firstName" name="firstName" required
+                                <input type="text" id="first_name" name="first_name" required
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             </div>
                             <div>
-                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name
+                                <label for="last_name" class="block text-sm font-medium text-gray-700 mb-1">Last Name
                                     *</label>
-                                <input type="text" id="lastName" name="lastName" required
+                                <input type="text" id="last_name" name="last_name" required
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             </div>
                         </div>
@@ -184,6 +196,24 @@ session_start();
                                 Email: <?php echo htmlspecialchars($_SESSION['user']['email']); ?>
                             </p>
                         </div>
+                        <!-- Hidden fields for logged-in users -->
+                        <input type="hidden" name="first_name"
+                            value="<?php echo htmlspecialchars($_SESSION['user']['first_name']); ?>">
+                        <input type="hidden" name="last_name"
+                            value="<?php echo htmlspecialchars($_SESSION['user']['last_name']); ?>">
+                        <input type="hidden" name="email"
+                            value="<?php echo htmlspecialchars($_SESSION['user']['email']); ?>">
+                        <input type="hidden" name="phone"
+                            value="<?php echo htmlspecialchars($_SESSION['user']['phone'] ?? ''); ?>">
+
+                        <!-- Name field for Web3Forms -->
+                        <input type="hidden" name="name"
+                            value="<?php echo htmlspecialchars($_SESSION['user']['first_name'] . ' ' . $_SESSION['user']['last_name']); ?>">
+                        <?php endif; ?>
+
+                        <!-- Add name field for Web3Forms for guests -->
+                        <?php if (!isset($_SESSION['user'])): ?>
+                        <input type="hidden" id="full_name" name="name">
                         <?php endif; ?>
 
                         <div>
@@ -207,9 +237,18 @@ session_start();
                                 placeholder="Please describe your inquiry..."></textarea>
                         </div>
 
-                        <button type="submit"
-                            class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                            Send Message
+                        <button type="submit" id="submitBtn"
+                            class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed">
+                            <span id="submitText">Send Message</span>
+                            <span id="submitLoading" class="hidden">
+                                <svg class="animate-spin w-5 h-5 inline mr-2" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                                    </path>
+                                </svg>
+                                Sending...
+                            </span>
                         </button>
                     </form>
                 </div>
@@ -338,6 +377,9 @@ session_start();
     <?php include 'app/Views/footer.php'; ?>
 
     <script>
+    // Contact form JavaScript - v2.0
+    console.log('Contact form script loading...');
+
     function scrollToContact() {
         document.getElementById('contact').scrollIntoView({
             behavior: 'smooth'
@@ -376,37 +418,256 @@ session_start();
         }
     }
 
-    // Handle contact form submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, initializing contact form...');
 
-        // Get form data
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
+        // Get form elements
+        const form = document.getElementById('contactForm');
+        const result = document.getElementById('messageResult');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const submitLoading = document.getElementById('submitLoading');
 
-        // Simple validation
-        if (!data.firstName || !data.lastName || !data.email || !data.subject || !data.message) {
-            alert('Please fill in all required fields.');
+        // Check if all elements exist
+        if (!form || !result || !submitBtn || !submitText || !submitLoading) {
+            console.error('Missing form elements:', {
+                form: !!form,
+                result: !!result,
+                submitBtn: !!submitBtn,
+                submitText: !!submitText,
+                submitLoading: !!submitLoading
+            });
             return;
         }
 
-        // Simulate form submission
-        alert('Thank you for your message! We will get back to you within 24 hours.');
-        this.reset();
-    });
+        // Initialize toast manager (already defined in toast.php)
+        let contactToastManager;
+        try {
+            contactToastManager = new ToastManager();
+            console.log('Toast manager initialized successfully');
+        } catch (error) {
+            console.error('Toast manager initialization failed:', error);
+            // Fallback toast manager
+            contactToastManager = {
+                show: function(message, type, duration) {
+                    console.log(`Toast: ${message} (${type})`);
+                    alert(message);
+                }
+            };
+        }
 
-    // Add form field animations
-    const formInputs = document.querySelectorAll('input, select, textarea');
-    formInputs.forEach(input => {
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
+        // Add form submission handler
+        form.addEventListener('submit', function(e) {
+            console.log('Form submission intercepted!');
+
+            // Prevent all default form submission behavior
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitText.classList.add('hidden');
+            submitLoading.classList.remove('hidden');
+
+            result.innerHTML = "Please wait while we process your message...";
+            result.className = "mb-6 p-4 rounded-lg bg-blue-100 text-blue-800";
+            result.classList.remove('hidden');
+
+            // Show loading toast
+            contactToastManager.show('📤 Processing your message...', 'info', 3000);
+
+            // Get form data
+            const formData = new FormData(form);
+
+            // Update the name field for guests for Web3Forms
+            <?php if (!isset($_SESSION['user'])): ?>
+            const firstName = formData.get('first_name');
+            const lastName = formData.get('last_name');
+            formData.set('name', firstName + ' ' + lastName);
+            <?php endif; ?>
+
+            // Store message ID for Web3Forms callback
+            let messageId = null;
+
+            // First, save to database
+            fetch('app/contact-handler.php', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text().then(text => {
+                        console.log('Response text:', text);
+                        try {
+                            return JSON.parse(text);
+                        } catch (e) {
+                            console.error('Failed to parse JSON:', text);
+                            throw new Error('Invalid JSON response from server');
+                        }
+                    });
+                })
+                .then(data => {
+                    console.log('Parsed response data:', data);
+
+                    if (data.success) {
+                        messageId = data.message_id;
+
+                        // Show success message
+                        result.innerHTML = `
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>✅ ${data.message}</span>
+                            </div>
+                        `;
+                        result.className = "mb-6 p-4 rounded-lg bg-green-100 text-green-800";
+                        contactToastManager.show('✅ Message saved to our system!', 'success', 4000);
+
+                        // Now send to Web3Forms for email notification
+                        const web3FormsData = Object.fromEntries(formData);
+                        delete web3FormsData.action; // Remove our custom action
+
+                        return fetch('https://api.web3forms.com/submit', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify(web3FormsData)
+                        });
+                    } else {
+                        throw new Error(data.message || 'Failed to save message to database');
+                    }
+                })
+                .then(async (web3Response) => {
+                    if (web3Response) {
+                        let web3Json = await web3Response.json();
+
+                        // Update Web3Forms response in database
+                        if (messageId) {
+                            const updateData = new FormData();
+                            updateData.append('action', 'update_web3forms_response');
+                            updateData.append('message_id', messageId);
+                            updateData.append('web3forms_response', JSON.stringify(web3Json));
+
+                            fetch('app/contact-handler.php', {
+                                method: 'POST',
+                                body: updateData
+                            });
+                        }
+
+                        if (web3Response.status === 200) {
+                            result.innerHTML = `
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>✅ Message sent successfully! We'll get back to you within 24 hours.</span>
+                            </div>
+                            <p class="text-sm mt-2">Your message has been saved and a copy has been sent to our team.</p>
+                        `;
+                            result.className =
+                                "mb-6 p-4 rounded-lg bg-green-100 text-green-800";
+                            contactToastManager.show('✅ Email notification sent successfully!',
+                                'success', 5000);
+
+                            // Clear form on full success
+                            form.reset();
+                            // Update full name for guests after reset
+                            <?php if (!isset($_SESSION['user'])): ?>
+                            document.getElementById('full_name').value = '';
+                            <?php endif; ?>
+                            contactToastManager.show(
+                                '📝 Form cleared! Ready for a new message.', 'info', 3000);
+
+                        } else {
+                            result.innerHTML = `
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-yellow-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                </svg>
+                                <span>⚠️ Message saved but email notification failed. Our team will still see your message.</span>
+                            </div>
+                        `;
+                            result.className =
+                                "mb-6 p-4 rounded-lg bg-yellow-100 text-yellow-800";
+                            contactToastManager.show(
+                                '⚠️ Email notification failed, but message was saved',
+                                'warning', 5000);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    result.innerHTML = `
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span>❌ Error: ${error.message}</span>
+                    </div>
+                `;
+                    result.className = "mb-6 p-4 rounded-lg bg-red-100 text-red-800";
+                    contactToastManager.show('❌ Failed to send message: ' + error.message, 'error',
+                        6000);
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitText.classList.remove('hidden');
+                    submitLoading.classList.add('hidden');
+
+                    // Hide result after 8 seconds
+                    setTimeout(() => {
+                        result.classList.add('hidden');
+                    }, 8000);
+                });
         });
 
-        input.addEventListener('blur', function() {
-            if (this.value === '') {
-                this.parentElement.classList.remove('focused');
+        // Update full name field for guests when first/last name changes
+        <?php if (!isset($_SESSION['user'])): ?>
+        const firstNameInput = document.getElementById('first_name');
+        const lastNameInput = document.getElementById('last_name');
+
+        if (firstNameInput && lastNameInput) {
+            firstNameInput.addEventListener('input', updateFullName);
+            lastNameInput.addEventListener('input', updateFullName);
+        }
+
+        function updateFullName() {
+            const firstName = firstNameInput.value;
+            const lastName = lastNameInput.value;
+            const fullNameInput = document.getElementById('full_name');
+            if (fullNameInput) {
+                fullNameInput.value = firstName + ' ' + lastName;
             }
+        }
+        <?php endif; ?>
+
+        // Add form field animations
+        const formInputs = document.querySelectorAll('input, select, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+
+            input.addEventListener('blur', function() {
+                if (this.value === '') {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
         });
+
+        console.log('Contact form initialization complete!');
     });
     </script>
 </body>
