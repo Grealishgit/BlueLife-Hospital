@@ -1,5 +1,8 @@
 <?php
-session_start();
+// Start session only if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/../config/database.php';
 
 // Consultation Handler Class
@@ -151,78 +154,146 @@ class ConsultationHandler
             ];
         }
     }
-}
 
-// Handle AJAX requests
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'] ?? '';
-    $consultationHandler = new ConsultationHandler();
+    public function getConsultationById($consultationId)
+    {
+        try {
+            $sql = "SELECT * FROM consultations WHERE id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':id', $consultationId);
+            $stmt->execute();
 
-    switch ($action) {
-        case 'create_consultation':
-            $response = $consultationHandler->createConsultation($_POST);
-            break;
+            $consultation = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        case 'update_status':
-            $consultationId = $_POST['consultation_id'] ?? '';
-            $status = $_POST['status'] ?? '';
-            $response = $consultationHandler->updateConsultationStatus($consultationId, $status);
-            break;
-
-        default:
-            $response = [
+            if ($consultation) {
+                return [
+                    'success' => true,
+                    'consultation' => $consultation
+                ];
+            } else {
+                throw new Exception("Consultation not found.");
+            }
+        } catch (Exception $e) {
+            error_log("Error fetching consultation details: " . $e->getMessage());
+            return [
                 'success' => false,
-                'message' => 'Invalid action specified.'
+                'message' => $e->getMessage()
             ];
-            break;
+        }
     }
 
-    // Return JSON response
-    header('Content-Type: application/json');
-    echo json_encode($response);
-    exit;
+    public function deleteConsultation($consultationId)
+    {
+        try {
+            $sql = "DELETE FROM consultations WHERE id = :id";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':id', $consultationId);
+
+            if ($stmt->execute()) {
+                return [
+                    'success' => true,
+                    'message' => 'Consultation deleted successfully!'
+                ];
+            } else {
+                throw new Exception("Failed to delete consultation.");
+            }
+        } catch (Exception $e) {
+            error_log("Consultation deletion error: " . $e->getMessage());
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+    }
 }
 
-// Handle GET requests for fetching consultations
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $action = $_GET['action'] ?? '';
-    $consultationHandler = new ConsultationHandler();
+// Handle AJAX requests only when this file is accessed directly
+if (basename($_SERVER['SCRIPT_NAME']) === 'consultation-handler.php') {
+    // Handle POST requests
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $action = $_POST['action'] ?? '';
+        $consultationHandler = new ConsultationHandler();
 
-    switch ($action) {
-        case 'get_user_consultations':
-            if (isset($_SESSION['user'])) {
-                $consultations = $consultationHandler->getConsultationsByUser($_SESSION['user']['id']);
+        switch ($action) {
+            case 'create_consultation':
+                $response = $consultationHandler->createConsultation($_POST);
+                break;
+
+            case 'update_status':
+                $consultationId = $_POST['consultation_id'] ?? '';
+                $status = $_POST['status'] ?? '';
+                $response = $consultationHandler->updateConsultationStatus($consultationId, $status);
+                break;
+
+            case 'delete_consultation':
+                $consultationId = $_POST['consultation_id'] ?? '';
+                $response = $consultationHandler->deleteConsultation($consultationId);
+                break;
+
+            default:
+                $response = [
+                    'success' => false,
+                    'message' => 'Invalid action specified.'
+                ];
+                break;
+        }
+
+        // Return JSON response
+        if (!headers_sent()) {
+            header('Content-Type: application/json');
+        }
+        echo json_encode($response);
+        exit;
+    }
+
+    // Handle GET requests for fetching consultations
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $action = $_GET['action'] ?? '';
+        $consultationHandler = new ConsultationHandler();
+
+        switch ($action) {
+            case 'get_user_consultations':
+                if (isset($_SESSION['user'])) {
+                    $consultations = $consultationHandler->getConsultationsByUser($_SESSION['user']['id']);
+                    $response = [
+                        'success' => true,
+                        'consultations' => $consultations
+                    ];
+                } else {
+                    $response = [
+                        'success' => false,
+                        'message' => 'User not logged in.'
+                    ];
+                }
+                break;
+
+            case 'get_all_consultations':
+                $limit = $_GET['limit'] ?? 50;
+                $offset = $_GET['offset'] ?? 0;
+                $consultations = $consultationHandler->getAllConsultations($limit, $offset);
                 $response = [
                     'success' => true,
                     'consultations' => $consultations
                 ];
-            } else {
+                break;
+
+            case 'get_consultation_details':
+                $consultationId = $_GET['id'] ?? '';
+                $response = $consultationHandler->getConsultationById($consultationId);
+                break;
+
+            default:
                 $response = [
                     'success' => false,
-                    'message' => 'User not logged in.'
+                    'message' => 'Invalid action specified.'
                 ];
-            }
-            break;
+                break;
+        }
 
-        case 'get_all_consultations':
-            $limit = $_GET['limit'] ?? 50;
-            $offset = $_GET['offset'] ?? 0;
-            $consultations = $consultationHandler->getAllConsultations($limit, $offset);
-            $response = [
-                'success' => true,
-                'consultations' => $consultations
-            ];
-            break;
-
-        default:
-            $response = [
-                'success' => false,
-                'message' => 'Invalid action specified.'
-            ];
-            break;
+        if (!headers_sent()) {
+            header('Content-Type: application/json');
+        }
+        echo json_encode($response);
+        exit;
     }
-
-    header('Content-Type: application/json');
-    echo json_encode($response);
-    exit;
 }
