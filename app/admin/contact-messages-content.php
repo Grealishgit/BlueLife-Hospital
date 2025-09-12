@@ -101,13 +101,13 @@ function getMessageTypeBadgeClass($type)
 
     <!-- Error Display -->
     <?php if (isset($error)): ?>
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-            <strong>Error:</strong> <?php echo htmlspecialchars($error); ?>
-        </div>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+        <strong>Error:</strong> <?php echo htmlspecialchars($error); ?>
+    </div>
     <?php endif; ?>
 
     <!-- Statistics Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <!-- Total Messages -->
         <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
             <div class="flex items-center justify-between">
@@ -177,7 +177,7 @@ function getMessageTypeBadgeClass($type)
     </div>
 
     <!-- Message Type Overview -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
         <!-- User Messages -->
         <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
             <div class="flex items-center justify-between">
@@ -311,82 +311,82 @@ function getMessageTypeBadgeClass($type)
                 </thead>
                 <tbody id="messagesTableBody" class="bg-white divide-y divide-gray-200">
                     <?php if (empty($allMessages)): ?>
-                        <tr>
-                            <td colspan="7" class="px-6 py-8 text-center text-gray-500">
-                                <div class="flex flex-col items-center">
-                                    <svg class="w-12 h-12 text-gray-400 mb-4" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
-                                        </path>
-                                    </svg>
-                                    <p class="text-lg font-medium">No messages found</p>
-                                    <p class="text-sm">No contact messages have been submitted yet.</p>
-                                </div>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td colspan="7" class="px-6 py-8 text-center text-gray-500">
+                            <div class="flex flex-col items-center">
+                                <svg class="w-12 h-12 text-gray-400 mb-4" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                                    </path>
+                                </svg>
+                                <p class="text-lg font-medium">No messages found</p>
+                                <p class="text-sm">No contact messages have been submitted yet.</p>
+                            </div>
+                        </td>
+                    </tr>
                     <?php else: ?>
-                        <?php foreach ($allMessages as $message): ?>
-                            <tr class="message-row hover:bg-gray-50" data-status="<?php echo $message['status']; ?>"
-                                data-type="<?php echo $message['message_type']; ?>"
-                                data-subject="<?php echo $message['subject']; ?>"
-                                data-search="<?php echo strtolower($message['first_name'] . ' ' . $message['last_name'] . ' ' . $message['email'] . ' ' . $message['message']); ?>">
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <div class="flex-shrink-0 h-10 w-10">
-                                            <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
-                                                <span class="text-sm font-medium text-gray-700">
-                                                    <?php echo strtoupper(substr($message['first_name'], 0, 1) . substr($message['last_name'], 0, 1)); ?>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                <?php echo htmlspecialchars($message['first_name'] . ' ' . $message['last_name']); ?>
-                                            </div>
-                                            <div class="text-sm text-gray-500">
-                                                <?php echo $message['user_id'] ? 'Registered User' : 'Guest'; ?>
-                                            </div>
-                                        </div>
+                    <?php foreach ($allMessages as $message): ?>
+                    <tr class="message-row hover:bg-gray-50" data-status="<?php echo $message['status']; ?>"
+                        data-type="<?php echo $message['message_type']; ?>"
+                        data-subject="<?php echo $message['subject']; ?>"
+                        data-search="<?php echo strtolower($message['first_name'] . ' ' . $message['last_name'] . ' ' . $message['email'] . ' ' . $message['message']); ?>">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 h-10 w-10">
+                                    <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
+                                        <span class="text-sm font-medium text-gray-700">
+                                            <?php echo strtoupper(substr($message['first_name'], 0, 1) . substr($message['last_name'], 0, 1)); ?>
+                                        </span>
                                     </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900"><?php echo htmlspecialchars($message['email']); ?></div>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="text-sm font-medium text-gray-900">
+                                        <?php echo htmlspecialchars($message['first_name'] . ' ' . $message['last_name']); ?>
+                                    </div>
                                     <div class="text-sm text-gray-500">
-                                        <?php echo htmlspecialchars($message['phone'] ?: 'No phone'); ?></div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                                        <?php echo formatSubject($message['subject']); ?>
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="inline-flex px-2 py-1 text-xs font-semibold rounded-full <?php echo getMessageTypeBadgeClass($message['message_type']); ?>">
-                                        <?php echo ucfirst($message['message_type']); ?>
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="inline-flex px-2 py-1 text-xs font-semibold rounded-full <?php echo getStatusBadgeClass($message['status']); ?>">
-                                        <?php echo ucfirst($message['status']); ?>
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <?php echo date('M j, Y g:i A', strtotime($message['created_at'])); ?>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <button onclick="viewMessage(<?php echo $message['id']; ?>)"
-                                        class="text-blue-600 hover:text-blue-900 mr-3">View</button>
-                                    <button
-                                        onclick="updateStatus(<?php echo $message['id']; ?>, '<?php echo $message['status']; ?>')"
-                                        class="text-indigo-600 hover:text-indigo-900 mr-3">Update</button>
-                                    <button onclick="deleteMessage(<?php echo $message['id']; ?>)"
-                                        class="text-red-600 hover:text-red-900">Delete</button>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                                        <?php echo $message['user_id'] ? 'Registered User' : 'Guest'; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900"><?php echo htmlspecialchars($message['email']); ?></div>
+                            <div class="text-sm text-gray-500">
+                                <?php echo htmlspecialchars($message['phone'] ?: 'No phone'); ?></div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span
+                                class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                                <?php echo formatSubject($message['subject']); ?>
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span
+                                class="inline-flex px-2 py-1 text-xs font-semibold rounded-full <?php echo getMessageTypeBadgeClass($message['message_type']); ?>">
+                                <?php echo ucfirst($message['message_type']); ?>
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span
+                                class="inline-flex px-2 py-1 text-xs font-semibold rounded-full <?php echo getStatusBadgeClass($message['status']); ?>">
+                                <?php echo ucfirst($message['status']); ?>
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <?php echo date('M j, Y g:i A', strtotime($message['created_at'])); ?>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <button onclick="viewMessage(<?php echo $message['id']; ?>)"
+                                class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                            <button
+                                onclick="updateStatus(<?php echo $message['id']; ?>, '<?php echo $message['status']; ?>')"
+                                class="text-indigo-600 hover:text-indigo-900 mr-3">Update</button>
+                            <button onclick="deleteMessage(<?php echo $message['id']; ?>)"
+                                class="text-red-600 hover:text-red-900">Delete</button>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
                     <?php endif; ?>
                 </tbody>
             </table>
@@ -451,57 +451,57 @@ function getMessageTypeBadgeClass($type)
 
 <!-- JavaScript for Contact Messages Management -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('searchMessages');
-        const statusFilter = document.getElementById('statusFilter');
-        const typeFilter = document.getElementById('typeFilter');
-        const subjectFilter = document.getElementById('subjectFilter');
-        const messageRows = document.querySelectorAll('.message-row');
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchMessages');
+    const statusFilter = document.getElementById('statusFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const subjectFilter = document.getElementById('subjectFilter');
+    const messageRows = document.querySelectorAll('.message-row');
 
-        function filterMessages() {
-            const searchTerm = searchInput.value.toLowerCase();
-            const selectedStatus = statusFilter.value.toLowerCase();
-            const selectedType = typeFilter.value.toLowerCase();
-            const selectedSubject = subjectFilter.value.toLowerCase();
+    function filterMessages() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedStatus = statusFilter.value.toLowerCase();
+        const selectedType = typeFilter.value.toLowerCase();
+        const selectedSubject = subjectFilter.value.toLowerCase();
 
-            messageRows.forEach(row => {
-                const searchData = row.getAttribute('data-search');
-                const status = row.getAttribute('data-status');
-                const type = row.getAttribute('data-type');
-                const subject = row.getAttribute('data-subject');
+        messageRows.forEach(row => {
+            const searchData = row.getAttribute('data-search');
+            const status = row.getAttribute('data-status');
+            const type = row.getAttribute('data-type');
+            const subject = row.getAttribute('data-subject');
 
-                // Check all filter conditions
-                const matchesSearch = !searchTerm || searchData.includes(searchTerm);
-                const matchesStatus = !selectedStatus || status === selectedStatus;
-                const matchesType = !selectedType || type === selectedType;
-                const matchesSubject = !selectedSubject || subject === selectedSubject;
+            // Check all filter conditions
+            const matchesSearch = !searchTerm || searchData.includes(searchTerm);
+            const matchesStatus = !selectedStatus || status === selectedStatus;
+            const matchesType = !selectedType || type === selectedType;
+            const matchesSubject = !selectedSubject || subject === selectedSubject;
 
-                // Show/hide row based on all conditions
-                if (matchesSearch && matchesStatus && matchesType && matchesSubject) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
+            // Show/hide row based on all conditions
+            if (matchesSearch && matchesStatus && matchesType && matchesSubject) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
 
-        // Add event listeners for real-time filtering
-        searchInput.addEventListener('input', filterMessages);
-        statusFilter.addEventListener('change', filterMessages);
-        typeFilter.addEventListener('change', filterMessages);
-        subjectFilter.addEventListener('change', filterMessages);
-    });
+    // Add event listeners for real-time filtering
+    searchInput.addEventListener('input', filterMessages);
+    statusFilter.addEventListener('change', filterMessages);
+    typeFilter.addEventListener('change', filterMessages);
+    subjectFilter.addEventListener('change', filterMessages);
+});
 
-    // View message details
-    function viewMessage(messageId) {
-        fetch(`../contact-handler.php?action=get_message_details&id=${messageId}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    const message = data.message;
-                    const detailsDiv = document.getElementById('messageDetails');
+// View message details
+function viewMessage(messageId) {
+    fetch(`../contact-handler.php?action=get_message_details&id=${messageId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const message = data.message;
+                const detailsDiv = document.getElementById('messageDetails');
 
-                    detailsDiv.innerHTML = `
+                detailsDiv.innerHTML = `
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <h3 class="font-semibold text-gray-700">Sender Information</h3>
@@ -536,127 +536,127 @@ function getMessageTypeBadgeClass($type)
                     </div>
                 `;
 
-                    document.getElementById('viewMessageModal').classList.remove('hidden');
-                } else {
-                    alert('Error loading message details: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while loading message details.');
-            });
-    }
+                document.getElementById('viewMessageModal').classList.remove('hidden');
+            } else {
+                alert('Error loading message details: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while loading message details.');
+        });
+}
 
-    // Update message status
-    function updateStatus(messageId, currentStatus) {
-        document.getElementById('messageId').value = messageId;
-        document.getElementById('newStatus').value = currentStatus;
-        document.getElementById('updateStatusModal').classList.remove('hidden');
-    }
+// Update message status
+function updateStatus(messageId, currentStatus) {
+    document.getElementById('messageId').value = messageId;
+    document.getElementById('newStatus').value = currentStatus;
+    document.getElementById('updateStatusModal').classList.remove('hidden');
+}
 
-    // Submit status update
-    function submitStatusUpdate(event) {
-        event.preventDefault();
+// Submit status update
+function submitStatusUpdate(event) {
+    event.preventDefault();
 
-        const formData = new FormData(document.getElementById('updateStatusForm'));
-        formData.append('action', 'update_status');
+    const formData = new FormData(document.getElementById('updateStatusForm'));
+    formData.append('action', 'update_status');
 
-        const submitBtn = event.target.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Updating...';
-        submitBtn.disabled = true;
+    const submitBtn = event.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Updating...';
+    submitBtn.disabled = true;
 
+    fetch('../contact-handler.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Status updated successfully!');
+                location.reload(); // Refresh the page to show updated data
+            } else {
+                alert('Error updating status: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while updating the status.');
+        })
+        .finally(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            closeUpdateModal();
+        });
+}
+
+// Delete message
+function deleteMessage(messageId) {
+    if (confirm('Are you sure you want to delete this message? This action cannot be undone.')) {
         fetch('../contact-handler.php', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `action=delete_message&message_id=${messageId}`
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('Status updated successfully!');
-                    location.reload(); // Refresh the page to show updated data
+                    alert('Message deleted successfully!');
+                    location.reload();
                 } else {
-                    alert('Error updating status: ' + data.message);
+                    alert('Error deleting message: ' + data.message);
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('An error occurred while updating the status.');
-            })
-            .finally(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                closeUpdateModal();
+                alert('An error occurred while deleting the message.');
             });
     }
+}
 
-    // Delete message
-    function deleteMessage(messageId) {
-        if (confirm('Are you sure you want to delete this message? This action cannot be undone.')) {
-            fetch('../contact-handler.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `action=delete_message&message_id=${messageId}`
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Message deleted successfully!');
-                        location.reload();
-                    } else {
-                        alert('Error deleting message: ' + data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred while deleting the message.');
-                });
-        }
+// Modal functions
+function closeViewModal() {
+    document.getElementById('viewMessageModal').classList.add('hidden');
+}
+
+function closeUpdateModal() {
+    document.getElementById('updateStatusModal').classList.add('hidden');
+}
+
+// Helper function for status styling
+function getStatusClass(status) {
+    switch (status) {
+        case 'unread':
+            return 'bg-red-100 text-red-800';
+        case 'read':
+            return 'bg-yellow-100 text-yellow-800';
+        case 'replied':
+            return 'bg-green-100 text-green-800';
+        case 'archived':
+            return 'bg-gray-100 text-gray-800';
+        default:
+            return 'bg-blue-100 text-blue-800';
     }
+}
 
-    // Modal functions
-    function closeViewModal() {
-        document.getElementById('viewMessageModal').classList.add('hidden');
+// Close modals when clicking outside
+document.addEventListener('click', function(event) {
+    const viewModal = document.getElementById('viewMessageModal');
+    const updateModal = document.getElementById('updateStatusModal');
+
+    if (event.target === viewModal) {
+        closeViewModal();
     }
-
-    function closeUpdateModal() {
-        document.getElementById('updateStatusModal').classList.add('hidden');
+    if (event.target === updateModal) {
+        closeUpdateModal();
     }
-
-    // Helper function for status styling
-    function getStatusClass(status) {
-        switch (status) {
-            case 'unread':
-                return 'bg-red-100 text-red-800';
-            case 'read':
-                return 'bg-yellow-100 text-yellow-800';
-            case 'replied':
-                return 'bg-green-100 text-green-800';
-            case 'archived':
-                return 'bg-gray-100 text-gray-800';
-            default:
-                return 'bg-blue-100 text-blue-800';
-        }
-    }
-
-    // Close modals when clicking outside
-    document.addEventListener('click', function(event) {
-        const viewModal = document.getElementById('viewMessageModal');
-        const updateModal = document.getElementById('updateStatusModal');
-
-        if (event.target === viewModal) {
-            closeViewModal();
-        }
-        if (event.target === updateModal) {
-            closeUpdateModal();
-        }
-    });
+});
 </script>
 
 <style>
-    .message-row {
-        transition: background-color 0.2s ease;
-    }
+.message-row {
+    transition: background-color 0.2s ease;
+}
 </style>

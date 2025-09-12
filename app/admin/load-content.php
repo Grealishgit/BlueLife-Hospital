@@ -17,7 +17,8 @@ $pageFiles = [
     'consultations' => 'consultations-content.php',
     'patients' => 'patients-content.php',
     'doctors' => 'doctors-content.php',
-    'messages' => 'messages-content.php'
+    'messages' => 'contact-messages-content.php',
+    'contact-messages' => 'contact-messages-content.php'
 ];
 
 // Check if the requested page exists
